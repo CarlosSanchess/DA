@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/Proj1.dir/main.cpp.o CMakeFiles/Proj1.dir/reader.cpp.o CMakeFiles/Proj1.dir/Classes/WaterReservoir.cpp.o CMakeFiles/Proj1.dir/Classes/DeliveryStation.cpp.o -o Proj1 

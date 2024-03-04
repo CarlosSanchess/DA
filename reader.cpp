@@ -64,7 +64,7 @@ void Reader::readAndParseAirlines() {
  * It parses each line of the file to extract relevant flight information and adds corresponding edges
  * to the graph based on the source and target airports and the operating airline.
  */
-void Reader::readAndParseFlights() {
+void Reader::readAndParsePipes() {
     ifstream file("../resources/flights.csv");
     string line;
 

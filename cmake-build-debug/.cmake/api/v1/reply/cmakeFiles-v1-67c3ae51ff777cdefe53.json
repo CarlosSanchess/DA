@@ -54,6 +54,21 @@
 		{
 			"isCMake" : true,
 			"isExternal" : true,
+			"path" : "/snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeFindCodeBlocks.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeExtraGeneratorDetermineCompilerMacrosAndIncludeDirs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/ProcessorCount.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
 			"path" : "/snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeCInformation.cmake"
 		},
 		{
@@ -130,8 +145,8 @@
 	"kind" : "cmakeFiles",
 	"paths" : 
 	{
-		"build" : "/home/oblivion/Documents/Personal/Progg/DA/Proj1/cmake-build-debug",
-		"source" : "/home/oblivion/Documents/Personal/Progg/DA/Proj1"
+		"build" : "/home/rebelojoao/Documents/DA/projeto01/DA/cmake-build-debug",
+		"source" : "/home/rebelojoao/Documents/DA/projeto01/DA"
 	},
 	"version" : 
 	{
