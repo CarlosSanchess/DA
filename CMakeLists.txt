@@ -10,4 +10,8 @@ add_executable(Proj1 main.cpp
         Classes/WaterReservoir.h
         Classes/WaterReservoir.cpp
         Classes/DeliveryStation.cpp
+        App.cpp
+        Classes/Pipe.cpp
+        Classes/PumpingStation.h
+        Classes/PumpingStation.cpp
 )

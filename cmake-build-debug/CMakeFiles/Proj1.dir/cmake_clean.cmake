@@ -1,6 +1,12 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/Proj1.dir/App.cpp.o"
+  "CMakeFiles/Proj1.dir/App.cpp.o.d"
   "CMakeFiles/Proj1.dir/Classes/DeliveryStation.cpp.o"
   "CMakeFiles/Proj1.dir/Classes/DeliveryStation.cpp.o.d"
+  "CMakeFiles/Proj1.dir/Classes/Pipe.cpp.o"
+  "CMakeFiles/Proj1.dir/Classes/Pipe.cpp.o.d"
+  "CMakeFiles/Proj1.dir/Classes/PumpingStation.cpp.o"
+  "CMakeFiles/Proj1.dir/Classes/PumpingStation.cpp.o.d"
   "CMakeFiles/Proj1.dir/Classes/WaterReservoir.cpp.o"
   "CMakeFiles/Proj1.dir/Classes/WaterReservoir.cpp.o.d"
   "CMakeFiles/Proj1.dir/main.cpp.o"

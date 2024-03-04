@@ -129,6 +129,30 @@ Proj1/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Proj1.dir/build.make CMakeFiles/Proj1.dir/build
 .PHONY : Proj1/fast
 
+App.o: App.cpp.o
+.PHONY : App.o
+
+# target to build an object file
+App.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Proj1.dir/build.make CMakeFiles/Proj1.dir/App.cpp.o
+.PHONY : App.cpp.o
+
+App.i: App.cpp.i
+.PHONY : App.i
+
+# target to preprocess a source file
+App.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Proj1.dir/build.make CMakeFiles/Proj1.dir/App.cpp.i
+.PHONY : App.cpp.i
+
+App.s: App.cpp.s
+.PHONY : App.s
+
+# target to generate assembly for a file
+App.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Proj1.dir/build.make CMakeFiles/Proj1.dir/App.cpp.s
+.PHONY : App.cpp.s
+
 Classes/DeliveryStation.o: Classes/DeliveryStation.cpp.o
 .PHONY : Classes/DeliveryStation.o
 
@@ -152,6 +176,54 @@ Classes/DeliveryStation.s: Classes/DeliveryStation.cpp.s
 Classes/DeliveryStation.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Proj1.dir/build.make CMakeFiles/Proj1.dir/Classes/DeliveryStation.cpp.s
 .PHONY : Classes/DeliveryStation.cpp.s
+
+Classes/Pipe.o: Classes/Pipe.cpp.o
+.PHONY : Classes/Pipe.o
+
+# target to build an object file
+Classes/Pipe.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Proj1.dir/build.make CMakeFiles/Proj1.dir/Classes/Pipe.cpp.o
+.PHONY : Classes/Pipe.cpp.o
+
+Classes/Pipe.i: Classes/Pipe.cpp.i
+.PHONY : Classes/Pipe.i
+
+# target to preprocess a source file
+Classes/Pipe.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Proj1.dir/build.make CMakeFiles/Proj1.dir/Classes/Pipe.cpp.i
+.PHONY : Classes/Pipe.cpp.i
+
+Classes/Pipe.s: Classes/Pipe.cpp.s
+.PHONY : Classes/Pipe.s
+
+# target to generate assembly for a file
+Classes/Pipe.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Proj1.dir/build.make CMakeFiles/Proj1.dir/Classes/Pipe.cpp.s
+.PHONY : Classes/Pipe.cpp.s
+
+Classes/PumpingStation.o: Classes/PumpingStation.cpp.o
+.PHONY : Classes/PumpingStation.o
+
+# target to build an object file
+Classes/PumpingStation.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Proj1.dir/build.make CMakeFiles/Proj1.dir/Classes/PumpingStation.cpp.o
+.PHONY : Classes/PumpingStation.cpp.o
+
+Classes/PumpingStation.i: Classes/PumpingStation.cpp.i
+.PHONY : Classes/PumpingStation.i
+
+# target to preprocess a source file
+Classes/PumpingStation.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Proj1.dir/build.make CMakeFiles/Proj1.dir/Classes/PumpingStation.cpp.i
+.PHONY : Classes/PumpingStation.cpp.i
+
+Classes/PumpingStation.s: Classes/PumpingStation.cpp.s
+.PHONY : Classes/PumpingStation.s
+
+# target to generate assembly for a file
+Classes/PumpingStation.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Proj1.dir/build.make CMakeFiles/Proj1.dir/Classes/PumpingStation.cpp.s
+.PHONY : Classes/PumpingStation.cpp.s
 
 Classes/WaterReservoir.o: Classes/WaterReservoir.cpp.o
 .PHONY : Classes/WaterReservoir.o
@@ -234,9 +306,18 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Proj1"
+	@echo "... App.o"
+	@echo "... App.i"
+	@echo "... App.s"
 	@echo "... Classes/DeliveryStation.o"
 	@echo "... Classes/DeliveryStation.i"
 	@echo "... Classes/DeliveryStation.s"
+	@echo "... Classes/Pipe.o"
+	@echo "... Classes/Pipe.i"
+	@echo "... Classes/Pipe.s"
+	@echo "... Classes/PumpingStation.o"
+	@echo "... Classes/PumpingStation.i"
+	@echo "... Classes/PumpingStation.s"
 	@echo "... Classes/WaterReservoir.o"
 	@echo "... Classes/WaterReservoir.i"
 	@echo "... Classes/WaterReservoir.s"

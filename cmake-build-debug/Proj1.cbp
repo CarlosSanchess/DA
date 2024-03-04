@@ -82,6 +82,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/rebelojoao/Documents/DA/projeto01/DA/App.cpp">
+			<Option target="Proj1"/>
+		</Unit>
+		<Unit filename="/home/rebelojoao/Documents/DA/projeto01/DA/App.h">
+			<Option target="Proj1"/>
+		</Unit>
 		<Unit filename="/home/rebelojoao/Documents/DA/projeto01/DA/Classes/DeliveryStation.cpp">
 			<Option target="Proj1"/>
 		</Unit>
@@ -91,7 +97,16 @@
 		<Unit filename="/home/rebelojoao/Documents/DA/projeto01/DA/Classes/Graph.h">
 			<Option target="Proj1"/>
 		</Unit>
+		<Unit filename="/home/rebelojoao/Documents/DA/projeto01/DA/Classes/Pipe.cpp">
+			<Option target="Proj1"/>
+		</Unit>
 		<Unit filename="/home/rebelojoao/Documents/DA/projeto01/DA/Classes/Pipe.h">
+			<Option target="Proj1"/>
+		</Unit>
+		<Unit filename="/home/rebelojoao/Documents/DA/projeto01/DA/Classes/PumpingStation.cpp">
+			<Option target="Proj1"/>
+		</Unit>
+		<Unit filename="/home/rebelojoao/Documents/DA/projeto01/DA/Classes/PumpingStation.h">
 			<Option target="Proj1"/>
 		</Unit>
 		<Unit filename="/home/rebelojoao/Documents/DA/projeto01/DA/Classes/WaterReservoir.cpp">

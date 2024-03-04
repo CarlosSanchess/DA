@@ -125,12 +125,57 @@ CMakeFiles/Proj1.dir/Classes/DeliveryStation.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Proj1.dir/Classes/DeliveryStation.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rebelojoao/Documents/DA/projeto01/DA/Classes/DeliveryStation.cpp -o CMakeFiles/Proj1.dir/Classes/DeliveryStation.cpp.s
 
+CMakeFiles/Proj1.dir/App.cpp.o: CMakeFiles/Proj1.dir/flags.make
+CMakeFiles/Proj1.dir/App.cpp.o: /home/rebelojoao/Documents/DA/projeto01/DA/App.cpp
+CMakeFiles/Proj1.dir/App.cpp.o: CMakeFiles/Proj1.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/rebelojoao/Documents/DA/projeto01/DA/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Proj1.dir/App.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Proj1.dir/App.cpp.o -MF CMakeFiles/Proj1.dir/App.cpp.o.d -o CMakeFiles/Proj1.dir/App.cpp.o -c /home/rebelojoao/Documents/DA/projeto01/DA/App.cpp
+
+CMakeFiles/Proj1.dir/App.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Proj1.dir/App.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/rebelojoao/Documents/DA/projeto01/DA/App.cpp > CMakeFiles/Proj1.dir/App.cpp.i
+
+CMakeFiles/Proj1.dir/App.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Proj1.dir/App.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rebelojoao/Documents/DA/projeto01/DA/App.cpp -o CMakeFiles/Proj1.dir/App.cpp.s
+
+CMakeFiles/Proj1.dir/Classes/Pipe.cpp.o: CMakeFiles/Proj1.dir/flags.make
+CMakeFiles/Proj1.dir/Classes/Pipe.cpp.o: /home/rebelojoao/Documents/DA/projeto01/DA/Classes/Pipe.cpp
+CMakeFiles/Proj1.dir/Classes/Pipe.cpp.o: CMakeFiles/Proj1.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/rebelojoao/Documents/DA/projeto01/DA/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Proj1.dir/Classes/Pipe.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Proj1.dir/Classes/Pipe.cpp.o -MF CMakeFiles/Proj1.dir/Classes/Pipe.cpp.o.d -o CMakeFiles/Proj1.dir/Classes/Pipe.cpp.o -c /home/rebelojoao/Documents/DA/projeto01/DA/Classes/Pipe.cpp
+
+CMakeFiles/Proj1.dir/Classes/Pipe.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Proj1.dir/Classes/Pipe.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/rebelojoao/Documents/DA/projeto01/DA/Classes/Pipe.cpp > CMakeFiles/Proj1.dir/Classes/Pipe.cpp.i
+
+CMakeFiles/Proj1.dir/Classes/Pipe.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Proj1.dir/Classes/Pipe.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rebelojoao/Documents/DA/projeto01/DA/Classes/Pipe.cpp -o CMakeFiles/Proj1.dir/Classes/Pipe.cpp.s
+
+CMakeFiles/Proj1.dir/Classes/PumpingStation.cpp.o: CMakeFiles/Proj1.dir/flags.make
+CMakeFiles/Proj1.dir/Classes/PumpingStation.cpp.o: /home/rebelojoao/Documents/DA/projeto01/DA/Classes/PumpingStation.cpp
+CMakeFiles/Proj1.dir/Classes/PumpingStation.cpp.o: CMakeFiles/Proj1.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/rebelojoao/Documents/DA/projeto01/DA/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Proj1.dir/Classes/PumpingStation.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Proj1.dir/Classes/PumpingStation.cpp.o -MF CMakeFiles/Proj1.dir/Classes/PumpingStation.cpp.o.d -o CMakeFiles/Proj1.dir/Classes/PumpingStation.cpp.o -c /home/rebelojoao/Documents/DA/projeto01/DA/Classes/PumpingStation.cpp
+
+CMakeFiles/Proj1.dir/Classes/PumpingStation.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Proj1.dir/Classes/PumpingStation.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/rebelojoao/Documents/DA/projeto01/DA/Classes/PumpingStation.cpp > CMakeFiles/Proj1.dir/Classes/PumpingStation.cpp.i
+
+CMakeFiles/Proj1.dir/Classes/PumpingStation.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Proj1.dir/Classes/PumpingStation.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rebelojoao/Documents/DA/projeto01/DA/Classes/PumpingStation.cpp -o CMakeFiles/Proj1.dir/Classes/PumpingStation.cpp.s
+
 # Object files for target Proj1
 Proj1_OBJECTS = \
 "CMakeFiles/Proj1.dir/main.cpp.o" \
 "CMakeFiles/Proj1.dir/reader.cpp.o" \
 "CMakeFiles/Proj1.dir/Classes/WaterReservoir.cpp.o" \
-"CMakeFiles/Proj1.dir/Classes/DeliveryStation.cpp.o"
+"CMakeFiles/Proj1.dir/Classes/DeliveryStation.cpp.o" \
+"CMakeFiles/Proj1.dir/App.cpp.o" \
+"CMakeFiles/Proj1.dir/Classes/Pipe.cpp.o" \
+"CMakeFiles/Proj1.dir/Classes/PumpingStation.cpp.o"
 
 # External object files for target Proj1
 Proj1_EXTERNAL_OBJECTS =
@@ -139,9 +184,12 @@ Proj1: CMakeFiles/Proj1.dir/main.cpp.o
 Proj1: CMakeFiles/Proj1.dir/reader.cpp.o
 Proj1: CMakeFiles/Proj1.dir/Classes/WaterReservoir.cpp.o
 Proj1: CMakeFiles/Proj1.dir/Classes/DeliveryStation.cpp.o
+Proj1: CMakeFiles/Proj1.dir/App.cpp.o
+Proj1: CMakeFiles/Proj1.dir/Classes/Pipe.cpp.o
+Proj1: CMakeFiles/Proj1.dir/Classes/PumpingStation.cpp.o
 Proj1: CMakeFiles/Proj1.dir/build.make
 Proj1: CMakeFiles/Proj1.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/rebelojoao/Documents/DA/projeto01/DA/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable Proj1"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/rebelojoao/Documents/DA/projeto01/DA/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable Proj1"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Proj1.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
