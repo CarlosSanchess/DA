@@ -1,4 +1,4 @@
-# Install script for directory: /home/oblivion/Documents/Personal/Progg/DA/Proj1
+# Install script for directory: /home/rebelojoao/Documents/DA/projeto01/DA
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/oblivion/Documents/Personal/Progg/DA/Proj1/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/rebelojoao/Documents/DA/projeto01/DA/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

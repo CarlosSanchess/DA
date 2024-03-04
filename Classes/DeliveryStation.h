@@ -1,23 +1,17 @@
 #ifndef PROJ1_DELIVERYSTATION_H
 #define PROJ1_DELIVERYSTATION_H
 
-#include <string>
+#include "Station.h"
 
-class DeliveryStation {
-
+class DeliveryStation : public Station {
 private:
     std::string city;
-    int id;
-    std::string code;
     double demand;
     int population;
-
 public:
-    DeliveryStation(std::string  city, int id, std::string  code, double demand, int population);
+    DeliveryStation(int id, std::string code, std::string city, double demand, int population);
 
     std::string getCity() const;
-    int getId() const;
-    std::string getCode() const;
     double getDemand() const;
     int getPopulation() const;
 };

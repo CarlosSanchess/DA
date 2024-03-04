@@ -3,7 +3,7 @@ project(Proj1)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(Proj1 main.cpp
+add_executable(projeto01 main.cpp
         Classes/Graph.h
         reader.cpp
         Classes/Pipe.h
@@ -12,6 +12,6 @@ add_executable(Proj1 main.cpp
         Classes/DeliveryStation.cpp
         App.cpp
         Classes/Pipe.cpp
-        Classes/PumpingStation.h
-        Classes/PumpingStation.cpp
+        Classes/Station.h
+        Classes/Station.cpp
 )

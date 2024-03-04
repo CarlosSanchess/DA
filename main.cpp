@@ -1,8 +1,11 @@
 #include "App.h"
-
+#include <iostream>
+#include "reader.h"
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+
+    Reader r;
+    r.readAndParsePS();
 
     return 0;
 }

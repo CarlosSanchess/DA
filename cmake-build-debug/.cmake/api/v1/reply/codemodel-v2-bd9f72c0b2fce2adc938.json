@@ -38,9 +38,9 @@
 			[
 				{
 					"directoryIndex" : 0,
-					"id" : "Proj1::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-Proj1-Debug-789d1628fac9119de797.json",
-					"name" : "Proj1",
+					"id" : "projeto01::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-projeto01-Debug-d772e6986fce1e2fea14.json",
+					"name" : "projeto01",
 					"projectIndex" : 0
 				}
 			]
@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/home/oblivion/Documents/Personal/Progg/DA/Proj1/cmake-build-debug",
-		"source" : "/home/oblivion/Documents/Personal/Progg/DA/Proj1"
+		"build" : "/home/rebelojoao/Documents/DA/projeto01/DA/cmake-build-debug",
+		"source" : "/home/rebelojoao/Documents/DA/projeto01/DA"
 	},
 	"version" : 
 	{

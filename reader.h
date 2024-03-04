@@ -1,29 +1,18 @@
-#ifndef READER_H_
-#define READER_H_
+#ifndef READERH
+#define READERH
 
 #include <iostream>
 #include <fstream>
 #include <sstream>
 #include <string>
 #include <set>
-#include <unordered_set>
-#include <unordered_map>
-
+#include "Classes/DeliveryStation.h"
+#include "Classes/Station.h"
+#include "Classes/Graph.h"
 
 class Reader {
 private:
-
-    Graph<Airport> graph;
-
-
-    unordered_map<string, Airline> airlineMap;
-
-
-    unordered_map<string, Vertex<Airport>*> airportMap;
-
-
-    unordered_map<string, vector<Vertex<Airport>*>> cityToAirportsMap;
-
+    Graph<Station*> graph;
 
 public:
     Reader();
@@ -36,22 +25,6 @@ public:
 
     void readAndParsePipes();
 
-    const Graph<Airport>& getGraph() const {
-        return graph;
-    }
-
-    const unordered_map<string, Airline>& getAirlineMap() const {
-        return airlineMap;
-    }
-
-    const unordered_map<string, vector<Vertex<Airport>*>>& getCityToAirportsMap() const {
-        return cityToAirportsMap;
-    }
-
-    const unordered_map<string, Vertex<Airport>*>& getAirportMap() const {
-        return airportMap;
-    }
-
 };
 
-#endif /* READER_H_ */
+#endif /* READER_H */

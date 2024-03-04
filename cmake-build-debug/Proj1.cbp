@@ -17,8 +17,8 @@
 					<DistClean command="/usr/bin/gmake -j8 -f &quot;/home/rebelojoao/Documents/DA/projeto01/DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="Proj1">
-				<Option output="/home/rebelojoao/Documents/DA/projeto01/DA/cmake-build-debug/Proj1" prefix_auto="0" extension_auto="0"/>
+			<Target title="projeto01">
+				<Option output="/home/rebelojoao/Documents/DA/projeto01/DA/cmake-build-debug/projeto01" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/home/rebelojoao/Documents/DA/projeto01/DA/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
@@ -33,14 +33,14 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j8 -f &quot;/home/rebelojoao/Documents/DA/projeto01/DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 Proj1"/>
+					<Build command="/usr/bin/gmake -j8 -f &quot;/home/rebelojoao/Documents/DA/projeto01/DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 projeto01"/>
 					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/home/rebelojoao/Documents/DA/projeto01/DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/gmake -j8 -f &quot;/home/rebelojoao/Documents/DA/projeto01/DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/gmake -j8 -f &quot;/home/rebelojoao/Documents/DA/projeto01/DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="Proj1/fast">
-				<Option output="/home/rebelojoao/Documents/DA/projeto01/DA/cmake-build-debug/Proj1" prefix_auto="0" extension_auto="0"/>
+			<Target title="projeto01/fast">
+				<Option output="/home/rebelojoao/Documents/DA/projeto01/DA/cmake-build-debug/projeto01" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/home/rebelojoao/Documents/DA/projeto01/DA/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
@@ -55,7 +55,7 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j8 -f &quot;/home/rebelojoao/Documents/DA/projeto01/DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 Proj1/fast"/>
+					<Build command="/usr/bin/gmake -j8 -f &quot;/home/rebelojoao/Documents/DA/projeto01/DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 projeto01/fast"/>
 					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/home/rebelojoao/Documents/DA/projeto01/DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/gmake -j8 -f &quot;/home/rebelojoao/Documents/DA/projeto01/DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/gmake -j8 -f &quot;/home/rebelojoao/Documents/DA/projeto01/DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
@@ -83,46 +83,46 @@
 			</Target>
 		</Build>
 		<Unit filename="/home/rebelojoao/Documents/DA/projeto01/DA/App.cpp">
-			<Option target="Proj1"/>
+			<Option target="projeto01"/>
 		</Unit>
 		<Unit filename="/home/rebelojoao/Documents/DA/projeto01/DA/App.h">
-			<Option target="Proj1"/>
+			<Option target="projeto01"/>
 		</Unit>
 		<Unit filename="/home/rebelojoao/Documents/DA/projeto01/DA/Classes/DeliveryStation.cpp">
-			<Option target="Proj1"/>
+			<Option target="projeto01"/>
 		</Unit>
 		<Unit filename="/home/rebelojoao/Documents/DA/projeto01/DA/Classes/DeliveryStation.h">
-			<Option target="Proj1"/>
+			<Option target="projeto01"/>
 		</Unit>
 		<Unit filename="/home/rebelojoao/Documents/DA/projeto01/DA/Classes/Graph.h">
-			<Option target="Proj1"/>
+			<Option target="projeto01"/>
 		</Unit>
 		<Unit filename="/home/rebelojoao/Documents/DA/projeto01/DA/Classes/Pipe.cpp">
-			<Option target="Proj1"/>
+			<Option target="projeto01"/>
 		</Unit>
 		<Unit filename="/home/rebelojoao/Documents/DA/projeto01/DA/Classes/Pipe.h">
-			<Option target="Proj1"/>
+			<Option target="projeto01"/>
 		</Unit>
-		<Unit filename="/home/rebelojoao/Documents/DA/projeto01/DA/Classes/PumpingStation.cpp">
-			<Option target="Proj1"/>
+		<Unit filename="/home/rebelojoao/Documents/DA/projeto01/DA/Classes/Station.cpp">
+			<Option target="projeto01"/>
 		</Unit>
-		<Unit filename="/home/rebelojoao/Documents/DA/projeto01/DA/Classes/PumpingStation.h">
-			<Option target="Proj1"/>
+		<Unit filename="/home/rebelojoao/Documents/DA/projeto01/DA/Classes/Station.h">
+			<Option target="projeto01"/>
 		</Unit>
 		<Unit filename="/home/rebelojoao/Documents/DA/projeto01/DA/Classes/WaterReservoir.cpp">
-			<Option target="Proj1"/>
+			<Option target="projeto01"/>
 		</Unit>
 		<Unit filename="/home/rebelojoao/Documents/DA/projeto01/DA/Classes/WaterReservoir.h">
-			<Option target="Proj1"/>
+			<Option target="projeto01"/>
 		</Unit>
 		<Unit filename="/home/rebelojoao/Documents/DA/projeto01/DA/main.cpp">
-			<Option target="Proj1"/>
+			<Option target="projeto01"/>
 		</Unit>
 		<Unit filename="/home/rebelojoao/Documents/DA/projeto01/DA/reader.cpp">
-			<Option target="Proj1"/>
+			<Option target="projeto01"/>
 		</Unit>
 		<Unit filename="/home/rebelojoao/Documents/DA/projeto01/DA/reader.h">
-			<Option target="Proj1"/>
+			<Option target="projeto01"/>
 		</Unit>
 		<Unit filename="/home/rebelojoao/Documents/DA/projeto01/DA/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
