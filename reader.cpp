@@ -1,12 +1,6 @@
 #include "reader.h"
 
-/**
- * @brief Reads and parses airport data from the specified CSV file.
- *
- * This function reads airport data from the "airports.csv" file located in the resources directory.
- * It parses each line of the file to extract relevant airport information and populates the graph
- * with corresponding vertices and updates the airport and city-to-airports maps accordingly.
- */
+
 void Reader::readAndParseAirports() {
     ifstream file("../resources/airports.csv");
     string line;
@@ -34,12 +28,7 @@ void Reader::readAndParseAirports() {
     }
 }
 
-/**
- * @brief Reads and parses airline data from the specified CSV file.
- *
- * This function reads airline data from the "airlines.csv" file located in the resources directory.
- * It parses each line of the file to extract relevant airline information and populates the airline map.
- */
+
 void Reader::readAndParseAirlines() {
     ifstream file("../resources/airlines.csv");
     string line;
@@ -57,13 +46,7 @@ void Reader::readAndParseAirlines() {
     }
 }
 
-/**
- * @brief Reads and parses flight data from the specified CSV file.
- *
- * This function reads flight data from the "flights.csv" file located in the resources directory.
- * It parses each line of the file to extract relevant flight information and adds corresponding edges
- * to the graph based on the source and target airports and the operating airline.
- */
+
 void Reader::readAndParseFlights() {
     ifstream file("../resources/flights.csv");
     string line;
