@@ -6,6 +6,6 @@ int main() {
 
     Reader r;
     r.readAndParsePS();
-
+    r.readAndParseDS();
     return 0;
 }
