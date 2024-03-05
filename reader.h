@@ -29,6 +29,10 @@ public:
 
     Station* getNode(const std::string& servicePoint);
 
+    Graph<Station*> getGraph(){
+        return graph;
+    }
+
 };
 
 #endif /* READER_H */

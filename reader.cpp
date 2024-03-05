@@ -93,6 +93,7 @@ void Reader::readAndParsePipes() {
     std::string line;
     int capacity;
     bool direction;
+    size_t aux;
 
     getline(file, line);
     while (getline(file, line)) {
@@ -105,10 +106,10 @@ void Reader::readAndParsePipes() {
         capacity = std::stoi(cap);
 
         getline(ss, dir, '\n');
-
+        if ((aux = dir.find_first_not_of("0123456789")) != std::string::npos) { //Check
+            dir.erase(aux);
+        }
         direction = std::stoi(dir);
-
-        auto *p = new Pipe(servicePointA, servicePointB, capacity, direction);
 
 
         Station* a = getNode(servicePointA);
