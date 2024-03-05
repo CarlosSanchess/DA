@@ -1,5 +1,3 @@
-#include "App.h"
-#include <iostream>
 #include "reader.h"
 
 int main() {
@@ -9,6 +7,7 @@ int main() {
     r.readAndParseWR();
     r.readAndParseDS();
     r.readAndParsePipes();
+
 
     return 0;
 }

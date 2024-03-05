@@ -31,6 +31,7 @@ void Reader::readAndParsePS() {
 
 void Reader::readAndParseDS() {
     std::ifstream file("../Data/Cities_Madeira.csv");
+
     std::string line;
 
     getline(file, line);
@@ -61,11 +62,13 @@ void Reader::readAndParseDS() {
 
 void Reader::readAndParseWR() {
     std::ifstream file("../Data/Reservoirs_Madeira.csv");
+
     std::string line;
     int id;
     int maxDelivery;
 
     getline(file, line);
+
     while (getline(file, line)) {
         std::stringstream ss(line);
         std::string reservoirName, municipality, id_str, code, maxDel;
@@ -120,7 +123,9 @@ void Reader::readAndParsePipes() {
             graph.addBidirectionalEdge(a,b,capacity);
         }
     }
+    file.close();
 }
+
 
 Station* Reader::getNode(const std::string& servicePoint){
     for(auto v: graph.getVertexSet()){
