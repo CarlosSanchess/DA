@@ -9,6 +9,8 @@
 #include "Classes/DeliveryStation.h"
 #include "Classes/Station.h"
 #include "Classes/Graph.h"
+#include "Classes/WaterReservoir.h"
+#include "Classes/Pipe.h"
 
 class Reader {
 private:
@@ -24,6 +26,8 @@ public:
     void readAndParseWR();
 
     void readAndParsePipes();
+
+    Station* getNode(const std::string& servicePoint);
 
 };
 

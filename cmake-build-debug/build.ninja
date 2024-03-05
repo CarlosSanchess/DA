@@ -41,86 +41,86 @@ include CMakeFiles/rules.ninja
 
 cmake_ninja_workdir = /home/oblivion/Documents/Personal/Progg/DA/Proj1/cmake-build-debug/
 # =============================================================================
-# Object build statements for EXECUTABLE target Proj1
+# Object build statements for EXECUTABLE target projeto01
 
 
 #############################################
-# Order-only phony target for Proj1
+# Order-only phony target for projeto01
 
-build cmake_object_order_depends_target_Proj1: phony || CMakeFiles/Proj1.dir
+build cmake_object_order_depends_target_projeto01: phony || CMakeFiles/projeto01.dir
 
-build CMakeFiles/Proj1.dir/main.cpp.o: CXX_COMPILER__Proj1_unscanned_Debug /home/oblivion/Documents/Personal/Progg/DA/Proj1/main.cpp || cmake_object_order_depends_target_Proj1
-  DEP_FILE = CMakeFiles/Proj1.dir/main.cpp.o.d
+build CMakeFiles/projeto01.dir/main.cpp.o: CXX_COMPILER__projeto01_unscanned_Debug /home/oblivion/Documents/Personal/Progg/DA/Proj1/main.cpp || cmake_object_order_depends_target_projeto01
+  DEP_FILE = CMakeFiles/projeto01.dir/main.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles/Proj1.dir
-  OBJECT_FILE_DIR = CMakeFiles/Proj1.dir
-  TARGET_COMPILE_PDB = CMakeFiles/Proj1.dir/
-  TARGET_PDB = Proj1.pdb
+  OBJECT_DIR = CMakeFiles/projeto01.dir
+  OBJECT_FILE_DIR = CMakeFiles/projeto01.dir
+  TARGET_COMPILE_PDB = CMakeFiles/projeto01.dir/
+  TARGET_PDB = projeto01.pdb
 
-build CMakeFiles/Proj1.dir/reader.cpp.o: CXX_COMPILER__Proj1_unscanned_Debug /home/oblivion/Documents/Personal/Progg/DA/Proj1/reader.cpp || cmake_object_order_depends_target_Proj1
-  DEP_FILE = CMakeFiles/Proj1.dir/reader.cpp.o.d
+build CMakeFiles/projeto01.dir/reader.cpp.o: CXX_COMPILER__projeto01_unscanned_Debug /home/oblivion/Documents/Personal/Progg/DA/Proj1/reader.cpp || cmake_object_order_depends_target_projeto01
+  DEP_FILE = CMakeFiles/projeto01.dir/reader.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles/Proj1.dir
-  OBJECT_FILE_DIR = CMakeFiles/Proj1.dir
-  TARGET_COMPILE_PDB = CMakeFiles/Proj1.dir/
-  TARGET_PDB = Proj1.pdb
+  OBJECT_DIR = CMakeFiles/projeto01.dir
+  OBJECT_FILE_DIR = CMakeFiles/projeto01.dir
+  TARGET_COMPILE_PDB = CMakeFiles/projeto01.dir/
+  TARGET_PDB = projeto01.pdb
 
-build CMakeFiles/Proj1.dir/Classes/WaterReservoir.cpp.o: CXX_COMPILER__Proj1_unscanned_Debug /home/oblivion/Documents/Personal/Progg/DA/Proj1/Classes/WaterReservoir.cpp || cmake_object_order_depends_target_Proj1
-  DEP_FILE = CMakeFiles/Proj1.dir/Classes/WaterReservoir.cpp.o.d
+build CMakeFiles/projeto01.dir/Classes/WaterReservoir.cpp.o: CXX_COMPILER__projeto01_unscanned_Debug /home/oblivion/Documents/Personal/Progg/DA/Proj1/Classes/WaterReservoir.cpp || cmake_object_order_depends_target_projeto01
+  DEP_FILE = CMakeFiles/projeto01.dir/Classes/WaterReservoir.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles/Proj1.dir
-  OBJECT_FILE_DIR = CMakeFiles/Proj1.dir/Classes
-  TARGET_COMPILE_PDB = CMakeFiles/Proj1.dir/
-  TARGET_PDB = Proj1.pdb
+  OBJECT_DIR = CMakeFiles/projeto01.dir
+  OBJECT_FILE_DIR = CMakeFiles/projeto01.dir/Classes
+  TARGET_COMPILE_PDB = CMakeFiles/projeto01.dir/
+  TARGET_PDB = projeto01.pdb
 
-build CMakeFiles/Proj1.dir/Classes/DeliveryStation.cpp.o: CXX_COMPILER__Proj1_unscanned_Debug /home/oblivion/Documents/Personal/Progg/DA/Proj1/Classes/DeliveryStation.cpp || cmake_object_order_depends_target_Proj1
-  DEP_FILE = CMakeFiles/Proj1.dir/Classes/DeliveryStation.cpp.o.d
+build CMakeFiles/projeto01.dir/Classes/DeliveryStation.cpp.o: CXX_COMPILER__projeto01_unscanned_Debug /home/oblivion/Documents/Personal/Progg/DA/Proj1/Classes/DeliveryStation.cpp || cmake_object_order_depends_target_projeto01
+  DEP_FILE = CMakeFiles/projeto01.dir/Classes/DeliveryStation.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles/Proj1.dir
-  OBJECT_FILE_DIR = CMakeFiles/Proj1.dir/Classes
-  TARGET_COMPILE_PDB = CMakeFiles/Proj1.dir/
-  TARGET_PDB = Proj1.pdb
+  OBJECT_DIR = CMakeFiles/projeto01.dir
+  OBJECT_FILE_DIR = CMakeFiles/projeto01.dir/Classes
+  TARGET_COMPILE_PDB = CMakeFiles/projeto01.dir/
+  TARGET_PDB = projeto01.pdb
 
-build CMakeFiles/Proj1.dir/App.cpp.o: CXX_COMPILER__Proj1_unscanned_Debug /home/oblivion/Documents/Personal/Progg/DA/Proj1/App.cpp || cmake_object_order_depends_target_Proj1
-  DEP_FILE = CMakeFiles/Proj1.dir/App.cpp.o.d
+build CMakeFiles/projeto01.dir/App.cpp.o: CXX_COMPILER__projeto01_unscanned_Debug /home/oblivion/Documents/Personal/Progg/DA/Proj1/App.cpp || cmake_object_order_depends_target_projeto01
+  DEP_FILE = CMakeFiles/projeto01.dir/App.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles/Proj1.dir
-  OBJECT_FILE_DIR = CMakeFiles/Proj1.dir
-  TARGET_COMPILE_PDB = CMakeFiles/Proj1.dir/
-  TARGET_PDB = Proj1.pdb
+  OBJECT_DIR = CMakeFiles/projeto01.dir
+  OBJECT_FILE_DIR = CMakeFiles/projeto01.dir
+  TARGET_COMPILE_PDB = CMakeFiles/projeto01.dir/
+  TARGET_PDB = projeto01.pdb
 
-build CMakeFiles/Proj1.dir/Classes/Pipe.cpp.o: CXX_COMPILER__Proj1_unscanned_Debug /home/oblivion/Documents/Personal/Progg/DA/Proj1/Classes/Pipe.cpp || cmake_object_order_depends_target_Proj1
-  DEP_FILE = CMakeFiles/Proj1.dir/Classes/Pipe.cpp.o.d
+build CMakeFiles/projeto01.dir/Classes/Pipe.cpp.o: CXX_COMPILER__projeto01_unscanned_Debug /home/oblivion/Documents/Personal/Progg/DA/Proj1/Classes/Pipe.cpp || cmake_object_order_depends_target_projeto01
+  DEP_FILE = CMakeFiles/projeto01.dir/Classes/Pipe.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles/Proj1.dir
-  OBJECT_FILE_DIR = CMakeFiles/Proj1.dir/Classes
-  TARGET_COMPILE_PDB = CMakeFiles/Proj1.dir/
-  TARGET_PDB = Proj1.pdb
+  OBJECT_DIR = CMakeFiles/projeto01.dir
+  OBJECT_FILE_DIR = CMakeFiles/projeto01.dir/Classes
+  TARGET_COMPILE_PDB = CMakeFiles/projeto01.dir/
+  TARGET_PDB = projeto01.pdb
 
-build CMakeFiles/Proj1.dir/Classes/PumpingStation.cpp.o: CXX_COMPILER__Proj1_unscanned_Debug /home/oblivion/Documents/Personal/Progg/DA/Proj1/Classes/PumpingStation.cpp || cmake_object_order_depends_target_Proj1
-  DEP_FILE = CMakeFiles/Proj1.dir/Classes/PumpingStation.cpp.o.d
+build CMakeFiles/projeto01.dir/Classes/Station.cpp.o: CXX_COMPILER__projeto01_unscanned_Debug /home/oblivion/Documents/Personal/Progg/DA/Proj1/Classes/Station.cpp || cmake_object_order_depends_target_projeto01
+  DEP_FILE = CMakeFiles/projeto01.dir/Classes/Station.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles/Proj1.dir
-  OBJECT_FILE_DIR = CMakeFiles/Proj1.dir/Classes
-  TARGET_COMPILE_PDB = CMakeFiles/Proj1.dir/
-  TARGET_PDB = Proj1.pdb
+  OBJECT_DIR = CMakeFiles/projeto01.dir
+  OBJECT_FILE_DIR = CMakeFiles/projeto01.dir/Classes
+  TARGET_COMPILE_PDB = CMakeFiles/projeto01.dir/
+  TARGET_PDB = projeto01.pdb
 
 
 # =============================================================================
-# Link build statements for EXECUTABLE target Proj1
+# Link build statements for EXECUTABLE target projeto01
 
 
 #############################################
-# Link the executable Proj1
+# Link the executable projeto01
 
-build Proj1: CXX_EXECUTABLE_LINKER__Proj1_Debug CMakeFiles/Proj1.dir/main.cpp.o CMakeFiles/Proj1.dir/reader.cpp.o CMakeFiles/Proj1.dir/Classes/WaterReservoir.cpp.o CMakeFiles/Proj1.dir/Classes/DeliveryStation.cpp.o CMakeFiles/Proj1.dir/App.cpp.o CMakeFiles/Proj1.dir/Classes/Pipe.cpp.o CMakeFiles/Proj1.dir/Classes/PumpingStation.cpp.o
+build projeto01: CXX_EXECUTABLE_LINKER__projeto01_Debug CMakeFiles/projeto01.dir/main.cpp.o CMakeFiles/projeto01.dir/reader.cpp.o CMakeFiles/projeto01.dir/Classes/WaterReservoir.cpp.o CMakeFiles/projeto01.dir/Classes/DeliveryStation.cpp.o CMakeFiles/projeto01.dir/App.cpp.o CMakeFiles/projeto01.dir/Classes/Pipe.cpp.o CMakeFiles/projeto01.dir/Classes/Station.cpp.o
   FLAGS = -g
-  OBJECT_DIR = CMakeFiles/Proj1.dir
+  OBJECT_DIR = CMakeFiles/projeto01.dir
   POST_BUILD = :
   PRE_LINK = :
-  TARGET_COMPILE_PDB = CMakeFiles/Proj1.dir/
-  TARGET_FILE = Proj1
-  TARGET_PDB = Proj1.pdb
+  TARGET_COMPILE_PDB = CMakeFiles/projeto01.dir/
+  TARGET_FILE = projeto01
+  TARGET_PDB = projeto01.pdb
 
 
 #############################################
@@ -156,7 +156,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 #############################################
 # Folder: /home/oblivion/Documents/Personal/Progg/DA/Proj1/cmake-build-debug
 
-build all: phony Proj1
+build all: phony projeto01
 
 # =============================================================================
 # Built-in targets
