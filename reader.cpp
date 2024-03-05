@@ -29,6 +29,35 @@ void Reader::readAndParsePS() {
     file.close();
 }
 
+void Reader::readAndParseDS() {
+    std::ifstream file("../Data/Cities_Madeira.csv");
+    std::string line;
+
+    getline(file, line);
+
+    while (getline(file, line)) {
+        std::stringstream ss(line);
+        std::string city, id_str, code, demand_str, population_str;
+
+        getline(ss, city, ',');
+        getline(ss, id_str, ',');
+        getline(ss, code, ',');
+        getline(ss, demand_str, ',');
+        getline(ss, population_str, '\n');
+
+        population_str.erase(std::remove(population_str.begin(), population_str.end(), '"'), population_str.end());
+        population_str.erase(std::remove(population_str.begin(), population_str.end(), ','), population_str.end());
+
+        int id = std::stoi(id_str);
+        double demand = std::stod(demand_str);
+        int population = std::stoi(population_str);
+
+        auto* DS = new DeliveryStation(id, code, city, demand, population);
+        graph.addVertex(DS);
+    }
+
+    file.close();
+}
 
 void Reader::readAndParseWR() {
     std::ifstream file("../Data/Reservoirs_Madeira.csv");
@@ -83,6 +112,7 @@ void Reader::readAndParsePipes() {
         Station* b = getNode(servicePointB);
         if(!a || !b){
             std::cerr << "Didnt find any servicePoint with that CODE." << std::endl;
+            exit(1);
         }
         if(direction){
             graph.addEdge(a,b,capacity);

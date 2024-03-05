@@ -7,6 +7,8 @@ int main() {
     Reader r;
     r.readAndParsePS();
     r.readAndParseWR();
+    r.readAndParseDS();
     r.readAndParsePipes();
+
     return 0;
 }
