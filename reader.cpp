@@ -3,7 +3,7 @@
 
 //7,PS_7,,
 void Reader::readAndParsePS() {
-    std::ifstream file("../Data/Stations_Madeira.csv");
+    std::ifstream file("../Data/Stations.csv");
     std::string line;
     int id;
 
@@ -30,7 +30,7 @@ void Reader::readAndParsePS() {
 }
 
 void Reader::readAndParseDS() {
-    std::ifstream file("../Data/Cities_Madeira.csv");
+    std::ifstream file("../Data/Cities.csv");
 
     std::string line;
 
@@ -61,7 +61,7 @@ void Reader::readAndParseDS() {
 }
 
 void Reader::readAndParseWR() {
-    std::ifstream file("../Data/Reservoirs_Madeira.csv");
+    std::ifstream file("../Data/Reservoir.csv");
 
     std::string line;
     int id;
@@ -89,7 +89,7 @@ void Reader::readAndParseWR() {
     file.close();
 }
 void Reader::readAndParsePipes() {
-    std::ifstream file("../Data/Pipes_Madeira.csv");
+    std::ifstream file("../Data/Pipes.csv");
     std::string line;
     int capacity;
     bool direction;

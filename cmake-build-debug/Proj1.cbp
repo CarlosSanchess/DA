@@ -8,123 +8,119 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/home/rebelojoao/Documents/DA/projeto01/DA/cmake-build-debug"/>
+				<Option working_dir="/Users/davidferreira/feup/4 Ano/DA/DA/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j8 -f &quot;/home/rebelojoao/Documents/DA/projeto01/DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/home/rebelojoao/Documents/DA/projeto01/DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j8 -f &quot;/home/rebelojoao/Documents/DA/projeto01/DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j8 -f &quot;/home/rebelojoao/Documents/DA/projeto01/DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/davidferreira/feup/4\ Ano/DA/DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/davidferreira/feup/4\ Ano/DA/DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/davidferreira/feup/4\ Ano/DA/DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/davidferreira/feup/4\ Ano/DA/DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="projeto01">
-				<Option output="/home/rebelojoao/Documents/DA/projeto01/DA/cmake-build-debug/projeto01" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/rebelojoao/Documents/DA/projeto01/DA/cmake-build-debug"/>
+				<Option output="/Users/davidferreira/feup/4 Ano/DA/DA/cmake-build-debug/projeto01" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/davidferreira/feup/4 Ano/DA/DA/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/usr/include/c++/11"/>
-					<Add directory="/usr/include/x86_64-linux-gnu/c++/11"/>
-					<Add directory="/usr/include/c++/11/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/11/include"/>
 					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/include/x86_64-linux-gnu"/>
-					<Add directory="/usr/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j8 -f &quot;/home/rebelojoao/Documents/DA/projeto01/DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 projeto01"/>
-					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/home/rebelojoao/Documents/DA/projeto01/DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j8 -f &quot;/home/rebelojoao/Documents/DA/projeto01/DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j8 -f &quot;/home/rebelojoao/Documents/DA/projeto01/DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/davidferreira/feup/4\ Ano/DA/DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 projeto01"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/davidferreira/feup/4\ Ano/DA/DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/davidferreira/feup/4\ Ano/DA/DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/davidferreira/feup/4\ Ano/DA/DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="projeto01/fast">
-				<Option output="/home/rebelojoao/Documents/DA/projeto01/DA/cmake-build-debug/projeto01" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/rebelojoao/Documents/DA/projeto01/DA/cmake-build-debug"/>
+				<Option output="/Users/davidferreira/feup/4 Ano/DA/DA/cmake-build-debug/projeto01" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/davidferreira/feup/4 Ano/DA/DA/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/usr/include/c++/11"/>
-					<Add directory="/usr/include/x86_64-linux-gnu/c++/11"/>
-					<Add directory="/usr/include/c++/11/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/11/include"/>
 					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/include/x86_64-linux-gnu"/>
-					<Add directory="/usr/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j8 -f &quot;/home/rebelojoao/Documents/DA/projeto01/DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 projeto01/fast"/>
-					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/home/rebelojoao/Documents/DA/projeto01/DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j8 -f &quot;/home/rebelojoao/Documents/DA/projeto01/DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j8 -f &quot;/home/rebelojoao/Documents/DA/projeto01/DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/davidferreira/feup/4\ Ano/DA/DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 projeto01/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/davidferreira/feup/4\ Ano/DA/DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/davidferreira/feup/4\ Ano/DA/DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/davidferreira/feup/4\ Ano/DA/DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/home/rebelojoao/Documents/DA/projeto01/DA/cmake-build-debug"/>
+				<Option working_dir="/Users/davidferreira/feup/4 Ano/DA/DA/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j8 -f &quot;/home/rebelojoao/Documents/DA/projeto01/DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/home/rebelojoao/Documents/DA/projeto01/DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j8 -f &quot;/home/rebelojoao/Documents/DA/projeto01/DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j8 -f &quot;/home/rebelojoao/Documents/DA/projeto01/DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/davidferreira/feup/4\ Ano/DA/DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/davidferreira/feup/4\ Ano/DA/DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/davidferreira/feup/4\ Ano/DA/DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/davidferreira/feup/4\ Ano/DA/DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/home/rebelojoao/Documents/DA/projeto01/DA/cmake-build-debug"/>
+				<Option working_dir="/Users/davidferreira/feup/4 Ano/DA/DA/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j8 -f &quot;/home/rebelojoao/Documents/DA/projeto01/DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/home/rebelojoao/Documents/DA/projeto01/DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j8 -f &quot;/home/rebelojoao/Documents/DA/projeto01/DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j8 -f &quot;/home/rebelojoao/Documents/DA/projeto01/DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/davidferreira/feup/4\ Ano/DA/DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/davidferreira/feup/4\ Ano/DA/DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/davidferreira/feup/4\ Ano/DA/DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/davidferreira/feup/4\ Ano/DA/DA/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/rebelojoao/Documents/DA/projeto01/DA/App.cpp">
+		<Unit filename="/Users/davidferreira/feup/4 Ano/DA/DA/App.cpp">
 			<Option target="projeto01"/>
 		</Unit>
-		<Unit filename="/home/rebelojoao/Documents/DA/projeto01/DA/App.h">
+		<Unit filename="/Users/davidferreira/feup/4 Ano/DA/DA/App.h">
 			<Option target="projeto01"/>
 		</Unit>
-		<Unit filename="/home/rebelojoao/Documents/DA/projeto01/DA/Classes/DeliveryStation.cpp">
+		<Unit filename="/Users/davidferreira/feup/4 Ano/DA/DA/Classes/DeliveryStation.cpp">
 			<Option target="projeto01"/>
 		</Unit>
-		<Unit filename="/home/rebelojoao/Documents/DA/projeto01/DA/Classes/DeliveryStation.h">
+		<Unit filename="/Users/davidferreira/feup/4 Ano/DA/DA/Classes/DeliveryStation.h">
 			<Option target="projeto01"/>
 		</Unit>
-		<Unit filename="/home/rebelojoao/Documents/DA/projeto01/DA/Classes/Graph.h">
+		<Unit filename="/Users/davidferreira/feup/4 Ano/DA/DA/Classes/Graph.h">
 			<Option target="projeto01"/>
 		</Unit>
-		<Unit filename="/home/rebelojoao/Documents/DA/projeto01/DA/Classes/Pipe.cpp">
+		<Unit filename="/Users/davidferreira/feup/4 Ano/DA/DA/Classes/Pipe.cpp">
 			<Option target="projeto01"/>
 		</Unit>
-		<Unit filename="/home/rebelojoao/Documents/DA/projeto01/DA/Classes/Pipe.h">
+		<Unit filename="/Users/davidferreira/feup/4 Ano/DA/DA/Classes/Pipe.h">
 			<Option target="projeto01"/>
 		</Unit>
-		<Unit filename="/home/rebelojoao/Documents/DA/projeto01/DA/Classes/Station.cpp">
+		<Unit filename="/Users/davidferreira/feup/4 Ano/DA/DA/Classes/Station.cpp">
 			<Option target="projeto01"/>
 		</Unit>
-		<Unit filename="/home/rebelojoao/Documents/DA/projeto01/DA/Classes/Station.h">
+		<Unit filename="/Users/davidferreira/feup/4 Ano/DA/DA/Classes/Station.h">
 			<Option target="projeto01"/>
 		</Unit>
-		<Unit filename="/home/rebelojoao/Documents/DA/projeto01/DA/Classes/WaterReservoir.cpp">
+		<Unit filename="/Users/davidferreira/feup/4 Ano/DA/DA/Classes/WaterReservoir.cpp">
 			<Option target="projeto01"/>
 		</Unit>
-		<Unit filename="/home/rebelojoao/Documents/DA/projeto01/DA/Classes/WaterReservoir.h">
+		<Unit filename="/Users/davidferreira/feup/4 Ano/DA/DA/Classes/WaterReservoir.h">
 			<Option target="projeto01"/>
 		</Unit>
-		<Unit filename="/home/rebelojoao/Documents/DA/projeto01/DA/main.cpp">
+		<Unit filename="/Users/davidferreira/feup/4 Ano/DA/DA/main.cpp">
 			<Option target="projeto01"/>
 		</Unit>
-		<Unit filename="/home/rebelojoao/Documents/DA/projeto01/DA/reader.cpp">
+		<Unit filename="/Users/davidferreira/feup/4 Ano/DA/DA/reader.cpp">
 			<Option target="projeto01"/>
 		</Unit>
-		<Unit filename="/home/rebelojoao/Documents/DA/projeto01/DA/reader.h">
+		<Unit filename="/Users/davidferreira/feup/4 Ano/DA/DA/reader.h">
 			<Option target="projeto01"/>
 		</Unit>
-		<Unit filename="/home/rebelojoao/Documents/DA/projeto01/DA/CMakeLists.txt">
+		<Unit filename="/Users/davidferreira/feup/4 Ano/DA/DA/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>
