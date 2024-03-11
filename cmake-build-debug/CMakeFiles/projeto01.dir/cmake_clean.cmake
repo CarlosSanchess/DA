@@ -9,6 +9,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/projeto01.dir/Classes/Station.cpp.o.d"
   "CMakeFiles/projeto01.dir/Classes/WaterReservoir.cpp.o"
   "CMakeFiles/projeto01.dir/Classes/WaterReservoir.cpp.o.d"
+  "CMakeFiles/projeto01.dir/EdmondsKarp.cpp.o"
+  "CMakeFiles/projeto01.dir/EdmondsKarp.cpp.o.d"
   "CMakeFiles/projeto01.dir/main.cpp.o"
   "CMakeFiles/projeto01.dir/main.cpp.o.d"
   "CMakeFiles/projeto01.dir/reader.cpp.o"
