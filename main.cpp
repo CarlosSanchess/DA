@@ -9,13 +9,13 @@ int main() {
     r.readAndParseDS();
     r.readAndParsePipes();
 
-    Graph<Station> g = r.getGraph();
+    Graph<Station*> g = r.getGraph();
 
 
     return 0;
 }
 
-void exercicio4_2(Graph<Station> g){
+void exercicio4_2(Graph<Station*> g){
     for(auto v: g.getVertexSet()){
         auto ptr = dynamic_cast<DeliveryStation*>(v->getInfo());
         if (ptr != nullptr) {
