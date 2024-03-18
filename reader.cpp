@@ -21,7 +21,7 @@ void Reader::readAndParsePS() {
 
         id = std::stoi(id_str);
 
-        getline(ss, code, ',');
+        getline(ss, code, '\r');
 
         auto* PS = new Station(id,code);
         graph.addVertex(PS);
