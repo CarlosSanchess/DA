@@ -1,2 +1,2 @@
-CMakeFiles/projeto01.dir/App.cpp.o: /home/oblivion/Desktop/DA/DA/App.cpp \
- /usr/include/stdc-predef.h
+CMakeFiles/projeto01.dir/App.cpp.o: \
+  /Users/davidferreira/feup/4\ Ano/DA/DA/App.cpp

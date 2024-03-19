@@ -1,7 +1,7 @@
 //
 // Created by David Ferreira on 11/03/2024.
 //
-
+/*
 #include "EdmondsKarp.h"
 
 
@@ -97,3 +97,4 @@ void EdmondsKarp<T>::initEdmondsKarp(Graph<T> *g, int source, int target) {
         augmentFlowAlongPath(s, t, f);
     }
 }
+*/
