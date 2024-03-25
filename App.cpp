@@ -1,4 +1,3 @@
-/*
 #include <iostream>
 #include "reader.h"
 #include "App.h"
@@ -6,10 +5,13 @@
 using namespace std;
 
 void display4_1menu(Graph<Station*>& graph);
-void display4_2menu(Graph<Station*>& graph);
 void maxFlowSubMenu(Graph<Station*>& graph);
-void determineMaxFlowForEachCity(Graph<Station*>& graph);
-void determineMaxFlowForSpecificCity(Graph<Station*>& graph);
+double getFlowToCity(Graph<Station*>& g, Vertex<Station*>* deliveryStation);
+void checkWaterCity(Graph<Station*> g, const std::string& cityCode);
+double MaxFlowAlgo(Graph<Station*>& g);
+void PrintMaxFlowForCities(Graph<Station*>& graph, double totalFlow);
+void checkWaterSupply(Graph<Station*> g);
+
 
 int mainMenu(){
     cout << "Loading...";
@@ -46,7 +48,6 @@ int mainMenu(){
                 display4_1menu(graph);
                 break;
             case '2':
-                display4_2menu(graph);
                 break;
             case 'e':
                 cout << "Exiting menu system...\n";
@@ -82,17 +83,13 @@ void display4_1menu(Graph<Station*>& graph) {
 
         switch (choice[0]) {
             case '1':
-                maxFlowSubMenu(graph);
+                maxFlowSubMenu(graph); // menu for 4.1.1
                 break;
             case '2':
                 // Call function for 4.1.2
-                cout << "You selected Verify if the network configuration meets water needs (4.1.2)\n";
-                // Call function for 4.1.2 here
                 break;
             case '3':
                 // Call function for 4.1.3
-                cout << "You selected Balance the load across the network (4.1.3)\n";
-                // Call function for 4.1.3 here
                 break;
             case 'b':
                 cout << "Returning to Main Menu...\n";
@@ -107,6 +104,8 @@ void display4_1menu(Graph<Station*>& graph) {
 void maxFlowSubMenu(Graph<Station*>& graph) {
     string choice;
     bool exitMenu = false;
+
+    double totalFlow = MaxFlowAlgo(graph);
 
     while (!exitMenu) {
         cout << "\n-----------------------------\n";
@@ -126,11 +125,20 @@ void maxFlowSubMenu(Graph<Station*>& graph) {
 
         switch (choice[0]) {
             case '1':
-                determineMaxFlowForEachCity(graph);
+                PrintMaxFlowForCities(graph, totalFlow);
                 break;
             case '2':
-                determineMaxFlowForSpecificCity(graph);
+            {
+                string cityCode;
+                cout << "Enter the city code ('b' to go back): ";
+                cin >> cityCode;
+                if (cityCode == "b") {
+                    exitMenu = true;
+                    break;
+                }
+                checkWaterCity(graph, cityCode);
                 break;
+            }
             case 'b':
                 cout << "Returning to Previous Menu...\n";
                 exitMenu = true;
@@ -141,18 +149,112 @@ void maxFlowSubMenu(Graph<Station*>& graph) {
     }
 }
 
-void determineMaxFlowForEachCity(Graph<Station*>& graph) {
+double MaxFlowAlgo(Graph<Station*>& g) {
 
+    // Find super source and super sink
+    Vertex<Station*>* superSource = nullptr;
+    Vertex<Station*>* superSink = nullptr;
+
+    for (auto v : g.getVertexSet()) {
+        if (v->getInfo()->getCode() == "SuperSource") {
+            superSource = v;
+        } else if (v->getInfo()->getCode() == "SuperSink") {
+            superSink = v;
+        }
+    }
+
+    if (!superSource || !superSink) {
+        std::cerr << "Error: Super source or super sink not found." << std::endl;
+        return 0;
+    }
+
+    // Run the Max Flow Algorithm on the Entire Graph
+    return initEdmondsKarp(&g, superSource->getInfo(), superSink->getInfo());
 }
 
-void determineMaxFlowForSpecificCity(Graph<Station*>& graph) {
+void PrintMaxFlowForCities(Graph<Station*>& graph, double totalFlow) {
+    // Output file to save results
+    std::ofstream outputFile("../max_flow.txt");
+    if (!outputFile.is_open()) {
+        std::cerr << "Error: Unable to open output file." << std::endl;
+        return;
+    }
+
+    std::cout << "Calculating maximum water flow for each city..." << std::endl;
+    std::cout << "Total maximum flow of the network : " << totalFlow << std::endl;
+    outputFile << "Total maximum flow of the network : " << totalFlow << std::endl;
+
+    // Check flow for each city
+    for (auto v : graph.getVertexSet()) {
+        DeliveryStation* deliveryStation = dynamic_cast<DeliveryStation*>(v->getInfo());
+        if (deliveryStation) {
+            double cityFlow = getFlowToCity(graph, v);
+
+            std::string cityName = deliveryStation->getCity();
+            std::string cityCode = deliveryStation->getCode();
+            std::cout << "Flow to city " << cityName << " (" << cityCode << "): " << cityFlow << std::endl;
+            outputFile << "Flow to city " << cityName << " (" << cityCode << "): " << cityFlow << std::endl;
+        }
+    }
+
+    // Close the output file
+    outputFile.close();
+    std::cout << "Results saved to ../max_flow.txt" << std::endl;
 }
 
-void display4_2menu(Graph<Station*>& graph){
+double getFlowToCity(Graph<Station*>& g, Vertex<Station*>* deliveryStation) {
+    double flowToCity = 0.0;
+    for (auto incomingEdge : deliveryStation->getIncoming()) {
+        flowToCity += incomingEdge->getFlow();
+    }
+    return flowToCity;
+}
 
+
+void checkWaterCity(Graph<Station*> g, const std::string& cityCode) {
+    // Find the delivery station corresponding to the input city code
+    Vertex<Station*>* target = nullptr;
+    for (auto v : g.getVertexSet()) {
+        DeliveryStation* deliveryStation = dynamic_cast<DeliveryStation*>(v->getInfo());
+        if (deliveryStation && deliveryStation->getCode() == cityCode) {
+            target = v;
+            break;
+        }
+    }
+
+    // If the target delivery station is found, consult the flow
+    if (target) {
+        double cityFlow = 0.0;
+        // Sum the incoming flow to the delivery station
+        for (auto incomingEdge : target->getIncoming()) {
+            cityFlow += incomingEdge->getFlow();
+        }
+        // Ensure the flow does not surpass the demand for the city
+        DeliveryStation* deliveryStation = dynamic_cast<DeliveryStation*>(target->getInfo());
+
+        std::cout << "Flow to city " << deliveryStation->getCity() << " (" << cityCode << "): " << cityFlow << std::endl;
+    } else {
+        std::cout << "City with code " << cityCode << " not found." << std::endl;
+    }
+}
+
+void checkWaterSupply(Graph<Station*> g) {
+    for (auto v : g.getVertexSet()) {
+        DeliveryStation* deliveryStation = dynamic_cast<DeliveryStation*>(v->getInfo());
+        if (deliveryStation != nullptr) {
+            double capacityDelivered = 0.0;
+            for (auto incomingEdge : v->getIncoming()) {
+                capacityDelivered += incomingEdge->getFlow();
+            }
+            double deficit = deliveryStation->getDemand() - capacityDelivered;
+            std::cout << "Cidade: " << deliveryStation->getCity() << std::endl;
+            std::cout << "Quantidade de água disponível: " << capacityDelivered << " m³" << std::endl;
+            std::cout << "Diferença entre a água disponível e a demanda: " << deficit << " m³" << std::endl;
+            std::cout << std::endl;
+        }
+    }
 }
 
 void App::run() {
     mainMenu();
 }
-*/

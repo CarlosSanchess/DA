@@ -14,7 +14,4 @@ add_executable(projeto01 main.cpp
         Classes/Pipe.cpp
         Classes/Station.h
         Classes/Station.cpp
-        EdmondsKarp.h
-        EdmondsKarp.cpp
-        EdmondsKarp.cpp
 )

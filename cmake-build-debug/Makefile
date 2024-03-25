@@ -249,30 +249,6 @@ Classes/WaterReservoir.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/projeto01.dir/build.make CMakeFiles/projeto01.dir/Classes/WaterReservoir.cpp.s
 .PHONY : Classes/WaterReservoir.cpp.s
 
-EdmondsKarp.o: EdmondsKarp.cpp.o
-.PHONY : EdmondsKarp.o
-
-# target to build an object file
-EdmondsKarp.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/projeto01.dir/build.make CMakeFiles/projeto01.dir/EdmondsKarp.cpp.o
-.PHONY : EdmondsKarp.cpp.o
-
-EdmondsKarp.i: EdmondsKarp.cpp.i
-.PHONY : EdmondsKarp.i
-
-# target to preprocess a source file
-EdmondsKarp.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/projeto01.dir/build.make CMakeFiles/projeto01.dir/EdmondsKarp.cpp.i
-.PHONY : EdmondsKarp.cpp.i
-
-EdmondsKarp.s: EdmondsKarp.cpp.s
-.PHONY : EdmondsKarp.s
-
-# target to generate assembly for a file
-EdmondsKarp.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/projeto01.dir/build.make CMakeFiles/projeto01.dir/EdmondsKarp.cpp.s
-.PHONY : EdmondsKarp.cpp.s
-
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -345,9 +321,6 @@ help:
 	@echo "... Classes/WaterReservoir.o"
 	@echo "... Classes/WaterReservoir.i"
 	@echo "... Classes/WaterReservoir.s"
-	@echo "... EdmondsKarp.o"
-	@echo "... EdmondsKarp.i"
-	@echo "... EdmondsKarp.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
