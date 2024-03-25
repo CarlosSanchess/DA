@@ -172,9 +172,7 @@ void checkWaterCity(Graph<Station*> g, const std::string& cityCode) {
         }
         // Ensure the flow does not surpass the demand for the city
         DeliveryStation* deliveryStation = dynamic_cast<DeliveryStation*>(target->getInfo());
-        if (deliveryStation && cityFlow > deliveryStation->getDemand()) {
-            cityFlow = deliveryStation->getDemand(); // Set flow equal to demand
-        }
+
         std::cout << "Flow to city " << deliveryStation->getCity() << " (" << cityCode << "): " << cityFlow << std::endl;
     } else {
         std::cout << "City with code " << cityCode << " not found." << std::endl;
@@ -232,11 +230,7 @@ void checkWaterCity_each(Graph<Station*> g) {
             for (auto incomingEdge : v->getIncoming()) {
                 cityFlow += incomingEdge->getFlow();
             }
-            // Ensure the flow does not surpass the demand for the city
-            if (cityFlow > deliveryStation->getDemand()) {
-                cityFlow = deliveryStation->getDemand(); // Set flow equal to demand
-            }
-            // Output flow for the city
+
             std::string cityName = deliveryStation->getCity();
             std::string cityCode = deliveryStation->getCode();
             std::cout << "Flow to city " << cityName << " (" << cityCode << "): " << cityFlow << std::endl;

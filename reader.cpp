@@ -146,16 +146,15 @@ void Reader::addSuperSourceAndSink() {
         }
     }
 
-    // Connect super sink to all delivery stations
+    // Connect super sink to all delivery stations with edge capacities equal to their demands
     for (auto v : graph.getVertexSet()) {
         DeliveryStation* deliveryStation = dynamic_cast<DeliveryStation*>(v->getInfo());
         if (deliveryStation) {
-            graph.addEdge(deliveryStation, superSink, INF); // Assuming INF represents unlimited capacity
+            double demand = deliveryStation->getDemand();
+            graph.addEdge(deliveryStation, superSink, demand);
         }
     }
 }
-
-
 
 Station* Reader::getNode(const std::string& servicePoint){
     for(auto v: graph.getVertexSet()){
