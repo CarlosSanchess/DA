@@ -33,6 +33,7 @@ public:
         return graph;
     }
 
+    void addSuperSourceAndSink();
 };
 
 #endif /* READER_H */

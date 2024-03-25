@@ -127,6 +127,35 @@ void Reader::readAndParsePipes() {
     file.close();
 }
 
+void Reader::addSuperSourceAndSink() {
+    // Create super source and super sink vertices
+    Station* superSource = new Station(-1, "SuperSource");
+    Station* superSink = new Station(-2, "SuperSink");
+
+    // Add super source and super sink vertices to the graph
+    graph.addVertex(superSource);
+    graph.addVertex(superSink);
+
+    // Connect super source to all water reservoirs
+    for (auto v : graph.getVertexSet()) {
+        WaterReservoir* waterReservoir = dynamic_cast<WaterReservoir*>(v->getInfo());
+        if (waterReservoir) {
+            // Assuming the maximum delivery capacity is stored in m3/sec
+            double capacity = waterReservoir->getMaxDelivery();
+            graph.addEdge(superSource, waterReservoir, capacity);
+        }
+    }
+
+    // Connect super sink to all delivery stations
+    for (auto v : graph.getVertexSet()) {
+        DeliveryStation* deliveryStation = dynamic_cast<DeliveryStation*>(v->getInfo());
+        if (deliveryStation) {
+            graph.addEdge(deliveryStation, superSink, INF); // Assuming INF represents unlimited capacity
+        }
+    }
+}
+
+
 
 Station* Reader::getNode(const std::string& servicePoint){
     for(auto v: graph.getVertexSet()){

@@ -1,4 +1,5 @@
 #include "reader.h"
+#include "Classes/Station.h"
 #include "Classes/Graph.h"
 
 
@@ -102,65 +103,152 @@ double initEdmondsKarp(Graph<T> *g, Station * source, Station * target) {
         augmentFlowAlongPath(s, t, f);
         optimalFlow += f;
     }
+
+    for (auto v : g->getVertexSet()) {
+        DeliveryStation* deliveryStation = dynamic_cast<DeliveryStation*>(v->getInfo());
+        if (deliveryStation) {
+            double cityFlow = getFlowToCity(*g, v);
+            if (cityFlow > deliveryStation->getDemand()) {
+                // Reduce flow to match city demand
+                double excessFlow = cityFlow - deliveryStation->getDemand();
+                // Find outgoing edges and reduce their flow proportionally
+                double reductionFactor = excessFlow / cityFlow;
+                for (auto outgoingEdge : v->getAdj()) {
+                    double edgeFlow = outgoingEdge->getFlow();
+                    double reducedFlow = edgeFlow * (1 - reductionFactor);
+                    outgoingEdge->setFlow(reducedFlow);
+                }
+            }
+        }
+    }
+    for (auto v : g->getVertexSet()) {
+        DeliveryStation* deliveryStation = dynamic_cast<DeliveryStation*>(v->getInfo());
+        if (deliveryStation) {
+            double cityFlow = getFlowToCity(*g, v);
+            if (cityFlow > deliveryStation->getDemand()) {
+                // Reduce flow to match city demand
+                double excessFlow = cityFlow - deliveryStation->getDemand();
+                // Find outgoing edges and reduce their flow proportionally
+                double reductionFactor = excessFlow / cityFlow;
+                for (auto outgoingEdge : v->getAdj()) {
+                    double edgeFlow = outgoingEdge->getFlow();
+                    double reducedFlow = edgeFlow * (1 - reductionFactor);
+                    outgoingEdge->setFlow(reducedFlow);
+                }
+            }
+        }
+    }
+
     return optimalFlow;
 }
 
-void checkWaterCity( Graph<Station*> g){
-    bool play = true;
-    while(play) {
+double getFlowToCity(Graph<Station*>& g, Vertex<Station*>* deliveryStation) {
+    double flowToCity = 0.0;
+    // Sum the incoming flow to the delivery station
+    for (auto incomingEdge : deliveryStation->getIncoming()) {
+        flowToCity += incomingEdge->getFlow();
+    }
+    return flowToCity;
+}
 
-        std::cout << "Print the city you want : ";
-        std::string city;
-        std::cin >> city;
-        if(city == "exit"){
-            play = false;
+
+void checkWaterCity(Graph<Station*> g, const std::string& cityCode) {
+    // Find the delivery station corresponding to the input city code
+    Vertex<Station*>* target = nullptr;
+    for (auto v : g.getVertexSet()) {
+        DeliveryStation* deliveryStation = dynamic_cast<DeliveryStation*>(v->getInfo());
+        if (deliveryStation && deliveryStation->getCode() == cityCode) {
+            target = v;
             break;
         }
+    }
 
-
-        int max = -999;
-        Vertex<Station *> src = Vertex<Station *>(nullptr);
-
-
-        // ver o reservatorio que necessita mais de agua ( para tornar a soluçao mais otima )
-
-        // perceber como vamos ordenar os reservatorios
-
-        // Falta a garantir que o flow não é superior ao capacity do src
-
-
-
-        Vertex<Station *> target = Vertex<Station *>(nullptr);
-
-        for (auto v: g.getVertexSet()) {
-            DeliveryStation *deliveryStation = dynamic_cast<DeliveryStation *>(v->getInfo());
-            if (deliveryStation != nullptr) {
-                if (deliveryStation->getCity() == city) {
-                    target = *v;
-                }
-            }
+    // If the target delivery station is found, consult the flow
+    if (target) {
+        double cityFlow = 0.0;
+        // Sum the incoming flow to the delivery station
+        for (auto incomingEdge : target->getIncoming()) {
+            cityFlow += incomingEdge->getFlow();
         }
-        double optimalFlow = 0.0;
-        double sumFlow = 0.0 ;
-
-
-        for (auto v: g.getVertexSet()) {
-            if (v->getInfo()->getCode() == "R_" + std::to_string(v->getInfo()->getId())) {
-                optimalFlow = initEdmondsKarp(&g, v->getInfo(), target.getInfo());
-                sumFlow += optimalFlow;
-                if (optimalFlow > max) {
-                    max = optimalFlow;
-                    src = *v;
-                }
-            }
+        // Ensure the flow does not surpass the demand for the city
+        DeliveryStation* deliveryStation = dynamic_cast<DeliveryStation*>(target->getInfo());
+        if (deliveryStation && cityFlow > deliveryStation->getDemand()) {
+            cityFlow = deliveryStation->getDemand(); // Set flow equal to demand
         }
-
-        std::cout << "Optimal  Flow is " << max << std::endl;
-        std::cout << "Sum Flow is " << sumFlow << std::endl;
-
-
+        std::cout << "Flow to city " << deliveryStation->getCity() << " (" << cityCode << "): " << cityFlow << std::endl;
+    } else {
+        std::cout << "City with code " << cityCode << " not found." << std::endl;
     }
 }
+
+
+
+
+void checkWaterCity_each(Graph<Station*> g) {
+    // Output file to save results
+    std::ofstream outputFile("../max_flow.txt");
+    if (!outputFile.is_open()) {
+        std::cerr << "Error: Unable to open output file." << std::endl;
+        return;
+    }
+
+    std::cout << "Calculating maximum water flow for each city..." << std::endl;
+
+    // Add super source and super sink to the graph
+    Reader reader; // Assuming Reader is properly defined and accessible
+    reader.addSuperSourceAndSink();
+
+    // Find super source and super sink
+    Vertex<Station*>* superSource = nullptr;
+    Vertex<Station*>* superSink = nullptr;
+
+    for (auto v : g.getVertexSet()) {
+        if (v->getInfo()->getCode() == "SuperSource") {
+            superSource = v;
+        } else if (v->getInfo()->getCode() == "SuperSink") {
+            superSink = v;
+        }
+    }
+
+    if (!superSource || !superSink) {
+        std::cerr << "Error: Super source or super sink not found." << std::endl;
+        outputFile.close();
+        return;
+    }
+
+    // Run the Max Flow Algorithm on the Entire Graph
+    double totalFlow = initEdmondsKarp(&g, superSource->getInfo(), superSink->getInfo());
+
+    // Output total flow from super source to super sink
+    std::cout << "Total maximum flow of the network : " << totalFlow << std::endl;
+    outputFile << "Total maximum flow of the network : " << totalFlow << std::endl;
+
+    // Check flow for each city
+    for (auto v : g.getVertexSet()) {
+        DeliveryStation* deliveryStation = dynamic_cast<DeliveryStation*>(v->getInfo());
+        if (deliveryStation) {
+            double cityFlow = 0.0;
+            // Sum the incoming flow to the delivery station
+            for (auto incomingEdge : v->getIncoming()) {
+                cityFlow += incomingEdge->getFlow();
+            }
+            // Ensure the flow does not surpass the demand for the city
+            if (cityFlow > deliveryStation->getDemand()) {
+                cityFlow = deliveryStation->getDemand(); // Set flow equal to demand
+            }
+            // Output flow for the city
+            std::string cityName = deliveryStation->getCity();
+            std::string cityCode = deliveryStation->getCode();
+            std::cout << "Flow to city " << cityName << " (" << cityCode << "): " << cityFlow << std::endl;
+            outputFile << "Flow to city " << cityName << " (" << cityCode << "): " << cityFlow << std::endl;
+        }
+    }
+
+    // Close the output file
+    outputFile.close();
+    std::cout << "Results saved to ../max_flow.txt" << std::endl;
+}
+
 
 void checkWaterSupply(Graph<Station*> g) {
     for (auto v : g.getVertexSet()) {
@@ -182,32 +270,43 @@ void checkWaterSupply(Graph<Station*> g) {
 
 
 int main() {
-
     Reader r;
     r.readAndParsePS();
     r.readAndParseWR();
     r.readAndParseDS();
     r.readAndParsePipes();
+    r.addSuperSourceAndSink();
 
     Graph<Station*> g = r.getGraph();
 
-    std::cout << "Choose a option "<<std::endl;
-    std::cout << "Determine the maximum amount of water - 1 "<<std::endl;
-    std::cout << "Can all the water reservoirs supply enough water to all its delivery sites ? - 2"<<std::endl ;
-    int option=0;
-    std::cin>>option;
-    if(option==1){
-        checkWaterCity(g);
-    }
-    else if (option==2){
+    std::cout << "Choose an option:" << std::endl;
+    std::cout << "1. Determine the maximum amount of water" << std::endl;
+    std::cout << "2. Check water supply for each city" << std::endl;
+
+    int option = 0;
+    std::cin >> option;
+
+    if (option == 1) {
+        // Run the maximum flow algorithm
+        checkWaterCity_each(g);
+
+        // Ask the user for a specific city to check
+        std::string cityCode;
+        std::cout << "Enter the code of the city you want to check: ";
+        std::cin >> cityCode;
+
+        // Check water flow for the specified city
+        checkWaterCity(g, cityCode);
+    } else if (option == 2) {
+        // Check water supply for each city
         checkWaterSupply(g);
+    } else {
+        std::cout << "Invalid option. Please choose either 1 or 2." << std::endl;
     }
-
-
-
 
     return 0;
 }
+
 
 
 
