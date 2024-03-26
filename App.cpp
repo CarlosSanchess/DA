@@ -86,7 +86,7 @@ void display4_1menu(Graph<Station*>& graph) {
                 maxFlowSubMenu(graph); // menu for 4.1.1
                 break;
             case '2':
-                // Call function for 4.1.2
+                checkWaterSupply(graph);
                 break;
             case '3':
                 // Call function for 4.1.3
@@ -239,20 +239,30 @@ void checkWaterCity(Graph<Station*> g, const std::string& cityCode) {
 }
 
 void checkWaterSupply(Graph<Station*> g) {
+
+    MaxFlowAlgo(g);
     for (auto v : g.getVertexSet()) {
         DeliveryStation* deliveryStation = dynamic_cast<DeliveryStation*>(v->getInfo());
-        if (deliveryStation != nullptr) {
-            double capacityDelivered = 0.0;
-            for (auto incomingEdge : v->getIncoming()) {
-                capacityDelivered += incomingEdge->getFlow();
+        if (deliveryStation) {
+            double cityFlow = getFlowToCity(g, v);
+
+            std::string cityName = deliveryStation->getCity();
+            std::string cityCode = deliveryStation->getCode();
+            int cityDemand= deliveryStation->getDemand();
+            std::cout << "Flow to city " << cityName << " (" << cityCode << "): " << cityFlow << std::endl;
+            std::cout << "Demand to city " << cityName << " (" << cityCode << "): " << cityDemand << std::endl;
+            if(cityDemand>cityFlow){
+                std::cout << "The city of  " << cityName << " (" << cityCode << ") doesn't have enough water because : " << cityDemand - cityFlow << " m3/sec of water are missing." << std::endl;
+
             }
-            double deficit = deliveryStation->getDemand() - capacityDelivered;
-            std::cout << "Cidade: " << deliveryStation->getCity() << std::endl;
-            std::cout << "Quantidade de água disponível: " << capacityDelivered << " m³" << std::endl;
-            std::cout << "Diferença entre a água disponível e a demanda: " << deficit << " m³" << std::endl;
-            std::cout << std::endl;
+            else if (cityDemand>=cityFlow) {
+                std::cout << "The city of  " << cityName << " (" << cityCode << ") has enough water because it has : " << cityDemand - cityFlow << " m3/sec more than it needs." << std::endl;
+
+            }
         }
+        std::cout << "\n" << std::endl;
     }
+
 }
 
 void App::run() {

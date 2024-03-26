@@ -111,12 +111,6 @@
 		<Unit filename="/Users/davidferreira/feup/4 Ano/DA/DA/Classes/WaterReservoir.h">
 			<Option target="projeto01"/>
 		</Unit>
-		<Unit filename="/Users/davidferreira/feup/4 Ano/DA/DA/EdmondsKarp.cpp">
-			<Option target="projeto01"/>
-		</Unit>
-		<Unit filename="/Users/davidferreira/feup/4 Ano/DA/DA/EdmondsKarp.h">
-			<Option target="projeto01"/>
-		</Unit>
 		<Unit filename="/Users/davidferreira/feup/4 Ano/DA/DA/main.cpp">
 			<Option target="projeto01"/>
 		</Unit>
