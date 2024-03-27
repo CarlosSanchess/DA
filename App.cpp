@@ -27,6 +27,7 @@ void checkWaterCity(Graph<Station*> g, const std::string& cityIdentifier,
 double getFlowToCity(Graph<Station*>& g, Vertex<Station*>* deliveryStation);
 double MaxFlowAlgo(Graph<Station*>& g);
 void PrintMaxFlowForCities(Graph<Station*>& graph, double totalFlow);
+<<<<<<< HEAD
 void checkWaterSupply(Graph<Station*> g);
 bool hasFlows(Graph<Station*> g);
 void fillMap(Graph<Station*>& g, std::unordered_map<Vertex<Station*>*, double>& flowMap);
@@ -37,6 +38,10 @@ Vertex<Station*>* findWrId (Graph<Station*> &g, const std::string &wrIdentifier,
                             std::unordered_map<std::string, WaterReservoir*> &wrCodeMap,
                             std::unordered_map<std::string, WaterReservoir*> &wrNameMap);
 
+=======
+void checkWaterSupply(Graph<Station*> g, const std::unordered_map<std::string, DeliveryStation*>& codeMap);
+bool hasFlows(Graph<Station*> &g);
+>>>>>>> 36d2408831a7fd4360896b2f49da298dbdeab177
 
 int mainMenu(){
     cout << "Loading...";
@@ -123,7 +128,7 @@ void display4_1menu(Graph<Station*>& graph,
                 maxFlowSubMenu(graph, IdMap, CodeMap, NameMap); // pass maps to sub-menu
                 break;
             case '2':
-                checkWaterSupply(graph);
+                checkWaterSupply(graph,CodeMap);
                 break;
             case '3':
                 // Call function for 4.1.3
@@ -353,16 +358,13 @@ void checkWaterCity(Graph<Station*> g, const std::string& cityIdentifier,
     std::cout << "City with identifier " << cityIdentifier << " not found." << std::endl;
 }
 
-
-
-
-void checkWaterSupply(Graph<Station*> g) {
-
-    if(!hasFlows(g)){
+void checkWaterSupply(Graph<Station*> g, const std::unordered_map<std::string, DeliveryStation*>& codeMap) {
+    if (!hasFlows(g)) {
         MaxFlowAlgo(g);
     }
+
     int citiesWithEnoughWater = 0;
-    int citiesWithoutEnoughWater = 0;
+    std::vector<std::tuple<std::string, std::string, double>> citiesWithoutEnoughWater;
 
     for (auto v : g.getVertexSet()) {
         DeliveryStation* deliveryStation = dynamic_cast<DeliveryStation*>(v->getInfo());
@@ -371,20 +373,25 @@ void checkWaterSupply(Graph<Station*> g) {
             std::string cityName = deliveryStation->getCity();
             std::string cityCode = deliveryStation->getCode();
             int cityDemand = deliveryStation->getDemand();
-            std::cout << "Flow to city " << cityName << " (" << cityCode << "): " << cityFlow << '\n';
-            std::cout << "Demand to city " << cityName << " (" << cityCode << "): " << cityDemand << '\n';
             if (cityDemand > cityFlow) {
-                std::cout << "The city of  " << cityName << " (" << cityCode << ") doesn't have enough water because : " << cityDemand - cityFlow << " m3/sec of water are missing.\n";
-                citiesWithoutEnoughWater++;
-            }else if (cityDemand >= cityFlow) {
-                std::cout << "The city of  " << cityName << " (" << cityCode << ") has enough water because it has : " << cityFlow - cityDemand << " m3/sec more than it needs.\n";
+                double deficit = cityDemand - cityFlow;
+                citiesWithoutEnoughWater.push_back(std::make_tuple(cityName, cityCode, deficit));
+            } else {
                 citiesWithEnoughWater++;
             }
         }
     }
+    std::cout << "Cities that don't fulfill their demand:\n";
+    for(const auto& city : citiesWithoutEnoughWater) {
+        std::string cityName = std::get<0>(city);
+        std::string cityCode = std::get<1>(city);
+        double deficit = std::get<2>(city);
+        std::cout << "City: " << cityName << ", Code: " << cityCode << ", Deficit: " << deficit << " m3/sec\n";
+    }
+
     std::cout << '\n';
     std::cout << "Number of cities that fulfill their demand: " << citiesWithEnoughWater << '\n';
-    std::cout << "Number of cities that don't fulfill their demand: " << citiesWithoutEnoughWater << '\n';
+    std::cout << "Number of cities that don't fulfill their demand: " << citiesWithoutEnoughWater.size() << '\n';
 }
 
 
