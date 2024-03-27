@@ -28,7 +28,7 @@ double getFlowToCity(Graph<Station*>& g, Vertex<Station*>* deliveryStation);
 double MaxFlowAlgo(Graph<Station*>& g);
 void PrintMaxFlowForCities(Graph<Station*>& graph, double totalFlow);
 void checkWaterSupply(Graph<Station*> g);
-
+bool hasFlows(Graph<Station*> &g);
 
 int mainMenu(){
     cout << "Loading...";
@@ -275,7 +275,7 @@ void PrintMaxFlowForCities(Graph<Station*>& graph, double totalFlow) {
     std::cout << "Results saved to ../max_flow.txt" << std::endl;
 }
 
-double getFlowToCity(Graph<Station*>& g, Vertex<Station*>* deliveryStation) {
+double getFlowToCity(Graph<Station*>& g, Vertex<Station*>* deliveryStation){
     double flowToCity = 0.0;
     for (auto incomingEdge : deliveryStation->getIncoming()) {
         flowToCity += incomingEdge->getFlow();
@@ -330,7 +330,11 @@ void checkWaterCity(Graph<Station*> g, const std::string& cityIdentifier,
 
 
 void checkWaterSupply(Graph<Station*> g) {
-    MaxFlowAlgo(g);
+
+
+    if(!hasFlows(g)){
+        MaxFlowAlgo(g);
+    }
     int citiesWithEnoughWater = 0;
     int citiesWithoutEnoughWater = 0;
 
@@ -355,6 +359,19 @@ void checkWaterSupply(Graph<Station*> g) {
     std::cout << '\n';
     std::cout << "Number of cities that fulfill their demand: " << citiesWithEnoughWater << '\n';
     std::cout << "Number of cities that don't fulfill their demand: " << citiesWithoutEnoughWater << '\n';
+}
+
+
+bool hasFlows(Graph<Station*> &g){
+    for(auto v : g.getVertexSet()){
+        auto* deliveryStation = dynamic_cast<DeliveryStation*>(v->getInfo());
+        if (deliveryStation){
+            double flow = getFlowToCity(g,v);
+
+            return !flow ? false : true;
+        }
+    }
+    return false;
 }
 
 
