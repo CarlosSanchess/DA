@@ -162,6 +162,8 @@ void display4_2menu(Graph<Station*>& graph,
             case '3':
                 break;
             case 'b':
+                cout << "Returning to Main Menu...\n";
+                exitMenu = true;
                 break;
             default:
                 cout << "Invalid input. Please choose a valid option.\n";
