@@ -540,6 +540,9 @@ Vertex<Station*>* findWrId (Graph<Station*> &g, const std::string &wrIdentifier,
 void fillMap(Graph<Station*>& g, std::unordered_map<Vertex<Station*>*, double>& flowMap) {
     if (!hasFlows(g)) {
         MaxFlowAlgo(g);
+        for(auto vertex : g.getVertexSet()){
+            vertex->setVisited(false);
+        }
     }
     for (auto v : g.getVertexSet()) {
         DeliveryStation* deliveryStation = dynamic_cast<DeliveryStation*>(v->getInfo());
@@ -550,9 +553,12 @@ void fillMap(Graph<Station*>& g, std::unordered_map<Vertex<Station*>*, double>& 
     }
 }
 
-void removeWR(Graph<Station*>& g, std::unordered_map<Vertex<Station*>*, double> &flowMap, Vertex<Station*> *wrVertex) {
+void removeWR(Graph<Station*>& g, std::unordered_map<Vertex<Station*>*, double>& flowMap, Vertex<Station*>* wrVertex) {
+    // Mark the vertex as visited to indicate removal
+    wrVertex->getInfo()->setActive(false);
 
-    std::unordered_set<Vertex<Station*>*> affectedSubset = findAffectedSubset(&g, wrVertex);
+    // Use a set to track affected subset
+    auto affectedSubset = findAffectedSubset(&g,wrVertex);
 
     Vertex<Station*>* superSink = nullptr;
     for (auto v : g.getVertexSet()) {
@@ -567,7 +573,7 @@ void removeWR(Graph<Station*>& g, std::unordered_map<Vertex<Station*>*, double> 
         return;
     }
 
-    double optimalLocal = initEdmondsKarp(&g,wrVertex->getInfo(), superSink->getInfo());
+    double optimalLocal = initEdmondsKarp(&g, wrVertex->getInfo(), superSink->getInfo());
 
     for (auto v : affectedSubset) {
         if (flowMap.find(v) != flowMap.end()) {
@@ -575,14 +581,23 @@ void removeWR(Graph<Station*>& g, std::unordered_map<Vertex<Station*>*, double> 
             double difference = originalValue - optimalLocal;
             flowMap[v] = difference;
 
-            std::cout << "Vertex: " << v->getInfo()->getCode() << ", Difference: " << difference << std::endl;
+            std::cout << "Node: " << v->getInfo()->getCode() << ", Flow Loss: " << difference;
+
+            // Check if the vertex is a delivery station and if it meets demand after removal
+            DeliveryStation* deliveryStation = dynamic_cast<DeliveryStation*>(v->getInfo());
+            if (deliveryStation && difference < deliveryStation->getDemand()) {
+                std::cout << " (Does not meet demand)";
+            }
+
+            std::cout << std::endl;
         }
     }
 
-    g.removeVertex(wrVertex->getInfo());
     flowMap.erase(wrVertex);
-
 }
+
+
+
 
 void App::run() {
     mainMenu();

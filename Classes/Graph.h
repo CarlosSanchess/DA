@@ -713,56 +713,55 @@ void augmentFlowAlongPath(Vertex<T> *s, Vertex<T> *t, double f) {
     }
 }
 template <class T>
-double initEdmondsKarp(Graph<T> *g, Station * source, Station * target) {
-
+double initEdmondsKarp(Graph<T>* g, Station* source, Station* target) {
     Vertex<T>* s = g->findVertex(source);
     Vertex<T>* t = g->findVertex(target);
 
     if (s == nullptr || t == nullptr || s == t)
         throw std::logic_error("Invalid source and/or target vertex");
 
+    /*
+    // Mark all vertices as active initially
     for (auto v : g->getVertexSet()) {
-        for (auto e: v->getAdj()) {
+        v->getInfo()->setActive(true);
+        for (auto e : v->getAdj()) {
             e->setFlow(0);
         }
     }
+    */
+
     double optimalFlow = 0.0;
-    while( findAugmentingPath(g, s, t) ) {
+    while (findAugmentingPath(g, s, t)) {
         double f = findMinResidualAlongPath(s, t);
         augmentFlowAlongPath(s, t, f);
         optimalFlow += f;
     }
 
+    // Reset inactive vertices
     for (auto v : g->getVertexSet()) {
-        DeliveryStation* deliveryStation = dynamic_cast<DeliveryStation*>(v->getInfo());
-        if (deliveryStation) {
-            double cityFlow = getFlowToCity(*g, v);
-            if (cityFlow > deliveryStation->getDemand()) {
-                // Reduce flow to match city demand
-                double excessFlow = cityFlow - deliveryStation->getDemand();
-                // Find outgoing edges and reduce their flow proportionally
-                double reductionFactor = excessFlow / cityFlow;
-                for (auto outgoingEdge : v->getAdj()) {
-                    double edgeFlow = outgoingEdge->getFlow();
-                    double reducedFlow = edgeFlow * (1 - reductionFactor);
-                    outgoingEdge->setFlow(reducedFlow);
-                }
+        if (!v->getInfo()->isActive()) {
+            for (auto e : v->getAdj()) {
+                e->setFlow(0);
             }
         }
     }
+
+    // Adjust flow to match city demand for active vertices
     for (auto v : g->getVertexSet()) {
-        DeliveryStation* deliveryStation = dynamic_cast<DeliveryStation*>(v->getInfo());
-        if (deliveryStation) {
-            double cityFlow = getFlowToCity(*g, v);
-            if (cityFlow > deliveryStation->getDemand()) {
-                // Reduce flow to match city demand
-                double excessFlow = cityFlow - deliveryStation->getDemand();
-                // Find outgoing edges and reduce their flow proportionally
-                double reductionFactor = excessFlow / cityFlow;
-                for (auto outgoingEdge : v->getAdj()) {
-                    double edgeFlow = outgoingEdge->getFlow();
-                    double reducedFlow = edgeFlow * (1 - reductionFactor);
-                    outgoingEdge->setFlow(reducedFlow);
+        if (v->getInfo()->isActive()) {
+            DeliveryStation* deliveryStation = dynamic_cast<DeliveryStation*>(v->getInfo());
+            if (deliveryStation) {
+                double cityFlow = getFlowToCity(*g, v);
+                if (cityFlow > deliveryStation->getDemand()) {
+                    // Reduce flow to match city demand
+                    double excessFlow = cityFlow - deliveryStation->getDemand();
+                    // Find outgoing edges and reduce their flow proportionally
+                    double reductionFactor = excessFlow / cityFlow;
+                    for (auto outgoingEdge : v->getAdj()) {
+                        double edgeFlow = outgoingEdge->getFlow();
+                        double reducedFlow = edgeFlow * (1 - reductionFactor);
+                        outgoingEdge->setFlow(reducedFlow);
+                    }
                 }
             }
         }
@@ -815,56 +814,98 @@ std::unordered_set<Vertex<T>*> findAffectedSubset(Graph<T>* g, Vertex<T>* remove
 
     return affectedSubset;
 }
+
+
 template <class T>
-double initEdmondsKarpLocally(Graph<T> *g, Vertex<T>* s, Vertex<T>* t, std::unordered_set<Vertex<T>*> affectedSubset) {
-    if (s == nullptr || t == nullptr || s == t)
-        throw std::logic_error("Invalid source and/or target vertex");
-
-    for (auto v : g->getVertexSet()) {
-        for (auto e: v->getAdj()) {
-            e->setFlow(0);
+double maxFlowIncremental(Graph<T> &graph, Station* source, Station* sink) {
+    // Initialize flow to 0 for all edges
+    for (auto v : graph.getVertexSet()) {
+        for (auto edge : v->getAdj()) {
+            edge->setFlow(0.0);
         }
     }
 
-    double optimalFlow = 0.0;
-    std::queue<Vertex<T>*> q;
-    q.push(s);
+    // Initialize preflow and height arrays
+    std::unordered_map<T*, double> preflow;
+    std::unordered_map<T*, double> height;
+    std::unordered_map<T*, double> excess;
+    std::queue<T*> activeNodes;
 
-    while (!q.empty() && !t->isVisited()) {
-        auto v = q.front();
-        q.pop();
+    for (auto v : graph.getVertexSet()) {
+        preflow[v->getInfo()] = 0.0;
+        height[v->getInfo()] = 0.0;
+        excess[v->getInfo()] = 0.0;
+    }
+    height[source] = graph.getVertexSet().size();
 
-        for (auto e : v->getAdj()) {
-            Vertex<T>* w = e->getDest();
-            if (affectedSubset.count(w) > 0 && !w->isVisited() && e->getWeight() - e->getFlow() > 0) {
-                w->setVisited(true);
-                w->setPath(e);
-                q.push(w);
+    // Push excess flow out of the source node
+    for (auto edge : graph.getVertex(source)->getAdj()) {
+        T* neighbor = edge->getDest()->getInfo();
+        double capacity = edge->getWeight();
+        double flow = edge->getFlow();
+        if (flow < capacity) {
+            double delta = std::min(excess[source], capacity - flow);
+            excess[source] -= delta;
+            excess[neighbor] += delta;
+            preflow[source] -= delta;
+            preflow[neighbor] += delta;
+            edge->setFlow(flow + delta);
+            if (neighbor != sink && neighbor != source) {
+                activeNodes.push(neighbor);
             }
         }
+    }
 
-        for (auto e : v->getIncoming()) {
-            Vertex<T>* w = e->getOrig();
-            if (affectedSubset.count(w) > 0 && !w->isVisited() && e->getFlow() > 0) {
-                w->setVisited(true);
-                w->setPath(e);
-                q.push(w);
+    // Perform relabel-to-front algorithm
+    while (!activeNodes.empty()) {
+        T* u = activeNodes.front();
+        activeNodes.pop();
+        discharge(graph, u, source, sink, preflow, height, excess, activeNodes);
+    }
+
+    // Return the total flow out of the source node
+    return preflow[source];
+}
+
+template <class T>
+void discharge(Graph<T>& graph, T* u, T* source, T* sink, std::unordered_map<T*, double>& preflow,
+               std::unordered_map<T*, double>& height, std::unordered_map<T*, double>& excess,
+               std::queue<T*>& activeNodes) {
+    while (excess[u] > 0) {
+        bool pushed = false;
+        for (auto edge : graph.getVertex(u)->getAdj()) {
+            T* v = edge->getDest()->getInfo();
+            if (height[u] == height[v] + 1 && edge->getFlow() < edge->getWeight()) {
+                double delta = std::min(excess[u], edge->getWeight() - edge->getFlow());
+                edge->setFlow(edge->getFlow() + delta);
+                preflow[u] -= delta;
+                preflow[v] += delta;
+                excess[u] -= delta;
+                excess[v] += delta;
+                if (v != sink && v != source && excess[v] > 0) {
+                    activeNodes.push(v);
+                }
+                pushed = true;
+                break;
             }
         }
+        if (!pushed) {
+            relabel(graph, u, source, sink, preflow, height, excess);
+        }
     }
+}
 
-    if (t->isVisited()) {
-        double f = findMinResidualAlongPath(s, t);
-        augmentFlowAlongPath(s, t, f);
-        optimalFlow += f;
+template <class T>
+void relabel(Graph<T>& graph, T* u, T* source, T* sink, std::unordered_map<T*, double>& preflow,
+             std::unordered_map<T*, double>& height, std::unordered_map<T*, double>& excess) {
+    double minHeight = std::numeric_limits<double>::max();
+    for (auto edge : graph.getVertex(u)->getAdj()) {
+        T* v = edge->getDest()->getInfo();
+        if (edge->getFlow() < edge->getWeight()) {
+            minHeight = std::min(minHeight, height[v]);
+        }
     }
-
-    // Reset visited flags
-    for (auto v : affectedSubset) {
-        v->setVisited(false);
-    }
-
-    return optimalFlow;
+    height[u] = minHeight + 1;
 }
 
 template <class T>

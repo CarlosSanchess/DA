@@ -1,9 +1,9 @@
-Total maximum flow of the network : 24163
+Total maximum flow of the network : 23998
 Flow to city Alcacer do Sal (C_1): 52
 Flow to city Aveiro (C_2): 515
 Flow to city Beja (C_3): 110
 Flow to city Braga (C_4): 1208
-Flow to city Bragança (C_5): 125
+Flow to city Bragança (C_5): 15
 Flow to city Castelo Branco (C_6): 230
 Flow to city Coimbra (C_7): 896
 Flow to city Covilhã (C_8): 100
@@ -19,5 +19,5 @@ Flow to city Porto (C_17): 5650
 Flow to city Santarém (C_18): 200
 Flow to city Setúbal (C_19): 780
 Flow to city Viana do Castelo (C_20): 100
-Flow to city Vila real (C_21): 135
+Flow to city Vila real (C_21): 80
 Flow to city Viseu (C_22): 330
