@@ -194,6 +194,10 @@ void display4_2menu(Graph<Station*> graph,
                     cout << "Doesnt exist a node with that id";
                     break;
                 }
+                if(!vertex->getInfo()->isActive()){
+                    cout << "Doesnt exist in graph";
+                    break;
+                }
                 fillMap(graph, flowMap);
                 removeWR(graph,flowMap,vertex);
 
@@ -209,6 +213,9 @@ void display4_2menu(Graph<Station*> graph,
             default:
                 cout << "Invalid input. Please choose a valid option.\n";
         }
+    }
+    for(auto v : graph.getVertexSet()){
+        v->getInfo()->setActive(true);
     }
 }
 
