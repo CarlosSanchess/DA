@@ -1,3 +1,0 @@
-/home/rebelojoao/Documents/DA/proj/DA/cmake-build-debug/CMakeFiles/projeto01.dir
-/home/rebelojoao/Documents/DA/proj/DA/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/rebelojoao/Documents/DA/proj/DA/cmake-build-debug/CMakeFiles/rebuild_cache.dir

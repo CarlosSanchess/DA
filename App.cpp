@@ -8,6 +8,12 @@ void display4_1menu(Graph<Station*>& graph,
                     const std::unordered_map<int, DeliveryStation*>& IdMap,
                     const std::unordered_map<std::string, DeliveryStation*>& CodeMap,
                     const std::unordered_map<std::string, DeliveryStation*>& NameMap);
+
+void display4_2menu(Graph<Station*>& graph,
+                    std::unordered_map<int, WaterReservoir*> &wrIdMap,
+                    std::unordered_map<std::string, WaterReservoir*> &wrCodeMap,
+                    std::unordered_map<std::string, WaterReservoir*> &wrNameMap);
+
 void maxFlowSubMenu(Graph<Station*>& graph,
                     const std::unordered_map<int, DeliveryStation*>& IdMap,
                     const std::unordered_map<std::string, DeliveryStation*>& CodeMap,
@@ -67,6 +73,7 @@ int mainMenu(){
                 display4_1menu(graph,IdMap,CodeMap,NameMap);
                 break;
             case '2':
+                display4_2menu(graph, WrIdMap, WrCodeMap, WrNameMap);
                 break;
             case 'e':
                 cout << "Exiting menu system...\n";
@@ -123,6 +130,44 @@ void display4_1menu(Graph<Station*>& graph,
     }
 }
 
+void display4_2menu(Graph<Station*>& graph,
+                    std::unordered_map<int, WaterReservoir*> &wrIdMap,
+                    std::unordered_map<std::string, WaterReservoir*> &wrCodeMap,
+                    std::unordered_map<std::string, WaterReservoir*> &wrNameMap) {
+    string choice;
+    bool exitMenu = false;
+
+    while (!exitMenu) {
+        cout << "\n----------------------------------------------\n";
+        cout << "    Reliability and Sensitivity to Failures       \n";
+        cout << "----------------------------------------------\n";
+        cout << "Select an option:\n";
+        cout << "1. Verify Network's resiliency, water reservoir fails. (4.2.1)\n";
+        cout << "2.  (4.2.2)\n";
+        cout << "3.  (4.2.3)\n";
+        cout << "b. Back to Main Menu\n";
+        cout << "----------------------------------------------\n";
+        cout << "Your choice: ";
+        cin >> choice;
+
+        if (choice.length() != 1) {
+            choice = "0";
+        }
+
+        switch (choice[0]) {
+            case '1':
+                break;
+            case '2':
+                break;
+            case '3':
+                break;
+            case 'b':
+                break;
+            default:
+                cout << "Invalid input. Please choose a valid option.\n";
+        }
+    }
+}
 
 void maxFlowSubMenu(Graph<Station*>& graph,
                     const std::unordered_map<int, DeliveryStation*>& IdMap,
@@ -299,7 +344,7 @@ void checkWaterSupply(Graph<Station*> g) {
             if (cityDemand > cityFlow) {
                 std::cout << "The city of  " << cityName << " (" << cityCode << ") doesn't have enough water because : " << cityDemand - cityFlow << " m3/sec of water are missing.\n";
                 citiesWithoutEnoughWater++;
-            } else if (cityDemand >= cityFlow) {
+            }else if (cityDemand >= cityFlow) {
                 std::cout << "The city of  " << cityName << " (" << cityCode << ") has enough water because it has : " << cityFlow - cityDemand << " m3/sec more than it needs.\n";
                 citiesWithEnoughWater++;
             }
