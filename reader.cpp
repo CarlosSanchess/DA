@@ -55,10 +55,16 @@ void Reader::readAndParseDS() {
 
         auto* DS = new DeliveryStation(id, code, city, demand, population);
         graph.addVertex(DS);
+
+        // Add to codeMap and nameMap
+        codeMap[code] = DS;
+        nameMap[city] = DS;
+        idMap[id] = DS;
     }
 
     file.close();
 }
+
 
 void Reader::readAndParseWR() {
     std::ifstream file("../Data/Reservoir.csv");
@@ -82,12 +88,19 @@ void Reader::readAndParseWR() {
         getline(ss, maxDel, ',');
         maxDelivery = std::stoi(maxDel);
 
-        Station* WR = new WaterReservoir(id, code, reservoirName, municipality, maxDelivery);
+        WaterReservoir* WR = new WaterReservoir(id, code, reservoirName, municipality, maxDelivery);
 
         graph.addVertex(WR);
+
+        // Add to wrIdMap, wrCodeMap, and wrNameMap
+        wrIdMap[id] = WR;
+        wrCodeMap[code] = WR;
+        wrNameMap[reservoirName] = WR;
     }
     file.close();
 }
+
+
 void Reader::readAndParsePipes() {
     std::ifstream file("../Data/Pipes.csv");
     std::string line;
@@ -164,4 +177,36 @@ Station* Reader::getNode(const std::string& servicePoint){
     }
     return nullptr;
 }
+
+DeliveryStation* Reader::getDeliveryStationById(int id, const std::unordered_map<int, DeliveryStation*>& idMap) {
+    auto it = idMap.find(id);
+    return (it != idMap.end()) ? it->second : nullptr;
+}
+
+DeliveryStation* Reader::getDeliveryStationByCode(const std::string& code, const std::unordered_map<std::string, DeliveryStation*>& codeMap) {
+    auto it = codeMap.find(code);
+    return (it != codeMap.end()) ? it->second : nullptr;
+}
+
+DeliveryStation* Reader::getDeliveryStationByName(const std::string& name, const std::unordered_map<std::string, DeliveryStation*>& nameMap) {
+    auto it = nameMap.find(name);
+    return (it != nameMap.end()) ? it->second : nullptr;
+}
+
+WaterReservoir* Reader::getWaterReservoirById(int id, const std::unordered_map<int, WaterReservoir*>& wrIdMap) {
+    auto it = wrIdMap.find(id);
+    return (it != wrIdMap.end()) ? it->second : nullptr;
+}
+
+WaterReservoir* Reader::getWaterReservoirByCode(const std::string& code, const std::unordered_map<std::string, WaterReservoir*>& wrCodeMap) {
+    auto it = wrCodeMap.find(code);
+    return (it != wrCodeMap.end()) ? it->second : nullptr;
+}
+
+WaterReservoir* Reader::getWaterReservoirByName(const std::string& name, const std::unordered_map<std::string, WaterReservoir*>& wrNameMap) {
+    auto it = wrNameMap.find(name);
+    return (it != wrNameMap.end()) ? it->second : nullptr;
+}
+
+
 Reader::Reader() = default;
