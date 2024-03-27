@@ -10,7 +10,7 @@ void display4_1menu(Graph<Station*>& graph,
                     const std::unordered_map<std::string, DeliveryStation*>& CodeMap,
                     const std::unordered_map<std::string, DeliveryStation*>& NameMap);
 
-void display4_2menu(Graph<Station*>& graph,
+void display4_2menu(Graph<Station*> graph,
                     std::unordered_map<int, WaterReservoir*> &wrIdMap,
                     std::unordered_map<std::string, WaterReservoir*> &wrCodeMap,
                     std::unordered_map<std::string, WaterReservoir*> &wrNameMap);
@@ -45,7 +45,7 @@ double calculateMaxDifference(Graph<Station*>& graph);
 void balanceLoad(Graph<Station*>& graph);
 
 void fillMap(Graph<Station*>& g, std::unordered_map<Vertex<Station*>*, double>& flowMap);
-void removeWR(Graph<Station*> g, std::unordered_map< Vertex<Station*>*, double>  &flowMap, Vertex<Station*> *wrVertex);
+void removeWR(Graph<Station*>& g, std::unordered_map< Vertex<Station*>*, double>  &flowMap, Vertex<Station*> *wrVertex);
 
 Vertex<Station*>* findWrId (Graph<Station*> &g, const std::string &wrIdentifier,
                             std::unordered_map<int, WaterReservoir*> &wrIdMap,
@@ -153,7 +153,7 @@ void display4_1menu(Graph<Station*>& graph,
     }
 }
 
-void display4_2menu(Graph<Station*>& graph,
+void display4_2menu(Graph<Station*> graph,
                     std::unordered_map<int, WaterReservoir*> &wrIdMap,
                     std::unordered_map<std::string, WaterReservoir*> &wrCodeMap,
                     std::unordered_map<std::string, WaterReservoir*> &wrNameMap) {
@@ -550,7 +550,7 @@ void fillMap(Graph<Station*>& g, std::unordered_map<Vertex<Station*>*, double>& 
     }
 }
 
-void removeWR(Graph<Station*> g, std::unordered_map<Vertex<Station*>*, double> &flowMap, Vertex<Station*> *wrVertex) {
+void removeWR(Graph<Station*>& g, std::unordered_map<Vertex<Station*>*, double> &flowMap, Vertex<Station*> *wrVertex) {
 
     std::unordered_set<Vertex<Station*>*> affectedSubset = findAffectedSubset(&g, wrVertex);
 
@@ -578,6 +578,10 @@ void removeWR(Graph<Station*> g, std::unordered_map<Vertex<Station*>*, double> &
             std::cout << "Vertex: " << v->getInfo()->getCode() << ", Difference: " << difference << std::endl;
         }
     }
+
+    g.removeVertex(wrVertex->getInfo());
+    flowMap.erase(wrVertex);
+
 }
 
 void App::run() {
