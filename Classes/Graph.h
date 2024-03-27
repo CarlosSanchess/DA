@@ -7,6 +7,7 @@
 #include <queue>
 #include <limits>
 #include <algorithm>
+#include <unordered_set>
 //#include "../data_structures/MutablePriorityQueue.h"
 
 template <class T>
@@ -786,6 +787,84 @@ inline void deleteMatrix(double **m, int n) {
                 delete [] m[i];
         delete [] m;
     }
+}
+
+template <class T>
+std::unordered_set<Vertex<T>*> findAffectedSubset(Graph<T>* g, Vertex<T>* removedVertex) {
+    std::unordered_set<Vertex<T>*> affectedSubset;
+    std::queue<Vertex<T>*> q;
+    q.push(removedVertex);
+
+    while (!q.empty()) {
+        Vertex<T>* v = q.front();
+        q.pop();
+
+        // Mark vertex as visited
+        affectedSubset.insert(v);
+        v->setVisited(true);
+
+        // Traverse outward edges
+        for (auto edge : v->getAdj()) {
+            Vertex<T>* w = edge->getDest();
+            // Check if w is a delivery station and not visited yet
+            if (w && !w->isVisited()) {
+                q.push(w);
+            }
+        }
+    }
+
+    return affectedSubset;
+}
+template <class T>
+double initEdmondsKarpLocally(Graph<T> *g, Vertex<T>* s, Vertex<T>* t, std::unordered_set<Vertex<T>*> affectedSubset) {
+    if (s == nullptr || t == nullptr || s == t)
+        throw std::logic_error("Invalid source and/or target vertex");
+
+    for (auto v : g->getVertexSet()) {
+        for (auto e: v->getAdj()) {
+            e->setFlow(0);
+        }
+    }
+
+    double optimalFlow = 0.0;
+    std::queue<Vertex<T>*> q;
+    q.push(s);
+
+    while (!q.empty() && !t->isVisited()) {
+        auto v = q.front();
+        q.pop();
+
+        for (auto e : v->getAdj()) {
+            Vertex<T>* w = e->getDest();
+            if (affectedSubset.count(w) > 0 && !w->isVisited() && e->getWeight() - e->getFlow() > 0) {
+                w->setVisited(true);
+                w->setPath(e);
+                q.push(w);
+            }
+        }
+
+        for (auto e : v->getIncoming()) {
+            Vertex<T>* w = e->getOrig();
+            if (affectedSubset.count(w) > 0 && !w->isVisited() && e->getFlow() > 0) {
+                w->setVisited(true);
+                w->setPath(e);
+                q.push(w);
+            }
+        }
+    }
+
+    if (t->isVisited()) {
+        double f = findMinResidualAlongPath(s, t);
+        augmentFlowAlongPath(s, t, f);
+        optimalFlow += f;
+    }
+
+    // Reset visited flags
+    for (auto v : affectedSubset) {
+        v->setVisited(false);
+    }
+
+    return optimalFlow;
 }
 
 template <class T>

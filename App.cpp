@@ -28,7 +28,15 @@ double getFlowToCity(Graph<Station*>& g, Vertex<Station*>* deliveryStation);
 double MaxFlowAlgo(Graph<Station*>& g);
 void PrintMaxFlowForCities(Graph<Station*>& graph, double totalFlow);
 void checkWaterSupply(Graph<Station*> g);
-bool hasFlows(Graph<Station*> &g);
+bool hasFlows(Graph<Station*> g);
+void fillMap(Graph<Station*>& g, std::unordered_map<Vertex<Station*>*, double>& flowMap);
+void removeWR(Graph<Station*> g, std::unordered_map< Vertex<Station*>*, double>  &flowMap, Vertex<Station*> *wrVertex);
+
+Vertex<Station*>* findWrId (Graph<Station*> &g, const std::string &wrIdentifier,
+                            std::unordered_map<int, WaterReservoir*> &wrIdMap,
+                            std::unordered_map<std::string, WaterReservoir*> &wrCodeMap,
+                            std::unordered_map<std::string, WaterReservoir*> &wrNameMap);
+
 
 int mainMenu(){
     cout << "Loading...";
@@ -153,9 +161,28 @@ void display4_2menu(Graph<Station*>& graph,
         if (choice.length() != 1) {
             choice = "0";
         }
-
+        string wrId;
+        WaterReservoir* waterReservoir = nullptr;
+        std::unordered_map< Vertex<Station*>*, double> flowMap;
+        Vertex<Station*> * vertex = nullptr;
         switch (choice[0]) {
             case '1':
+                cout << "Enter the Water Reservoir identifier (wrId,wrCode or wrName) ('b' to go back): ";
+                cin >> wrId;
+                if (wrId == "b") {
+                    exitMenu = true;
+                    break;
+                }
+
+                vertex = findWrId(graph,wrId,wrIdMap,wrCodeMap,wrNameMap);
+                if(!vertex)
+                {
+                    cout << "Doesnt exist a node with that id";
+                    break;
+                }
+                fillMap(graph, flowMap);
+                removeWR(graph,flowMap,vertex);
+
                 break;
             case '2':
                 break;
@@ -331,7 +358,6 @@ void checkWaterCity(Graph<Station*> g, const std::string& cityIdentifier,
 
 void checkWaterSupply(Graph<Station*> g) {
 
-
     if(!hasFlows(g)){
         MaxFlowAlgo(g);
     }
@@ -362,7 +388,7 @@ void checkWaterSupply(Graph<Station*> g) {
 }
 
 
-bool hasFlows(Graph<Station*> &g){
+bool hasFlows(Graph<Station*> g){
     for(auto v : g.getVertexSet()){
         auto* deliveryStation = dynamic_cast<DeliveryStation*>(v->getInfo());
         if (deliveryStation){
@@ -373,6 +399,78 @@ bool hasFlows(Graph<Station*> &g){
     }
     return false;
 }
+
+Vertex<Station*>* findWrId (Graph<Station*> &g, const std::string &wrIdentifier,
+                          std::unordered_map<int, WaterReservoir*> &wrIdMap,
+                          std::unordered_map<std::string, WaterReservoir*> &wrCodeMap,
+                          std::unordered_map<std::string, WaterReservoir*> &wrNameMap){
+
+    WaterReservoir* waterReservoir = nullptr;
+    if (isdigit(wrIdentifier[0])) {
+        int id = std::stoi(wrIdentifier);
+        waterReservoir = Reader::getWaterReservoirById(id, wrIdMap);
+    }
+        // Check if the waterReservoir identifier is a code
+    else if (wrCodeMap.find(wrIdentifier) != wrCodeMap.end()) {
+        waterReservoir = Reader::getWaterReservoirByCode(wrIdentifier, wrCodeMap);
+    }
+        // Check if the waterReservoir identifier is a name
+    else if (wrNameMap.find(wrIdentifier) != wrNameMap.end()) {
+        waterReservoir = Reader::getWaterReservoirByName(wrIdentifier, wrNameMap);
+    }
+
+    Vertex<Station*> *wrVertex = g.findVertex(waterReservoir);
+
+    return wrVertex;
+
+}
+void fillMap(Graph<Station*>& g, std::unordered_map<Vertex<Station*>*, double>& flowMap) {
+    if (!hasFlows(g)) {
+        MaxFlowAlgo(g);
+    }
+    for (auto v : g.getVertexSet()) {
+        DeliveryStation* deliveryStation = dynamic_cast<DeliveryStation*>(v->getInfo());
+        if (deliveryStation) {
+            double cityFlow = getFlowToCity(g, v);
+            flowMap[v] = cityFlow;
+        }
+    }
+}
+
+void removeWR(Graph<Station*> g, std::unordered_map<Vertex<Station*>*, double> &flowMap, Vertex<Station*> *wrVertex) {
+
+    if (!hasFlows(g)) {
+        MaxFlowAlgo(g);
+    }
+
+    std::unordered_set<Vertex<Station*>*> affectedSubset = findAffectedSubset(&g, wrVertex);
+
+    Vertex<Station*>* superSink = nullptr;
+    for (auto v : g.getVertexSet()) {
+        if (v->getInfo()->getCode() == "SuperSink") {
+            superSink = v;
+            break; // No need to continue searching once found
+        }
+    }
+
+    if (!superSink) {
+        std::cerr << "Error: super sink not found." << std::endl;
+        return;
+    }
+
+    double optimalLocal = initEdmondsKarp(&g,superSink->getInfo(), wrVertex->getInfo());
+
+    for (auto v : affectedSubset) {
+        if (flowMap.find(v) != flowMap.end()) {
+            double originalValue = flowMap[v];
+            double difference = originalValue - optimalLocal;
+            flowMap[v] = difference;
+
+            std::cout << "Vertex: " << v->getInfo()->getCode() << ", Difference: " << difference << std::endl;
+        }
+    }
+}
+
 
 
 
