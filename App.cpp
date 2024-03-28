@@ -56,13 +56,9 @@ Vertex<Station*>* findWrId (Graph<Station*> &g, const std::string &wrIdentifier,
                             std::unordered_map<std::string, WaterReservoir*> &wrNameMap);
 void showDifference(Graph<Station*> g, std::unordered_map<Vertex<Station*>*, double>& flowMap, std::unordered_map<std::string, DeliveryStation*>& codeMap);
 void restoreGraph(Graph<Station*> *g, std::unordered_map<std::string, double> initialWeights);
-<<<<<<< HEAD
 void pipelineFailure(Graph<Station*> &g, std::unordered_map<Vertex<Station*>*, double>& flowMap);
 vector<Edge<Station *>*> getAllEdges(const Graph<Station*> &g);
-
-=======
 void examinePumpingStations(Graph<Station*>& g);
->>>>>>> 88cc37284e64acefcc042a4b448469156e8fd73f
 
 int mainMenu(){
     cout << "Loading...";
