@@ -56,7 +56,7 @@ Vertex<Station*>* findWrId (Graph<Station*> &g, const std::string &wrIdentifier,
                             std::unordered_map<std::string, WaterReservoir*> &wrNameMap);
 void showDifference(Graph<Station*> g, std::unordered_map<Vertex<Station*>*, double>& flowMap, std::unordered_map<std::string, DeliveryStation*>& codeMap);
 void restoreGraph(Graph<Station*> *g, std::unordered_map<std::string, double> initialWeights);
-void examinePumpingStations(Graph<Station*>& g, std::unordered_map<std::string, DeliveryStation*>& codeMap);
+void examinePumpingStations(Graph<Station*>& g);
 
 int mainMenu(){
     cout << "Loading...";
@@ -223,7 +223,7 @@ void display4_2menu(Graph<Station*> graph,
                 showDifference(graph, flowBefore,CodeMap);
                 break;
             case '2':
-                examinePumpingStations(graph,CodeMap);
+                examinePumpingStations(graph);
                 break;
             case '3':
                 break;
@@ -779,7 +779,7 @@ void restoreGraph(Graph<Station*> *g, std::unordered_map<std::string, double> in
     }
 }
 
-void examinePumpingStations(Graph<Station*>& g, std::unordered_map<std::string, DeliveryStation*>& codeMap) {
+void examinePumpingStations(Graph<Station*>& g) {
     Vertex<Station*>* superSource = nullptr;
     Vertex<Station*>* superSink = nullptr;
 
@@ -843,7 +843,7 @@ void examinePumpingStations(Graph<Station*>& g, std::unordered_map<std::string, 
             Vertex<Station*>* stationVertex = entry.first;
             DeliveryStation* station = dynamic_cast<DeliveryStation*>(stationVertex->getInfo());
             if (station) {
-                std::string cityName = codeMap[station->getCode()]->getCity(); // Assuming DeliveryStation has a getCode() method
+                std::string cityName = station->getCity(); // Assuming DeliveryStation has a getCode() method
                 std::cout << "City Name: " << cityName << ", Water Supply Deficit: " << entry.second << std::endl;
             }
         }
