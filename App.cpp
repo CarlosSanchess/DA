@@ -579,7 +579,7 @@ void removeWR(Graph<Station*>& g, std::unordered_map<Vertex<Station*>*, double>&
         return;
     }
 
-    double optimalLocal = initEdmondsKarp(&g, wrVertex->getInfo(), superSink->getInfo());
+    initEdmondsKarp(&g, wrVertex->getInfo(), superSink->getInfo());
 
     for (auto v : affectedSubset) {
         if (flowMap.find(v) != flowMap.end()) {
@@ -588,7 +588,7 @@ void removeWR(Graph<Station*>& g, std::unordered_map<Vertex<Station*>*, double>&
             double difference = originalValue - loss;
             flowMap[v] = difference;
 
-            std::cout << "Node: " << v->getInfo()->getCode() << ", Flow Loss: " << loss;
+            std::cout << "Node: " << v->getInfo()->getCode() << ", Flow Loss: " << loss << ", Current Flow: " << flowMap[v];
 
             // Check if the vertex is a delivery station and if it meets demand after removal
             DeliveryStation* deliveryStation = dynamic_cast<DeliveryStation*>(v->getInfo());
