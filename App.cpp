@@ -387,7 +387,7 @@ void PrintMaxFlowForCities(Graph<Station*>& graph, double totalFlow) {
     int number_unfilled_cities = 0;
     // Check flow for each city
     for (auto v : graph.getVertexSet()) {
-        DeliveryStation* deliveryStation = dynamic_cast<DeliveryStation*>(v->getInfo());
+        auto* deliveryStation = dynamic_cast<DeliveryStation*>(v->getInfo());
         if (deliveryStation) {
             double cityFlow = getFlowToCity(graph, v);
 
@@ -546,13 +546,13 @@ void balanceLoad(Graph<Station*>& graph) {
 
     for(auto v:graph.getVertexSet()){
         int n=0;
-        int sumflow=0;
+        int sumFlow=0;
         for (auto e:v->getAdj()){
             n++;
-            sumflow+=e->getFlow();
+            sumFlow+=e->getFlow();
         }
         for(auto e:v->getAdj()){
-            e->setFlow(sumflow/n);
+            e->setFlow(sumFlow/n);
         }
     }
 }
@@ -667,7 +667,7 @@ void fillMap(Graph<Station*>& g, std::unordered_map<Vertex<Station*>*, double>& 
         vertex->setVisited(false);
     }
     for (auto v : g.getVertexSet()) {
-        DeliveryStation* deliveryStation = dynamic_cast<DeliveryStation*>(v->getInfo());
+        auto* deliveryStation = dynamic_cast<DeliveryStation*>(v->getInfo());
         if (deliveryStation) {
             double cityFlow = getFlowToCity(g, v);
             flowMap[v] = cityFlow;
@@ -678,7 +678,7 @@ void showDifference(Graph<Station*> g, std::unordered_map<Vertex<Station*>*, dou
     int affectedCities = 0; // Counter for affected cities
     std::vector<std::string> affectedCityCodes; // Vector to store affected city codes
     for (auto v : g.getVertexSet()) {
-        DeliveryStation* deliveryStation = dynamic_cast<DeliveryStation*>(v->getInfo());
+        auto* deliveryStation = dynamic_cast<DeliveryStation*>(v->getInfo());
         if (deliveryStation) {
             double originalValue = flowMap[v];
             double newValue = getFlowToCity(g, v);
@@ -741,11 +741,11 @@ void pipelineFailure(Graph<Station*> &g, std::unordered_map<Vertex<Station*>*, d
     fillMap(g, flowMap);
 
     vector<Edge<Station *>*> allEdges = getAllEdges(g);
-    double initalWeight;
+    double initialWeight;
 
     for(auto e : allEdges) {
 
-        initalWeight = e->getWeight();
+        initialWeight = e->getWeight();
         e->setWeight(0);
         initEdmondsKarp(&g, superSource->getInfo(), superSink->getInfo());
 
@@ -767,7 +767,7 @@ void pipelineFailure(Graph<Station*> &g, std::unordered_map<Vertex<Station*>*, d
                 }
             }
         }
-        e->setWeight(initalWeight);
+        e->setWeight(initialWeight);
     }
 }
 
@@ -832,7 +832,7 @@ void examinePumpingStations(Graph<Station*>& g) {
         std::unordered_map<Vertex<Station*>*, double> stationDifferenceMap;
         bool deficitFound = false; // Flag to indicate if any water deficit is found
         for (auto& entry : stationFlowMap) {
-            DeliveryStation* deliveryStation = dynamic_cast<DeliveryStation*>(entry.first->getInfo());
+            auto* deliveryStation = dynamic_cast<DeliveryStation*>(entry.first->getInfo());
             if (deliveryStation) {
                 // Calculate water supply deficit for the delivery station using initial and station flow maps
                 double deficit = initialFlowMap[entry.first] - entry.second;
@@ -847,7 +847,7 @@ void examinePumpingStations(Graph<Station*>& g) {
         std::cout << "Pumping Station: " << pumpingStation.first->getInfo()->getCode() << std::endl;
         for (auto& entry : stationDifferenceMap) {
             Vertex<Station*>* stationVertex = entry.first;
-            DeliveryStation* station = dynamic_cast<DeliveryStation*>(stationVertex->getInfo());
+            auto* station = dynamic_cast<DeliveryStation*>(stationVertex->getInfo());
             if (station) {
                 std::string cityName = station->getCity(); // Assuming DeliveryStation has a getCode() method
                 std::cout << "City Name: " << cityName << ", Water Supply Deficit: " << entry.second << std::endl;
