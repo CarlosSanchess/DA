@@ -78,7 +78,6 @@ int mainMenu(){
     auto WrNameMap = reader.getWrNameMap();
 
     auto EdgeWeightMap = reader.getEdgeWeightMap();
-    auto PipeWeightVector = reader.getpipeWeighVector();
 
     Graph<Station*>  graph = reader.getGraph();
 
@@ -450,7 +449,7 @@ void checkWaterSupply(Graph<Station*> g, const std::unordered_map<std::string, D
     std::vector<std::tuple<std::string, std::string, double>> citiesWithoutEnoughWater;
 
     for (auto v : g.getVertexSet()) {
-        DeliveryStation* deliveryStation = dynamic_cast<DeliveryStation*>(v->getInfo());
+        auto* deliveryStation = dynamic_cast<DeliveryStation*>(v->getInfo());
         if (deliveryStation) {
             double cityFlow = getFlowToCity(g, v);
             std::string cityName = deliveryStation->getCity();

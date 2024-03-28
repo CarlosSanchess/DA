@@ -152,7 +152,6 @@ void Reader::readAndParsePipes() {
         }else{
             graph.addBidirectionalEdge(a,b,capacity);
         }
-        pipeWeighVector.emplace_back(std::make_pair(a->getCode(), b->getCode()), capacity);
 
     }
     file.close();
