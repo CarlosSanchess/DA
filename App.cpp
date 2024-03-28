@@ -382,7 +382,7 @@ void PrintMaxFlowForCities(Graph<Station*>& graph, double totalFlow) {
     int number_full_cities = 0;
     int number_unfilled_cities = 0;
     for (auto v : graph.getVertexSet()) {
-        DeliveryStation* deliveryStation = dynamic_cast<DeliveryStation*>(v->getInfo());
+        auto* deliveryStation = dynamic_cast<DeliveryStation*>(v->getInfo());
         if (deliveryStation) {
             double cityFlow = getFlowToCity(graph, v);
 
@@ -641,7 +641,7 @@ void fillMap(Graph<Station*>& g, std::unordered_map<Vertex<Station*>*, double>& 
         vertex->setVisited(false);
     }
     for (auto v : g.getVertexSet()) {
-        DeliveryStation* deliveryStation = dynamic_cast<DeliveryStation*>(v->getInfo());
+        auto* deliveryStation = dynamic_cast<DeliveryStation*>(v->getInfo());
         if (deliveryStation) {
             double cityFlow = getFlowToCity(g, v);
             flowMap[v] = cityFlow;
@@ -652,7 +652,7 @@ void showDifference(Graph<Station*> g, std::unordered_map<Vertex<Station*>*, dou
     int affectedCities = 0;
     std::vector<std::string> affectedCityCodes;
     for (auto v : g.getVertexSet()) {
-        DeliveryStation* deliveryStation = dynamic_cast<DeliveryStation*>(v->getInfo());
+        auto* deliveryStation = dynamic_cast<DeliveryStation*>(v->getInfo());
         if (deliveryStation) {
             double originalValue = flowMap[v];
             double newValue = getFlowToCity(g, v);
@@ -712,11 +712,11 @@ void pipelineFailure(Graph<Station*> &g, std::unordered_map<Vertex<Station*>*, d
     fillMap(g, flowMap);
 
     vector<Edge<Station *>*> allEdges = getAllEdges(g);
-    double initalWeight;
+    double initialWeight;
 
     for(auto e : allEdges) {
 
-        initalWeight = e->getWeight();
+        initialWeight = e->getWeight();
         e->setWeight(0);
         initEdmondsKarp(&g, superSource->getInfo(), superSink->getInfo());
 
@@ -732,13 +732,13 @@ void pipelineFailure(Graph<Station*> &g, std::unordered_map<Vertex<Station*>*, d
                 double newFlow = getFlowToCity(g, v);
                 if( demand > newFlow) {
                     cout << "---------------------------\n";
-                    cout << "(" << e->getOrig()->getInfo()->getCode() << "," << e->getDest()->getInfo()->getCode()  << endl;
-                    cout << "We cant deliver the desired amount, when we remove Pipes:\n";
-                    cout << "City:" << deliveryStation->getCity() << ") old: " << oldFlow << " New Flow:" << newFlow << " Loss:" << oldFlow - newFlow << endl;
+                    cout << "Pipe:(" << e->getOrig()->getInfo()->getCode() << "," << e->getDest()->getInfo()->getCode() << ")" << endl;
+                    cout << "We cant deliver the desired amount, to City:" << deliveryStation->getCity() << endl;
+                    cout << "Flow Before:" << oldFlow << " Flow After:" << newFlow << " Deficit:" << oldFlow - newFlow << endl;
                 }
             }
         }
-        e->setWeight(initalWeight);
+        e->setWeight(initialWeight);
     }
 }
 
@@ -796,7 +796,7 @@ void examinePumpingStations(Graph<Station*>& g) {
         std::unordered_map<Vertex<Station*>*, double> stationDifferenceMap;
         bool deficitFound = false;
         for (auto& entry : stationFlowMap) {
-            DeliveryStation* deliveryStation = dynamic_cast<DeliveryStation*>(entry.first->getInfo());
+            auto* deliveryStation = dynamic_cast<DeliveryStation*>(entry.first->getInfo());
             if (deliveryStation) {
                 double deficit = initialFlowMap[entry.first] - entry.second;
                 stationDifferenceMap[entry.first] = deficit;
@@ -809,7 +809,7 @@ void examinePumpingStations(Graph<Station*>& g) {
         std::cout << "Pumping Station: " << pumpingStation.first->getInfo()->getCode() << std::endl;
         for (auto& entry : stationDifferenceMap) {
             Vertex<Station*>* stationVertex = entry.first;
-            DeliveryStation* station = dynamic_cast<DeliveryStation*>(stationVertex->getInfo());
+            auto* station = dynamic_cast<DeliveryStation*>(stationVertex->getInfo());
             if (station) {
                 std::string cityName = station->getCity();
                 std::cout << "City Name: " << cityName << ", Water Supply Deficit: " << entry.second << std::endl;
