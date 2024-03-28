@@ -45,7 +45,7 @@ double calculateMaxDifference(Graph<Station*>& graph);
 void balanceLoad(Graph<Station*>& graph);
 
 void fillMap(Graph<Station*>& g, std::unordered_map<Vertex<Station*>*, double>& flowMap);
-void removeWR(Graph<Station*>& g, std::unordered_map< Vertex<Station*>*, double>  &flowMap, Vertex<Station*> *wrVertex);
+double removeWR(Graph<Station*>& g, std::unordered_map<Vertex<Station*>*, double>& flowMap, Vertex<Station*>* wrVertex, bool flag);
 
 Vertex<Station*>* findWrId (Graph<Station*> &g, const std::string &wrIdentifier,
                             std::unordered_map<int, WaterReservoir*> &wrIdMap,
@@ -159,7 +159,8 @@ void display4_2menu(Graph<Station*> graph,
                     std::unordered_map<std::string, WaterReservoir*> &wrNameMap) {
     string choice;
     bool exitMenu = false;
-
+    double doubleTotal = 0.0;
+    bool flag = true;
     std::unordered_map< Vertex<Station*>*, double> flowMap;
 
     for(auto v : graph.getVertexSet()){
@@ -207,7 +208,9 @@ void display4_2menu(Graph<Station*> graph,
                     cout << "Doesnt exist in graph";
                     break;
                 }
-                removeWR(graph,flowMap,vertex);
+                doubleTotal += removeWR(graph,flowMap,vertex,flag);
+                flag = false;
+                std::cout << doubleTotal << endl;
 
                 break;
             case '2':
@@ -571,8 +574,7 @@ void fillMap(Graph<Station*>& g, std::unordered_map<Vertex<Station*>*, double>& 
     }
 }
 
-void removeWR(Graph<Station*>& g, std::unordered_map<Vertex<Station*>*, double>& flowMap, Vertex<Station*>* wrVertex) {
-    // Mark the vertex as visited to indicate removal
+double removeWR(Graph<Station*>& g, std::unordered_map<Vertex<Station*>*, double>& flowMap, Vertex<Station*>* wrVertex, bool flag) {
 
     // Use a set to track affected subset
     auto affectedSubset = findAffectedSubset(&g,wrVertex);
@@ -587,10 +589,10 @@ void removeWR(Graph<Station*>& g, std::unordered_map<Vertex<Station*>*, double>&
 
     if (!superSink) {
         std::cerr << "Error: super sink not found." << std::endl;
-        return;
+        return 0.0;
     }
 
-    initEdmondsKarp(&g, wrVertex->getInfo(), superSink->getInfo());
+    double optimalflow = initEdmondsKarpLocal(&g, wrVertex->getInfo(), superSink->getInfo(),flag);
 
     for (auto v : affectedSubset) {
         if (flowMap.find(v) != flowMap.end()) {
@@ -613,10 +615,9 @@ void removeWR(Graph<Station*>& g, std::unordered_map<Vertex<Station*>*, double>&
 
     wrVertex->getInfo()->setActive(false);
     flowMap.erase(wrVertex);
+
+    return optimalflow;
 }
-
-
-
 
 void App::run() {
     mainMenu();

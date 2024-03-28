@@ -712,20 +712,62 @@ void augmentFlowAlongPath(Vertex<T> *s, Vertex<T> *t, double f) {
         }
     }
 }
+
 template <class T>
-double initEdmondsKarp(Graph<T>* g, Station* source, Station* target) {
+double initEdmondsKarp(Graph<T> *g, Station * source, Station * target) {
+
     Vertex<T>* s = g->findVertex(source);
     Vertex<T>* t = g->findVertex(target);
 
     if (s == nullptr || t == nullptr || s == t)
         throw std::logic_error("Invalid source and/or target vertex");
 
-
-    // Mark all vertices as active initially
     for (auto v : g->getVertexSet()) {
-        //v->getInfo()->setActive(true);
-        for (auto e : v->getAdj()) {
+        for (auto e: v->getAdj()) {
             e->setFlow(0);
+        }
+    }
+    double optimalFlow = 0.0;
+    while( findAugmentingPath(g, s, t) ) {
+        double f = findMinResidualAlongPath(s, t);
+        augmentFlowAlongPath(s, t, f);
+        optimalFlow += f;
+    }
+
+    for (auto v : g->getVertexSet()) {
+        DeliveryStation* deliveryStation = dynamic_cast<DeliveryStation*>(v->getInfo());
+        if (deliveryStation) {
+            double cityFlow = getFlowToCity(*g, v);
+            if (cityFlow > deliveryStation->getDemand()) {
+                // Reduce flow to match city demand
+                double excessFlow = cityFlow - deliveryStation->getDemand();
+                // Find outgoing edges and reduce their flow proportionally
+                double reductionFactor = excessFlow / cityFlow;
+                for (auto outgoingEdge : v->getAdj()) {
+                    double edgeFlow = outgoingEdge->getFlow();
+                    double reducedFlow = edgeFlow * (1 - reductionFactor);
+                    outgoingEdge->setFlow(reducedFlow);
+                }
+            }
+        }
+    }
+    return optimalFlow;
+}
+
+template <class T>
+double initEdmondsKarpLocal(Graph<T>* g, Station* source, Station* target, bool flag) {
+    Vertex<T>* s = g->findVertex(source);
+    Vertex<T>* t = g->findVertex(target);
+
+    if (s == nullptr || t == nullptr || s == t)
+        throw std::logic_error("Invalid source and/or target vertex");
+
+    if(flag) {
+        for (auto v: g->getVertexSet()) {
+            v->getInfo()->setActive(true);
+            for (auto e: v->getAdj()) {
+                e->setFlow(0);
+            }
         }
     }
 
@@ -736,18 +778,7 @@ double initEdmondsKarp(Graph<T>* g, Station* source, Station* target) {
         augmentFlowAlongPath(s, t, f);
         optimalFlow += f;
     }
-
-    /*
-    // Reset inactive vertices
-    for (auto v : g->getVertexSet()) {
-        if (!v->getInfo()->isActive()) {
-            for (auto e : v->getAdj()) {
-                e->setFlow(0);
-            }
-        }
-    }
-     */
-
+    
     // Adjust flow to match city demand for active vertices
     for (auto v : g->getVertexSet()) {
         if (v->getInfo()->isActive()) {
