@@ -56,6 +56,9 @@ Vertex<Station*>* findWrId (Graph<Station*> &g, const std::string &wrIdentifier,
                             std::unordered_map<std::string, WaterReservoir*> &wrNameMap);
 void showDifference(Graph<Station*> g, std::unordered_map<Vertex<Station*>*, double>& flowMap, std::unordered_map<std::string, DeliveryStation*>& codeMap);
 void restoreGraph(Graph<Station*> *g, std::unordered_map<std::string, double> initialWeights);
+void pipelineFailure(Graph<Station*> &g, std::unordered_map<Vertex<Station*>*, double>& flowMap);
+vector<Edge<Station *>*> getAllEdges(const Graph<Station*> &g);
+
 
 int mainMenu(){
     cout << "Loading...";
@@ -76,6 +79,7 @@ int mainMenu(){
     auto WrNameMap = reader.getWrNameMap();
 
     auto EdgeWeightMap = reader.getEdgeWeightMap();
+    auto PipeWeightVector = reader.getpipeWeighVector();
 
     Graph<Station*>  graph = reader.getGraph();
 
@@ -224,6 +228,7 @@ void display4_2menu(Graph<Station*> graph,
             case '2':
                 break;
             case '3':
+                pipelineFailure(graph, flowBefore);
                 break;
             case 'b':
                 cout << "Returning to Main Menu...\n";
@@ -791,6 +796,64 @@ void restoreGraph(Graph<Station*> *g, std::unordered_map<std::string, double> in
         }
     }
 
+}
+
+void pipelineFailure(Graph<Station*> &g, std::unordered_map<Vertex<Station*>*, double>& flowMap){
+    std::vector<std::pair<Pipe, std::pair<std::string ,double>>> dataStructure;
+
+    Vertex<Station*>* superSource = nullptr;
+    Vertex<Station*>* superSink = nullptr;
+    findSuperSourceAndSuperSink(g,superSource, superSink);
+    fillMap(g, flowMap);
+
+    vector<Edge<Station *>*> allEdges = getAllEdges(g);
+    double initalWeight;
+
+    for(auto e : allEdges) {
+
+        initalWeight = e->getWeight();
+        if(e->getDest()->getInfo()->getCode() == "C_17"){
+            int a = 0;
+        }
+        e->setWeight(0);
+        initEdmondsKarp(&g, superSource->getInfo(), superSink->getInfo());
+
+        for(auto v : g.getVertexSet()) {
+            auto *deliveryStation = dynamic_cast<DeliveryStation *>(v->getInfo());
+
+            if(deliveryStation) {
+                double demand = deliveryStation->getDemand();
+                double oldFlow = flowMap[v];
+                if (demand > oldFlow) {
+                    continue;
+                }
+                double newFlow = getFlowToCity(g, v);
+                if( demand > newFlow) {
+                    cout << "---------------------------\n";
+                    cout << "City:" << deliveryStation->getCity() << endl;
+                    cout << "We cant deliver the desired amount, when we remove Pipes:\n";
+                    cout << "(" << e->getOrig()->getInfo()->getCode() << "," << e->getDest()->getInfo()->getCode()  << ") old: " << oldFlow << " New Flow:" << newFlow << " Loss:" << oldFlow - newFlow << endl;
+
+                }
+            }
+        }
+        e->setWeight(initalWeight);
+    }
+}
+
+vector<Edge<Station *>*> getAllEdges(const Graph<Station*>& g){
+
+    vector<Edge<Station *>*> vector;
+
+    for(auto v : g.getVertexSet()){
+        for(auto e : v->getAdj()){
+            if(!e->isSelected() && e->getOrig()->getInfo()->getId() != -1 && e->getDest()->getInfo()->getId() != -2){
+                vector.push_back(e);
+                e->setSelected(true);
+            }
+        }
+    }
+    return vector;
 }
 void App::run() {
     mainMenu();

@@ -25,6 +25,8 @@ private:
 
     std::unordered_map<std::string, double> edgeWeightMap; // New map to store edge weights
 
+    std::vector<std::pair<std::pair<std::string, std::string>, double>> pipeWeighVector;
+
 public:
     Reader();
 
@@ -78,6 +80,10 @@ public:
 
     std::unordered_map<std::string, double> getEdgeWeightMap() const {
         return edgeWeightMap;
+    }
+
+    std::vector<std::pair<std::pair<std::string, std::string>, double>> getpipeWeighVector() const{
+        return pipeWeighVector;
     }
 };
 

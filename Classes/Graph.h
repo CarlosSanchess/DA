@@ -41,6 +41,7 @@ public:
     Edge<T> * addEdge(Vertex<T> *dest, double w);
     bool removeEdge(T in);
     void removeOutgoingEdges();
+    std::pair<Edge<T>*, double> removeOutgoingEdge();
 
 
 protected:
@@ -151,6 +152,7 @@ protected:
 
 void deleteMatrix(int **m, int n);
 void deleteMatrix(double **m, int n);
+
 
 
 /************************* Vertex  **************************/
@@ -296,6 +298,23 @@ void Vertex<T>::deleteEdge(Edge<T> *edge) {
     }
     delete edge;
 }
+template <class T>
+std::pair<Edge<T>*, double> Vertex<T>::removeOutgoingEdge(){
+    Edge<T>* edge;
+    double weight;
+    for (auto it = adj.begin(); it != adj.end(); ++it) {
+        if ((*it)->getWeight() != 0) {
+            edge = *it;
+            weight = edge->getWeight();
+            edge->setWeight(0);
+            break;
+        }
+    }
+
+    return std::make_pair(edge, weight);
+}
+
+
 
 /********************** Edge  ****************************/
 
@@ -882,6 +901,7 @@ void relabel(Graph<T>& graph, T* u, T* source, T* sink, std::unordered_map<T*, d
     }
     height[u] = minHeight + 1;
 }
+
 
 template <class T>
 Graph<T>::~Graph() {
