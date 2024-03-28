@@ -720,15 +720,15 @@ double initEdmondsKarp(Graph<T>* g, Station* source, Station* target) {
     if (s == nullptr || t == nullptr || s == t)
         throw std::logic_error("Invalid source and/or target vertex");
 
-    /*
+
     // Mark all vertices as active initially
     for (auto v : g->getVertexSet()) {
-        v->getInfo()->setActive(true);
+        //v->getInfo()->setActive(true);
         for (auto e : v->getAdj()) {
             e->setFlow(0);
         }
     }
-    */
+
 
     double optimalFlow = 0.0;
     while (findAugmentingPath(g, s, t)) {
@@ -737,6 +737,7 @@ double initEdmondsKarp(Graph<T>* g, Station* source, Station* target) {
         optimalFlow += f;
     }
 
+    /*
     // Reset inactive vertices
     for (auto v : g->getVertexSet()) {
         if (!v->getInfo()->isActive()) {
@@ -745,6 +746,7 @@ double initEdmondsKarp(Graph<T>* g, Station* source, Station* target) {
             }
         }
     }
+     */
 
     // Adjust flow to match city demand for active vertices
     for (auto v : g->getVertexSet()) {

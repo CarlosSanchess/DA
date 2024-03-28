@@ -562,7 +562,6 @@ void fillMap(Graph<Station*>& g, std::unordered_map<Vertex<Station*>*, double>& 
 
 void removeWR(Graph<Station*>& g, std::unordered_map<Vertex<Station*>*, double>& flowMap, Vertex<Station*>* wrVertex) {
     // Mark the vertex as visited to indicate removal
-    wrVertex->getInfo()->setActive(false);
 
     // Use a set to track affected subset
     auto affectedSubset = findAffectedSubset(&g,wrVertex);
@@ -600,6 +599,7 @@ void removeWR(Graph<Station*>& g, std::unordered_map<Vertex<Station*>*, double>&
         }
     }
 
+    wrVertex->getInfo()->setActive(false);
     flowMap.erase(wrVertex);
 }
 
