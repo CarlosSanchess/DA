@@ -761,9 +761,9 @@ void pipelineFailure(Graph<Station*> &g, std::unordered_map<Vertex<Station*>*, d
                 double newFlow = getFlowToCity(g, v);
                 if( demand > newFlow) {
                     cout << "---------------------------\n";
-                    cout << "(" << e->getOrig()->getInfo()->getCode() << "," << e->getDest()->getInfo()->getCode()  << endl;
-                    cout << "We cant deliver the desired amount, when we remove Pipes:\n";
-                    cout << "City:" << deliveryStation->getCity() << ") old: " << oldFlow << " New Flow:" << newFlow << " Loss:" << oldFlow - newFlow << endl;
+                    cout << "Pipe:(" << e->getOrig()->getInfo()->getCode() << "," << e->getDest()->getInfo()->getCode() << ")" << endl;
+                    cout << "We cant deliver the desired amount, to City:" << deliveryStation->getCity() << endl;
+                    cout << "Flow Before:" << oldFlow << " Flow After:" << newFlow << " Deficit:" << oldFlow - newFlow << endl;
                 }
             }
         }
