@@ -15,7 +15,7 @@ void display4_2menu(Graph<Station*> graph,
                     std::unordered_map<int, WaterReservoir*> &wrIdMap,
                     std::unordered_map<std::string, WaterReservoir*> &wrCodeMap,
                     std::unordered_map<std::string, WaterReservoir*> &wrNameMap,
-                    std::unordered_map<std::string, double> initialWeights);
+                    std::unordered_map<std::string, double> initialWeights,std::unordered_map<std::string, DeliveryStation*>& CodeMap);
 
 void maxFlowSubMenu(Graph<Station*>& graph,
                     const std::unordered_map<int, DeliveryStation*>& IdMap,
@@ -54,7 +54,7 @@ Vertex<Station*>* findWrId (Graph<Station*> &g, const std::string &wrIdentifier,
                             std::unordered_map<int, WaterReservoir*> &wrIdMap,
                             std::unordered_map<std::string, WaterReservoir*> &wrCodeMap,
                             std::unordered_map<std::string, WaterReservoir*> &wrNameMap);
-void showDifference(Graph<Station*> g, std::unordered_map<Vertex<Station*>*, double>& flowMap);
+void showDifference(Graph<Station*> g, std::unordered_map<Vertex<Station*>*, double>& flowMap, std::unordered_map<std::string, DeliveryStation*>& codeMap);
 void restoreGraph(Graph<Station*> *g, std::unordered_map<std::string, double> initialWeights);
 
 int mainMenu(){
@@ -102,7 +102,7 @@ int mainMenu(){
                 display4_1menu(graph,IdMap,CodeMap,NameMap);
                 break;
             case '2':
-                display4_2menu(graph, WrIdMap, WrCodeMap, WrNameMap, EdgeWeightMap);
+                display4_2menu(graph, WrIdMap, WrCodeMap, WrNameMap, EdgeWeightMap,CodeMap);
                 break;
             case 'e':
                 cout << "Exiting menu system...\n";
@@ -163,7 +163,7 @@ void display4_2menu(Graph<Station*> graph,
                     std::unordered_map<int, WaterReservoir*> &wrIdMap,
                     std::unordered_map<std::string, WaterReservoir*> &wrCodeMap,
                     std::unordered_map<std::string, WaterReservoir*> &wrNameMap,
-                    std::unordered_map<std::string, double> initialWeights){
+                    std::unordered_map<std::string, double> initialWeights,std::unordered_map<std::string, DeliveryStation*>& CodeMap){
     string choice;
     bool exitMenu = false;
 
@@ -219,7 +219,7 @@ void display4_2menu(Graph<Station*> graph,
                 }
                 removeWR(graph,vertex);
                 initEdmondsKarp(&graph,superSource->getInfo(),superSink->getInfo());
-                showDifference(graph, flowBefore);
+                showDifference(graph, flowBefore,CodeMap);
                 break;
             case '2':
                 break;
@@ -734,21 +734,44 @@ void fillMap(Graph<Station*>& g, std::unordered_map<Vertex<Station*>*, double>& 
         }
     }
 }
-void showDifference(Graph<Station*> g, std::unordered_map<Vertex<Station*>*, double>& flowMap){
+void showDifference(Graph<Station*> g, std::unordered_map<Vertex<Station*>*, double>& flowMap, std::unordered_map<std::string, DeliveryStation*>& codeMap){
+    int affectedCities = 0; // Counter for affected cities
+    std::vector<std::string> affectedCityCodes; // Vector to store affected city codes
     for (auto v : g.getVertexSet()) {
         DeliveryStation* deliveryStation = dynamic_cast<DeliveryStation*>(v->getInfo());
         if (deliveryStation) {
             double originalValue = flowMap[v];
             double newValue = getFlowToCity(g, v);
 
-            std::cout << v->getInfo()->getCode() << endl;
-            std::cout << "Original Value:"<< originalValue << std::endl;
-            std::cout << "Loss:" << originalValue - newValue << endl;
+            DeliveryStation* station = Reader::getDeliveryStationByCode(v->getInfo()->getCode(), codeMap);
+            std::string stationName = (station != nullptr) ? station->getCity() : "Unknown";
+
+            std::cout << stationName << std::endl;
+            std::cout << "Current Flow: "<< originalValue << std::endl;
+            std::cout << "Loss after removal: " << originalValue - newValue << std::endl;
             std::cout << "\n";
             flowMap[v] = newValue;
 
+            // Check if flow is affected (difference is non-zero)
+            if (newValue != originalValue) {
+                affectedCities++; // Increment affected cities counter
+                affectedCityCodes.push_back(station->getCode()); // Store affected city code
+            }
         }
     }
+
+    // Print total affected cities
+    std::cout << "Total affected cities: " << affectedCities << std::endl;
+
+    // Print affected city codes inside parentheses
+    std::cout << "Affected city codes: (";
+    for (size_t i = 0; i < affectedCityCodes.size(); ++i) {
+        std::cout << affectedCityCodes[i];
+        if (i < affectedCityCodes.size() - 1) {
+            std::cout << ", "; // Add comma if not the last element
+        }
+    }
+    std::cout << ")" << std::endl;
 }
 void restoreGraph(Graph<Station*> *g, std::unordered_map<std::string, double> initialWeights){
     Vertex<Station*>* superSource = nullptr;
