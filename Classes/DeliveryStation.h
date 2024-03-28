@@ -11,9 +11,9 @@
  */
 class DeliveryStation : public Station {
 private:
-    std::string city; /**< The city served by the delivery station.*/
-    double demand;    /**< The demand for water in the city served by the delivery station.*/
-    int population;   /**< The population of the city served by the delivery station.*/
+    std::string city; ///< The city served by the delivery station.
+    double demand;    ///< The demand for water in the city served by the delivery station.
+    int population;   ///< The population of the city served by the delivery station.
 public:
     DeliveryStation(int id, std::string code, std::string city, double demand, int population);
 

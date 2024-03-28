@@ -9,10 +9,10 @@
 class Pipe {
 
 private:
-    std::string servicePointA; /**< The code of the first service point connected by the pipe. */
-    std::string servicePointB; /**< The code of the second service point connected by the pipe. */
-    int capacity; /**< The capacity of the pipe. */
-    bool direction; /**< The direction of flow through the pipe. */
+    std::string servicePointA; ///< The code of the first service point connected by the pipe.
+    std::string servicePointB; ///< The code of the second service point connected by the pipe.
+    int capacity; ///< The capacity of the pipe.
+    bool direction; ///< The direction of flow through the pipe.
 
 public:
     Pipe(std::string servicePointA, std::string servicePointB, int capacity, bool direction);

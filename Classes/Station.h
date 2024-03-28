@@ -8,9 +8,9 @@
  */
 class Station {
 protected:
-    int id; /**< The unique identifier of the station. */
-    std::string code; /**< The code identifying the station. */
-    bool active; /**< Indicates whether the station is active or not. */
+    int id; ///< The unique identifier of the station.
+    std::string code; ///< The code identifying the station.
+    bool active; ///< Indicates whether the station is active or not.
 
 public:
     Station(int id, std::string code);

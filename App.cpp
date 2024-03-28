@@ -794,7 +794,6 @@ void examinePumpingStations(Graph<Station*>& g) {
 
     // Store original weights of incoming edges for each pumping station
     for (auto v : g.getVertexSet()) {
-        // Skip super source and super sink
         if (v == superSource || v == superSink) {
             continue;
         }
