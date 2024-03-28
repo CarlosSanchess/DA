@@ -642,69 +642,6 @@ Vertex<Station*>* findWrId (Graph<Station*> &g, const std::string &wrIdentifier,
 
 }
 
-/*
-void fillMap(Graph<Station*>& g, std::unordered_map<Vertex<Station*>*, double>& flowMap) {
-
-    MaxFlowAlgo(g);
-
-    for(auto vertex : g.getVertexSet()){
-        vertex->setVisited(false);
-    }
-    for (auto v : g.getVertexSet()) {
-        DeliveryStation* deliveryStation = dynamic_cast<DeliveryStation*>(v->getInfo());
-        if (deliveryStation) {
-            double cityFlow = getFlowToCity(g, v);
-            flowMap[v] = cityFlow;
-        }
-    }
-}
-
-double removeWR(Graph<Station*>& g, std::unordered_map<Vertex<Station*>*, double>& flowMap, Vertex<Station*>* wrVertex, bool flag) {
-
-    // Use a set to track affected subset
-    auto affectedSubset = findAffectedSubset(&g,wrVertex);
-
-    Vertex<Station*>* superSink = nullptr;
-    for (auto v : g.getVertexSet()) {
-        if (v->getInfo()->getCode() == "SuperSink") {
-            superSink = v;
-            break; // No need to continue searching once found
-        }
-    }
-
-    if (!superSink) {
-        std::cerr << "Error: super sink not found." << std::endl;
-        return 0.0;
-    }
-
-    double optimalflow = initEdmondsKarpLocal(&g, wrVertex->getInfo(), superSink->getInfo(),flag);
-
-    for (auto v : affectedSubset) {
-        if (flowMap.find(v) != flowMap.end()) {
-            double originalValue = flowMap[v];
-            double loss = getFlowToCity(g, v);
-            double difference = originalValue - loss;
-            flowMap[v] = difference;
-
-            std::cout << "Node: " << v->getInfo()->getCode() << ", Flow Loss: " << loss << ", Current Flow: " << flowMap[v];
-
-            // Check if the vertex is a delivery station and if it meets demand after removal
-            DeliveryStation* deliveryStation = dynamic_cast<DeliveryStation*>(v->getInfo());
-            if (deliveryStation && difference < deliveryStation->getDemand()) {
-                std::cout << " (Does not meet demand)";
-            }
-
-            std::cout << std::endl;
-        }
-    }
-
-    wrVertex->getInfo()->setActive(false);
-    flowMap.erase(wrVertex);
-
-    return optimalflow;
-}
-*/
-
 void removeWR(Graph<Station*>& g, Vertex<Station*>* wrVertex){
 
     Vertex<Station*>* superSource = nullptr;
