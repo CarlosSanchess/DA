@@ -56,9 +56,13 @@ Vertex<Station*>* findWrId (Graph<Station*> &g, const std::string &wrIdentifier,
                             std::unordered_map<std::string, WaterReservoir*> &wrNameMap);
 void showDifference(Graph<Station*> g, std::unordered_map<Vertex<Station*>*, double>& flowMap, std::unordered_map<std::string, DeliveryStation*>& codeMap);
 void restoreGraph(Graph<Station*> *g, std::unordered_map<std::string, double> initialWeights);
+<<<<<<< HEAD
 void pipelineFailure(Graph<Station*> &g, std::unordered_map<Vertex<Station*>*, double>& flowMap);
 vector<Edge<Station *>*> getAllEdges(const Graph<Station*> &g);
 
+=======
+void examinePumpingStations(Graph<Station*>& g);
+>>>>>>> 88cc37284e64acefcc042a4b448469156e8fd73f
 
 int mainMenu(){
     cout << "Loading...";
@@ -226,6 +230,7 @@ void display4_2menu(Graph<Station*> graph,
                 showDifference(graph, flowBefore,CodeMap);
                 break;
             case '2':
+                examinePumpingStations(graph);
                 break;
             case '3':
                 pipelineFailure(graph, flowBefore);
@@ -454,9 +459,8 @@ void checkWaterCity(Graph<Station*> g, const std::string& cityIdentifier,
 }
 
 void checkWaterSupply(Graph<Station*> g, const std::unordered_map<std::string, DeliveryStation*>& codeMap) {
-    if (!hasFlows(g)) {
-        MaxFlowAlgo(g);
-    }
+
+    MaxFlowAlgo(g);
 
     int citiesWithEnoughWater = 0;
     std::vector<std::tuple<std::string, std::string, double>> citiesWithoutEnoughWater;
@@ -732,7 +736,6 @@ void restoreGraph(Graph<Station*> *g, std::unordered_map<std::string, double> in
             edge->setWeight(initialWeights[code]);
         }
     }
-
 }
 
 void pipelineFailure(Graph<Station*> &g, std::unordered_map<Vertex<Station*>*, double>& flowMap){
@@ -792,6 +795,95 @@ vector<Edge<Station *>*> getAllEdges(const Graph<Station*>& g){
     }
     return vector;
 }
+
+void examinePumpingStations(Graph<Station*>& g) {
+    Vertex<Station*>* superSource = nullptr;
+    Vertex<Station*>* superSink = nullptr;
+
+    findSuperSourceAndSuperSink(g, superSource, superSink);
+
+    std::unordered_map<Vertex<Station*>*, double> initialFlowMap;
+
+    // Fill initial flow map before modifying weights
+    fillMap(g, initialFlowMap);
+
+    std::unordered_map<Vertex<Station*>*, std::unordered_map<Edge<Station*>*, double>> originalWeights;
+
+    // Store original weights of incoming edges for each pumping station
+    for (auto v : g.getVertexSet()) {
+        if (v == superSource || v == superSink) {
+            continue;
+        }
+
+        if (!dynamic_cast<DeliveryStation*>(v->getInfo()) && !dynamic_cast<WaterReservoir*>(v->getInfo())) {
+            // If the vertex is not a delivery station or water reservoir, it's a pumping station
+            std::unordered_map<Edge<Station*>*, double> stationOriginalWeights;
+            for (auto edge : v->getIncoming()) {
+                stationOriginalWeights[edge] = edge->getWeight();
+            }
+            originalWeights[v] = std::move(stationOriginalWeights);
+        }
+    }
+
+    // Iterate over pumping stations
+    int pumpsWithoutDeficit = 0; // Counter for pumping stations without any water deficit
+    std::string pumpsWithoutDeficitCodes; // String to store the codes of pumping stations without deficit
+    for (auto pumpingStation : originalWeights) {
+        // Set weights of incoming edges to 0 for the pumping station
+        for (auto& entry : pumpingStation.second) {
+            entry.first->setWeight(0);
+        }
+
+        // Fill the flowMap after setting weights to 0 for the pumping station
+        std::unordered_map<Vertex<Station*>*, double> stationFlowMap;
+        fillMap(g, stationFlowMap);
+
+        // Calculate water supply deficits for delivery stations
+        std::unordered_map<Vertex<Station*>*, double> stationDifferenceMap;
+        bool deficitFound = false; // Flag to indicate if any water deficit is found
+        for (auto& entry : stationFlowMap) {
+            DeliveryStation* deliveryStation = dynamic_cast<DeliveryStation*>(entry.first->getInfo());
+            if (deliveryStation) {
+                // Calculate water supply deficit for the delivery station using initial and station flow maps
+                double deficit = initialFlowMap[entry.first] - entry.second;
+                stationDifferenceMap[entry.first] = deficit;
+                if (deficit > 0) {
+                    deficitFound = true;
+                }
+            }
+        }
+
+        // Print affected cities and their water supply deficits
+        std::cout << "Pumping Station: " << pumpingStation.first->getInfo()->getCode() << std::endl;
+        for (auto& entry : stationDifferenceMap) {
+            Vertex<Station*>* stationVertex = entry.first;
+            DeliveryStation* station = dynamic_cast<DeliveryStation*>(stationVertex->getInfo());
+            if (station) {
+                std::string cityName = station->getCity(); // Assuming DeliveryStation has a getCode() method
+                std::cout << "City Name: " << cityName << ", Water Supply Deficit: " << entry.second << std::endl;
+            }
+        }
+
+        // Restore original weights of incoming edges for the pumping station
+        for (auto& entry : pumpingStation.second) {
+            entry.first->setWeight(entry.second);
+        }
+
+        // Separate each new pumping station with a line of dashes
+        std::cout << "----------------------------------------" << std::endl;
+
+        // Increment the counter if no water deficit is found and append the code to the string
+        if (!deficitFound) {
+            pumpsWithoutDeficit++;
+            pumpsWithoutDeficitCodes += (pumpsWithoutDeficitCodes.empty() ? "" : ", ") + pumpingStation.first->getInfo()->getCode();
+        }
+    }
+
+    // Print the number of pumping stations without any water deficit and their codes
+    std::cout << "Number of pumping stations that can be removed without any water deficit: " << pumpsWithoutDeficit << " (" << pumpsWithoutDeficitCodes << ")" << std::endl;
+}
+
+
 void App::run() {
     mainMenu();
 }

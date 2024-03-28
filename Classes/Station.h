@@ -3,11 +3,15 @@
 
 #include <string>
 
+/**
+ * @brief The Station class represents a generic station in the network.
+ */
 class Station {
 protected:
-    int id;
-    std::string code;
-    bool active;
+    int id; ///< The unique identifier of the station.
+    std::string code; ///< The code identifying the station.
+    bool active; ///< Indicates whether the station is active or not.
+
 public:
     Station(int id, std::string code);
     virtual ~Station();

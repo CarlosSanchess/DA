@@ -1,5 +1,5 @@
-#ifndef READERH
-#define READERH
+#ifndef READER_H
+#define READER_H
 
 #include <iostream>
 #include <fstream>
@@ -12,18 +12,20 @@
 #include "Classes/WaterReservoir.h"
 #include "Classes/Pipe.h"
 
+/**
+ * @brief The Reader class is responsible for reading and parsing input data
+ *        to construct the graph representing the water distribution network.
+ */
 class Reader {
 private:
-    Graph<Station*> graph;
-    std::unordered_map<int, DeliveryStation*> idMap;  // Map from ID to Station
-    std::unordered_map<std::string, DeliveryStation*> codeMap;  // Map from code to Station
-    std::unordered_map<std::string, DeliveryStation*> nameMap;  // Map from name to Station
-
-    std::unordered_map<int, WaterReservoir*> wrIdMap;  // Map from ID to Water Reservoir
-    std::unordered_map<std::string, WaterReservoir*> wrCodeMap;  // Map from code to Water Reservoir
-    std::unordered_map<std::string, WaterReservoir*> wrNameMap;  // Map from name to Water Reservoir
-
-    std::unordered_map<std::string, double> edgeWeightMap; // New map to store edge weights
+    Graph<Station*> graph;  ///< The graph representing the water distribution network.
+    std::unordered_map<int, DeliveryStation*> idMap;  ///< Map from ID to DeliveryStation.
+    std::unordered_map<std::string, DeliveryStation*> codeMap;  ///< Map from code to DeliveryStation.
+    std::unordered_map<std::string, DeliveryStation*> nameMap;  ///< Map from name to DeliveryStation.
+    std::unordered_map<int, WaterReservoir*> wrIdMap;  ///< Map from ID to WaterReservoir.
+    std::unordered_map<std::string, WaterReservoir*> wrCodeMap;  ///< Map from code to WaterReservoir.
+    std::unordered_map<std::string, WaterReservoir*> wrNameMap;  ///< Map from name to WaterReservoir.
+    std::unordered_map<std::string, double> edgeWeightMap;  ///< Map to store edge weights.
 
     std::vector<std::pair<std::pair<std::string, std::string>, double>> pipeWeighVector;
 
