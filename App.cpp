@@ -160,6 +160,16 @@ void display4_2menu(Graph<Station*> graph,
     string choice;
     bool exitMenu = false;
 
+    std::unordered_map< Vertex<Station*>*, double> flowMap;
+
+    for(auto v : graph.getVertexSet()){
+        for(auto e : v->getAdj()){
+            e->setFlow(0.0);
+        }
+    }
+
+    fillMap(graph, flowMap);
+
     while (!exitMenu) {
         cout << "\n----------------------------------------------\n";
         cout << "    Reliability and Sensitivity to Failures       \n";
@@ -177,7 +187,6 @@ void display4_2menu(Graph<Station*> graph,
             choice = "0";
         }
         string wrId;
-        std::unordered_map< Vertex<Station*>*, double> flowMap;
         Vertex<Station*> * vertex = nullptr;
         switch (choice[0]) {
             case '1':
@@ -194,11 +203,10 @@ void display4_2menu(Graph<Station*> graph,
                     cout << "Doesnt exist a node with that id";
                     break;
                 }
-                if(!vertex->getInfo()->isActive()){
+                if(!vertex->getInfo()->isActive()) {
                     cout << "Doesnt exist in graph";
                     break;
                 }
-                fillMap(graph, flowMap);
                 removeWR(graph,flowMap,vertex);
 
                 break;
@@ -216,6 +224,9 @@ void display4_2menu(Graph<Station*> graph,
     }
     for(auto v : graph.getVertexSet()){
         v->getInfo()->setActive(true);
+        for(auto e : v->getAdj()){
+            e->setFlow(0.0);
+        }
     }
 }
 
@@ -545,11 +556,11 @@ Vertex<Station*>* findWrId (Graph<Station*> &g, const std::string &wrIdentifier,
 
 }
 void fillMap(Graph<Station*>& g, std::unordered_map<Vertex<Station*>*, double>& flowMap) {
-    if (!hasFlows(g)) {
-        MaxFlowAlgo(g);
-        for(auto vertex : g.getVertexSet()){
-            vertex->setVisited(false);
-        }
+
+    MaxFlowAlgo(g);
+
+    for(auto vertex : g.getVertexSet()){
+        vertex->setVisited(false);
     }
     for (auto v : g.getVertexSet()) {
         DeliveryStation* deliveryStation = dynamic_cast<DeliveryStation*>(v->getInfo());
