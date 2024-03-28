@@ -66,7 +66,6 @@ void Reader::readAndParseDS() {
         auto* DS = new DeliveryStation(id, code, city, demand, population);
         graph.addVertex(DS);
 
-        // Add to codeMap and nameMap
         codeMap[code] = DS;
         nameMap[city] = DS;
         idMap[id] = DS;
@@ -106,7 +105,6 @@ void Reader::readAndParseWR() {
 
         graph.addVertex(WR);
 
-        // Add to wrIdMap, wrCodeMap, and wrNameMap
         wrIdMap[id] = WR;
         wrCodeMap[code] = WR;
         wrNameMap[reservoirName] = WR;
@@ -166,25 +164,20 @@ void Reader::readAndParsePipes() {
  * This function creates super source and super sink vertices and connects them to appropriate vertices in the graph.
  */
 void Reader::addSuperSourceAndSink() {
-    // Create super source and super sink vertices
     Station* superSource = new Station(-1, "SuperSource");
     Station* superSink = new Station(-2, "SuperSink");
 
-    // Add super source and super sink vertices to the graph
     graph.addVertex(superSource);
     graph.addVertex(superSink);
 
-    // Connect super source to all water reservoirs
     for (auto v : graph.getVertexSet()) {
         WaterReservoir* waterReservoir = dynamic_cast<WaterReservoir*>(v->getInfo());
         if (waterReservoir) {
-            // Assuming the maximum delivery capacity is stored in m3/sec
             double capacity = waterReservoir->getMaxDelivery();
             graph.addEdge(superSource, waterReservoir, capacity);
         }
     }
 
-    // Connect super sink to all delivery stations with edge capacities equal to their demands
     for (auto v : graph.getVertexSet()) {
         DeliveryStation* deliveryStation = dynamic_cast<DeliveryStation*>(v->getInfo());
         if (deliveryStation) {
@@ -198,10 +191,8 @@ void Reader::addSuperSourceAndSink() {
             for (auto edge : vertex->getAdj()) {
                 WaterReservoir* targetReservoir = dynamic_cast<WaterReservoir*>(edge->getDest()->getInfo());
                 if (targetReservoir) {
-                    // Calculate edge weight based on the edge capacity
                     double edgeWeight = edge->getWeight();
 
-                    // Link edge weight to target reservoir code
                     edgeWeightMap[targetReservoir->getCode()] = edgeWeight;
                 }
             }

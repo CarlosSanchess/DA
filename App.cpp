@@ -44,7 +44,6 @@ void checkWaterSupply(Graph<Station*> g, const std::unordered_map<std::string, D
 
 void computeInitialMetrics(Graph<Station*>& graph);
 void showImprovedMetrics(Graph<Station*>& graph);
-double calculateMaxDifference(Graph<Station*>& graph);
 void balanceLoad(Graph<Station*>& graph);
 
 void fillMap(Graph<Station*>& g, std::unordered_map<Vertex<Station*>*, double>& flowMap);
@@ -145,7 +144,7 @@ void display4_1menu(Graph<Station*>& graph,
 
         switch (choice[0]) {
             case '1':
-                maxFlowSubMenu(graph, IdMap, CodeMap, NameMap); // pass maps to sub-menu
+                maxFlowSubMenu(graph, IdMap, CodeMap, NameMap);
                 break;
             case '2':
                 checkWaterSupply(graph,CodeMap);
@@ -336,7 +335,6 @@ void findSuperSourceAndSuperSink(Graph<Station*>& graph, Vertex<Station*>*& supe
 
 double MaxFlowAlgo(Graph<Station*>& g) {
 
-    // Find super source and super sink
     Vertex<Station*>* superSource = nullptr;
     Vertex<Station*>* superSink = nullptr;
 
@@ -347,7 +345,6 @@ double MaxFlowAlgo(Graph<Station*>& g) {
         return 0;
     }
 
-    // Run the Max Flow Algorithm on the Entire Graph
     return initEdmondsKarp(&g, superSource->getInfo(), superSink->getInfo());
 }
 
@@ -372,7 +369,6 @@ double getFlowToCity(Graph<Station*>& g, Vertex<Station*>* deliveryStation){
 }
 
 void PrintMaxFlowForCities(Graph<Station*>& graph, double totalFlow) {
-    // Output file to save results
     std::ofstream outputFile("../max_flow.txt");
     if (!outputFile.is_open()) {
         std::cerr << "Error: Unable to open output file." << std::endl;
@@ -385,7 +381,6 @@ void PrintMaxFlowForCities(Graph<Station*>& graph, double totalFlow) {
 
     int number_full_cities = 0;
     int number_unfilled_cities = 0;
-    // Check flow for each city
     for (auto v : graph.getVertexSet()) {
         DeliveryStation* deliveryStation = dynamic_cast<DeliveryStation*>(v->getInfo());
         if (deliveryStation) {
@@ -405,7 +400,6 @@ void PrintMaxFlowForCities(Graph<Station*>& graph, double totalFlow) {
     cout << "Full " << number_full_cities << endl;
     cout << "NOT FULL "<< number_unfilled_cities << endl;
 
-    // Close the output file
     outputFile.close();
     std::cout << "Results saved to ../max_flow.txt" << std::endl;
 }
@@ -414,20 +408,16 @@ void checkWaterCity(Graph<Station*> g, const std::string& cityIdentifier,
                     const std::unordered_map<int, DeliveryStation*>& idMap,
                     const std::unordered_map<std::string, DeliveryStation*>& codeMap,
                     const std::unordered_map<std::string, DeliveryStation*>& nameMap) {
-    // Find the delivery station corresponding to the input city identifier
     Vertex<Station*>* target = nullptr;
     DeliveryStation* deliveryStation = nullptr;
 
-    // Check if the city identifier is an ID
     if (isdigit(cityIdentifier[0])) {
         int id = std::stoi(cityIdentifier);
         deliveryStation = Reader::getDeliveryStationById(id, idMap);
     }
-        // Check if the city identifier is a code
     else if (codeMap.find(cityIdentifier) != codeMap.end()) {
         deliveryStation = Reader::getDeliveryStationByCode(cityIdentifier, codeMap);
     }
-        // Check if the city identifier is a name
     else if (nameMap.find(cityIdentifier) != nameMap.end()) {
         deliveryStation = Reader::getDeliveryStationByName(cityIdentifier, nameMap);
     }
@@ -532,7 +522,6 @@ void computeInitialMetrics(Graph<Station*>& graph) {
     std::cout << "Variance: " << variance << std::endl;
     std::cout << "Maximum difference: " << maxDifference << std::endl;
 
-    // Print information about the edge with maximum difference
     if (maxDiffEdge) {
         std::cout << "Edge with maximum difference:" << std::endl;
         std::cout << "From: " << maxDiffEdge->getOrig()->getInfo()->getCode() << " to "
@@ -541,22 +530,6 @@ void computeInitialMetrics(Graph<Station*>& graph) {
         std::cout << "Flow: " << maxDiffEdge->getFlow() << std::endl;
     }
 }
-
-void balanceLoad(Graph<Station*>& graph) {
-
-    for(auto v:graph.getVertexSet()){
-        int n=0;
-        int sumflow=0;
-        for (auto e:v->getAdj()){
-            n++;
-            sumflow+=e->getFlow();
-        }
-        for(auto e:v->getAdj()){
-            e->setFlow(sumflow/n);
-        }
-    }
-}
-
 
 void showImprovedMetrics(Graph<Station*>& graph) {
 
@@ -605,7 +578,6 @@ void showImprovedMetrics(Graph<Station*>& graph) {
     std::cout << "Variance: " << variance << std::endl;
     std::cout << "Maximum difference: " << maxDifference << std::endl;
 
-    // Print information about the edge with maximum difference
     if (maxDiffEdge) {
         std::cout << "Edge with maximum difference:" << std::endl;
         std::cout << "From: " << maxDiffEdge->getOrig()->getInfo()->getCode() << " to "
@@ -613,6 +585,10 @@ void showImprovedMetrics(Graph<Station*>& graph) {
         std::cout << "Capacity: " << maxDiffEdge->getWeight() << std::endl;
         std::cout << "Flow: " << maxDiffEdge->getFlow() << std::endl;
     }
+}
+
+void balanceLoad(Graph<Station*>& graph){
+
 }
 
 Vertex<Station*>* findWrId (Graph<Station*> &g, const std::string &wrIdentifier,
@@ -625,11 +601,9 @@ Vertex<Station*>* findWrId (Graph<Station*> &g, const std::string &wrIdentifier,
         int id = std::stoi(wrIdentifier);
         waterReservoir = Reader::getWaterReservoirById(id, wrIdMap);
     }
-        // Check if the waterReservoir identifier is a code
     else if (wrCodeMap.find(wrIdentifier) != wrCodeMap.end()) {
         waterReservoir = Reader::getWaterReservoirByCode(wrIdentifier, wrCodeMap);
     }
-        // Check if the waterReservoir identifier is a name
     else if (wrNameMap.find(wrIdentifier) != wrNameMap.end()) {
         waterReservoir = Reader::getWaterReservoirByName(wrIdentifier, wrNameMap);
     }
@@ -675,8 +649,8 @@ void fillMap(Graph<Station*>& g, std::unordered_map<Vertex<Station*>*, double>& 
     }
 }
 void showDifference(Graph<Station*> g, std::unordered_map<Vertex<Station*>*, double>& flowMap, std::unordered_map<std::string, DeliveryStation*>& codeMap){
-    int affectedCities = 0; // Counter for affected cities
-    std::vector<std::string> affectedCityCodes; // Vector to store affected city codes
+    int affectedCities = 0;
+    std::vector<std::string> affectedCityCodes;
     for (auto v : g.getVertexSet()) {
         DeliveryStation* deliveryStation = dynamic_cast<DeliveryStation*>(v->getInfo());
         if (deliveryStation) {
@@ -692,23 +666,20 @@ void showDifference(Graph<Station*> g, std::unordered_map<Vertex<Station*>*, dou
             std::cout << "\n";
             flowMap[v] = newValue;
 
-            // Check if flow is affected (difference is non-zero)
             if (newValue != originalValue) {
-                affectedCities++; // Increment affected cities counter
-                affectedCityCodes.push_back(station->getCode()); // Store affected city code
+                affectedCities++;
+                affectedCityCodes.push_back(station->getCode());
             }
         }
     }
 
-    // Print total affected cities
     std::cout << "Total affected cities: " << affectedCities << std::endl;
 
-    // Print affected city codes inside parentheses
     std::cout << "Affected city codes: (";
     for (size_t i = 0; i < affectedCityCodes.size(); ++i) {
         std::cout << affectedCityCodes[i];
         if (i < affectedCityCodes.size() - 1) {
-            std::cout << ", "; // Add comma if not the last element
+            std::cout << ", ";
         }
     }
     std::cout << ")" << std::endl;
@@ -794,19 +765,16 @@ void examinePumpingStations(Graph<Station*>& g) {
 
     std::unordered_map<Vertex<Station*>*, double> initialFlowMap;
 
-    // Fill initial flow map before modifying weights
     fillMap(g, initialFlowMap);
 
     std::unordered_map<Vertex<Station*>*, std::unordered_map<Edge<Station*>*, double>> originalWeights;
 
-    // Store original weights of incoming edges for each pumping station
     for (auto v : g.getVertexSet()) {
         if (v == superSource || v == superSink) {
             continue;
         }
 
         if (!dynamic_cast<DeliveryStation*>(v->getInfo()) && !dynamic_cast<WaterReservoir*>(v->getInfo())) {
-            // If the vertex is not a delivery station or water reservoir, it's a pumping station
             std::unordered_map<Edge<Station*>*, double> stationOriginalWeights;
             for (auto edge : v->getIncoming()) {
                 stationOriginalWeights[edge] = edge->getWeight();
@@ -815,26 +783,21 @@ void examinePumpingStations(Graph<Station*>& g) {
         }
     }
 
-    // Iterate over pumping stations
-    int pumpsWithoutDeficit = 0; // Counter for pumping stations without any water deficit
-    std::string pumpsWithoutDeficitCodes; // String to store the codes of pumping stations without deficit
+    int pumpsWithoutDeficit = 0;
+    std::string pumpsWithoutDeficitCodes;
     for (auto pumpingStation : originalWeights) {
-        // Set weights of incoming edges to 0 for the pumping station
         for (auto& entry : pumpingStation.second) {
             entry.first->setWeight(0);
         }
 
-        // Fill the flowMap after setting weights to 0 for the pumping station
         std::unordered_map<Vertex<Station*>*, double> stationFlowMap;
         fillMap(g, stationFlowMap);
 
-        // Calculate water supply deficits for delivery stations
         std::unordered_map<Vertex<Station*>*, double> stationDifferenceMap;
-        bool deficitFound = false; // Flag to indicate if any water deficit is found
+        bool deficitFound = false;
         for (auto& entry : stationFlowMap) {
             DeliveryStation* deliveryStation = dynamic_cast<DeliveryStation*>(entry.first->getInfo());
             if (deliveryStation) {
-                // Calculate water supply deficit for the delivery station using initial and station flow maps
                 double deficit = initialFlowMap[entry.first] - entry.second;
                 stationDifferenceMap[entry.first] = deficit;
                 if (deficit > 0) {
@@ -843,33 +806,28 @@ void examinePumpingStations(Graph<Station*>& g) {
             }
         }
 
-        // Print affected cities and their water supply deficits
         std::cout << "Pumping Station: " << pumpingStation.first->getInfo()->getCode() << std::endl;
         for (auto& entry : stationDifferenceMap) {
             Vertex<Station*>* stationVertex = entry.first;
             DeliveryStation* station = dynamic_cast<DeliveryStation*>(stationVertex->getInfo());
             if (station) {
-                std::string cityName = station->getCity(); // Assuming DeliveryStation has a getCode() method
+                std::string cityName = station->getCity();
                 std::cout << "City Name: " << cityName << ", Water Supply Deficit: " << entry.second << std::endl;
             }
         }
 
-        // Restore original weights of incoming edges for the pumping station
         for (auto& entry : pumpingStation.second) {
             entry.first->setWeight(entry.second);
         }
 
-        // Separate each new pumping station with a line of dashes
         std::cout << "----------------------------------------" << std::endl;
 
-        // Increment the counter if no water deficit is found and append the code to the string
         if (!deficitFound) {
             pumpsWithoutDeficit++;
             pumpsWithoutDeficitCodes += (pumpsWithoutDeficitCodes.empty() ? "" : ", ") + pumpingStation.first->getInfo()->getCode();
         }
     }
 
-    // Print the number of pumping stations without any water deficit and their codes
     std::cout << "Number of pumping stations that can be removed without any water deficit: " << pumpsWithoutDeficit << " (" << pumpsWithoutDeficitCodes << ")" << std::endl;
 }
 
