@@ -58,6 +58,7 @@ void restoreGraph(Graph<Station*> *g, std::unordered_map<std::string, double> in
 void pipelineFailure(Graph<Station*> &g, std::unordered_map<Vertex<Station*>*, double>& flowMap);
 vector<Edge<Station *>*> getAllEdges(const Graph<Station*> &g);
 void examinePumpingStations(Graph<Station*>& g);
+void resetGraph(Graph<Station*>& graph);
 
 int mainMenu(){
     cout << "Loading...";
@@ -237,12 +238,7 @@ void display4_2menu(Graph<Station*> graph,
                 cout << "Invalid input. Please choose a valid option.\n";
         }
     }
-    for(auto v : graph.getVertexSet()){
-        v->getInfo()->setActive(true);
-        for(auto e : v->getAdj()){
-            e->setFlow(0.0);
-        }
-    }
+    resetGraph(graph);
     restoreGraph(&graph, std::move(initialWeights));
 }
 
@@ -317,6 +313,8 @@ void loadBalancingMenu(Graph<Station*>& graph,
     showImprovedMetrics(graph);
 
     std::cout << "Load balancing completed.\n";
+
+    resetGraph(graph);
 
     display4_1menu(graph,IdMap,CodeMap,NameMap);
 }
@@ -531,59 +529,7 @@ void computeInitialMetrics(Graph<Station*>& graph) {
 }
 
 void showImprovedMetrics(Graph<Station*>& graph) {
-
-    std::cout << "Improve Metrics:" << std::endl;
-    double totalDifference = 0.0;
-    double maxDifference = std::numeric_limits<double>::min();
-    Edge<Station*>* maxDiffEdge = nullptr;
-    int pipeCount = 0;
-
-    for (auto vertex : graph.getVertexSet()) {
-        for (auto edge : vertex->getAdj()) {
-            double capacity = edge->getWeight();
-            double flow = edge->getFlow();
-
-            double difference = capacity - flow;
-            totalDifference += difference;
-
-            if (difference > maxDifference) {
-                maxDifference = difference;
-                maxDiffEdge = edge;
-            }
-
-            pipeCount++;
-
-            std::cout << "Pipe " << pipeCount << ": From " << edge->getOrig()->getInfo()->getCode()
-                      << " to " << edge->getDest()->getInfo()->getCode() << ", Flow: " << flow << std::endl;
-        }
-    }
-
-    double averageDifference = totalDifference / pipeCount;
-    double variance = 0.0;
-
-    for (auto vertex : graph.getVertexSet()) {
-        for (auto edge : vertex->getAdj()) {
-            double capacity = edge->getWeight();
-            double flow = edge->getFlow();
-            double difference = capacity - flow;
-            variance += std::pow(difference - averageDifference, 2);
-        }
-    }
-
-    variance /= pipeCount;
-
-    std::cout << "Improve Metrics:" << std::endl;
-    std::cout << "Average difference: " << averageDifference << std::endl;
-    std::cout << "Variance: " << variance << std::endl;
-    std::cout << "Maximum difference: " << maxDifference << std::endl;
-
-    if (maxDiffEdge) {
-        std::cout << "Edge with maximum difference:" << std::endl;
-        std::cout << "From: " << maxDiffEdge->getOrig()->getInfo()->getCode() << " to "
-                  << maxDiffEdge->getDest()->getInfo()->getCode() << std::endl;
-        std::cout << "Capacity: " << maxDiffEdge->getWeight() << std::endl;
-        std::cout << "Flow: " << maxDiffEdge->getFlow() << std::endl;
-    }
+    computeInitialMetrics(graph);
 }
 
 void balanceLoad(Graph<Station*>& graph){
@@ -698,6 +644,15 @@ void restoreGraph(Graph<Station*> *g, std::unordered_map<std::string, double> in
         std::string code = edge->getDest()->getInfo()->getCode();
         if (initialWeights.find(code) != initialWeights.end()){
             edge->setWeight(initialWeights[code]);
+        }
+    }
+}
+
+void resetGraph(Graph<Station*>& graph) {
+    for(auto v : graph.getVertexSet()){
+        v->getInfo()->setActive(true);
+        for(auto e : v->getAdj()){
+            e->setFlow(0.0);
         }
     }
 }
