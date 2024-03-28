@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cmath>
+#include <utility>
 #include "reader.h"
 #include "App.h"
 
@@ -13,7 +14,8 @@ void display4_1menu(Graph<Station*>& graph,
 void display4_2menu(Graph<Station*> graph,
                     std::unordered_map<int, WaterReservoir*> &wrIdMap,
                     std::unordered_map<std::string, WaterReservoir*> &wrCodeMap,
-                    std::unordered_map<std::string, WaterReservoir*> &wrNameMap);
+                    std::unordered_map<std::string, WaterReservoir*> &wrNameMap,
+                    std::unordered_map<std::string, double> initialWeights);
 
 void maxFlowSubMenu(Graph<Station*>& graph,
                     const std::unordered_map<int, DeliveryStation*>& IdMap,
@@ -53,6 +55,7 @@ Vertex<Station*>* findWrId (Graph<Station*> &g, const std::string &wrIdentifier,
                             std::unordered_map<std::string, WaterReservoir*> &wrCodeMap,
                             std::unordered_map<std::string, WaterReservoir*> &wrNameMap);
 void showDifference(Graph<Station*> g, std::unordered_map<Vertex<Station*>*, double>& flowMap);
+void restoreGraph(Graph<Station*> *g, std::unordered_map<std::string, double> initialWeights);
 
 int mainMenu(){
     cout << "Loading...";
@@ -99,7 +102,7 @@ int mainMenu(){
                 display4_1menu(graph,IdMap,CodeMap,NameMap);
                 break;
             case '2':
-                display4_2menu(graph, WrIdMap, WrCodeMap, WrNameMap);
+                display4_2menu(graph, WrIdMap, WrCodeMap, WrNameMap, EdgeWeightMap);
                 break;
             case 'e':
                 cout << "Exiting menu system...\n";
@@ -159,7 +162,8 @@ void display4_1menu(Graph<Station*>& graph,
 void display4_2menu(Graph<Station*> graph,
                     std::unordered_map<int, WaterReservoir*> &wrIdMap,
                     std::unordered_map<std::string, WaterReservoir*> &wrCodeMap,
-                    std::unordered_map<std::string, WaterReservoir*> &wrNameMap) {
+                    std::unordered_map<std::string, WaterReservoir*> &wrNameMap,
+                    std::unordered_map<std::string, double> initialWeights){
     string choice;
     bool exitMenu = false;
 
@@ -235,6 +239,7 @@ void display4_2menu(Graph<Station*> graph,
             e->setFlow(0.0);
         }
     }
+    restoreGraph(&graph, std::move(initialWeights));
 }
 
 void maxFlowSubMenu(Graph<Station*>& graph,
@@ -680,6 +685,25 @@ void showDifference(Graph<Station*> g, std::unordered_map<Vertex<Station*>*, dou
 
         }
     }
+}
+void restoreGraph(Graph<Station*> *g, std::unordered_map<std::string, double> initialWeights){
+    Vertex<Station*>* superSource = nullptr;
+    for (auto v : g->getVertexSet()) {
+        if (v->getInfo()->getCode() == "SuperSource") {
+            superSource = v;
+        }
+    }
+    if(!superSource){
+        std::cerr << "Didn't find the superSource \n";
+        return;
+    }
+    for (auto edge : superSource->getAdj()) {
+        std::string code = edge->getDest()->getInfo()->getCode();
+        if (initialWeights.find(code) != initialWeights.end()){
+            edge->setWeight(initialWeights[code]);
+        }
+    }
+
 }
 void App::run() {
     mainMenu();
