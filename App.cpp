@@ -52,7 +52,7 @@ Vertex<Station*>* findWrId (Graph<Station*> &g, const std::string &wrIdentifier,
                             std::unordered_map<int, WaterReservoir*> &wrIdMap,
                             std::unordered_map<std::string, WaterReservoir*> &wrCodeMap,
                             std::unordered_map<std::string, WaterReservoir*> &wrNameMap);
-
+void showDifference(Graph<Station*> g, std::unordered_map<Vertex<Station*>*, double>& flowMap);
 
 int mainMenu(){
     cout << "Loading...";
@@ -173,6 +173,8 @@ void display4_2menu(Graph<Station*> graph,
     Vertex<Station*>* superSink = nullptr;
 
     findSuperSourceAndSuperSink(graph,superSource,superSink);
+    std::unordered_map<Vertex<Station*>*, double> flowBefore;
+    fillMap(graph,flowBefore);
 
     while (!exitMenu) {
         cout << "\n----------------------------------------------\n";
@@ -213,7 +215,7 @@ void display4_2menu(Graph<Station*> graph,
                 }
                 removeWR(graph,vertex);
                 initEdmondsKarp(&graph,superSource->getInfo(),superSink->getInfo());
-
+                showDifference(graph, flowBefore);
                 break;
             case '2':
                 break;
@@ -638,14 +640,47 @@ void removeWR(Graph<Station*>& g, Vertex<Station*>* wrVertex){
             superSource = v;
         }
     }
-
+    if(!superSource){
+        std::cerr << "Didn't find the superSource \n";
+        return;
+    }
     for (auto edge : superSource->getAdj()) {
         if (edge->getDest() == wrVertex) {
             edge->setWeight(0);
         }
     }
 }
+void fillMap(Graph<Station*>& g, std::unordered_map<Vertex<Station*>*, double>& flowMap) {
 
+    MaxFlowAlgo(g);
+
+    for(auto vertex : g.getVertexSet()){
+        vertex->setVisited(false);
+    }
+    for (auto v : g.getVertexSet()) {
+        DeliveryStation* deliveryStation = dynamic_cast<DeliveryStation*>(v->getInfo());
+        if (deliveryStation) {
+            double cityFlow = getFlowToCity(g, v);
+            flowMap[v] = cityFlow;
+        }
+    }
+}
+void showDifference(Graph<Station*> g, std::unordered_map<Vertex<Station*>*, double>& flowMap){
+    for (auto v : g.getVertexSet()) {
+        DeliveryStation* deliveryStation = dynamic_cast<DeliveryStation*>(v->getInfo());
+        if (deliveryStation) {
+            double originalValue = flowMap[v];
+            double newValue = getFlowToCity(g, v);
+
+            std::cout << v->getInfo()->getCode() << endl;
+            std::cout << "Original Value:"<< originalValue << std::endl;
+            std::cout << "Loss:" << originalValue - newValue << endl;
+            std::cout << "\n";
+            flowMap[v] = newValue;
+
+        }
+    }
+}
 void App::run() {
     mainMenu();
 }
