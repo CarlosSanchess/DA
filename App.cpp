@@ -541,11 +541,75 @@ void computeInitialMetrics(Graph<Station*>& graph) {
 
 void balanceLoad(Graph<Station*>& graph) {
 
+    for(auto v:graph.getVertexSet()){
+        int n=0;
+        int sumflow=0;
+        for (auto e:v->getAdj()){
+            n++;
+            sumflow+=e->getFlow();
+        }
+        for(auto e:v->getAdj()){
+            e->setFlow(sumflow/n);
+        }
+    }
 }
 
 
 void showImprovedMetrics(Graph<Station*>& graph) {
-    computeInitialMetrics(graph);
+
+    std::cout << "Improve Metrics:" << std::endl;
+    double totalDifference = 0.0;
+    double maxDifference = std::numeric_limits<double>::min();
+    Edge<Station*>* maxDiffEdge = nullptr;
+    int pipeCount = 0;
+
+    for (auto vertex : graph.getVertexSet()) {
+        for (auto edge : vertex->getAdj()) {
+            double capacity = edge->getWeight();
+            double flow = edge->getFlow();
+
+            double difference = capacity - flow;
+            totalDifference += difference;
+
+            if (difference > maxDifference) {
+                maxDifference = difference;
+                maxDiffEdge = edge;
+            }
+
+            pipeCount++;
+
+            std::cout << "Pipe " << pipeCount << ": From " << edge->getOrig()->getInfo()->getCode()
+                      << " to " << edge->getDest()->getInfo()->getCode() << ", Flow: " << flow << std::endl;
+        }
+    }
+
+    double averageDifference = totalDifference / pipeCount;
+    double variance = 0.0;
+
+    for (auto vertex : graph.getVertexSet()) {
+        for (auto edge : vertex->getAdj()) {
+            double capacity = edge->getWeight();
+            double flow = edge->getFlow();
+            double difference = capacity - flow;
+            variance += std::pow(difference - averageDifference, 2);
+        }
+    }
+
+    variance /= pipeCount;
+
+    std::cout << "Improve Metrics:" << std::endl;
+    std::cout << "Average difference: " << averageDifference << std::endl;
+    std::cout << "Variance: " << variance << std::endl;
+    std::cout << "Maximum difference: " << maxDifference << std::endl;
+
+    // Print information about the edge with maximum difference
+    if (maxDiffEdge) {
+        std::cout << "Edge with maximum difference:" << std::endl;
+        std::cout << "From: " << maxDiffEdge->getOrig()->getInfo()->getCode() << " to "
+                  << maxDiffEdge->getDest()->getInfo()->getCode() << std::endl;
+        std::cout << "Capacity: " << maxDiffEdge->getWeight() << std::endl;
+        std::cout << "Flow: " << maxDiffEdge->getFlow() << std::endl;
+    }
 }
 
 Vertex<Station*>* findWrId (Graph<Station*> &g, const std::string &wrIdentifier,
