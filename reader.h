@@ -27,8 +27,6 @@ private:
     std::unordered_map<std::string, WaterReservoir*> wrNameMap;  ///< Map from name to WaterReservoir.
     std::unordered_map<std::string, double> edgeWeightMap;  ///< Map to store edge weights.
 
-    std::vector<std::pair<std::pair<std::string, std::string>, double>> pipeWeighVector;
-
 public:
     Reader();
 
@@ -82,10 +80,6 @@ public:
 
     std::unordered_map<std::string, double> getEdgeWeightMap() const {
         return edgeWeightMap;
-    }
-
-    std::vector<std::pair<std::pair<std::string, std::string>, double>> getpipeWeighVector() const{
-        return pipeWeighVector;
     }
 };
 
