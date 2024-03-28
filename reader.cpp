@@ -167,6 +167,21 @@ void Reader::addSuperSourceAndSink() {
             graph.addEdge(deliveryStation, superSink, demand);
         }
     }
+
+    for (auto vertex : graph.getVertexSet()) {
+        if (vertex->getInfo()->getCode() == "SuperSource") {
+            for (auto edge : vertex->getAdj()) {
+                WaterReservoir* targetReservoir = dynamic_cast<WaterReservoir*>(edge->getDest()->getInfo());
+                if (targetReservoir) {
+                    // Calculate edge weight based on the edge capacity
+                    double edgeWeight = edge->getWeight();
+
+                    // Link edge weight to target reservoir code
+                    edgeWeightMap[targetReservoir->getCode()] = edgeWeight;
+                }
+            }
+        }
+    }
 }
 
 Station* Reader::getNode(const std::string& servicePoint){

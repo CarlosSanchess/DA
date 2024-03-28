@@ -78,6 +78,9 @@ public:
     void setSelected(bool selected);
     void setReverse(Edge<T> *reverse);
     void setFlow(double flow);
+
+    void setWeight(double w);
+
 protected:
     Vertex<T> * dest; // destination vertex
     double weight; // edge weight, can also be used for capacity
@@ -91,6 +94,11 @@ protected:
 
     double flow; // for flow-related problems
 };
+
+template <class T>
+void Edge<T>::setWeight(double w) {
+    weight = w;
+}
 
 /********************** Graph  ****************************/
 

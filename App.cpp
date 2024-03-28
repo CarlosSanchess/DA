@@ -45,7 +45,7 @@ double calculateMaxDifference(Graph<Station*>& graph);
 void balanceLoad(Graph<Station*>& graph);
 
 void fillMap(Graph<Station*>& g, std::unordered_map<Vertex<Station*>*, double>& flowMap);
-double removeWR(Graph<Station*>& g, std::unordered_map<Vertex<Station*>*, double>& flowMap, Vertex<Station*>* wrVertex, bool flag);
+void removeWR(Graph<Station*>& g, Vertex<Station*>* wrVertex);
 
 Vertex<Station*>* findWrId (Graph<Station*> &g, const std::string &wrIdentifier,
                             std::unordered_map<int, WaterReservoir*> &wrIdMap,
@@ -70,6 +70,8 @@ int mainMenu(){
     auto WrIdMap = reader.getWrIdMap();
     auto WrCodeMap = reader.getWrCodeMap();
     auto WrNameMap = reader.getWrNameMap();
+
+    auto EdgeWeightMap = reader.getEdgeWeightMap();
 
     Graph<Station*>  graph = reader.getGraph();
 
@@ -160,16 +162,12 @@ void display4_2menu(Graph<Station*> graph,
     string choice;
     bool exitMenu = false;
     double doubleTotal = 0.0;
-    bool flag = true;
-    std::unordered_map< Vertex<Station*>*, double> flowMap;
 
     for(auto v : graph.getVertexSet()){
         for(auto e : v->getAdj()){
             e->setFlow(0.0);
         }
     }
-
-    fillMap(graph, flowMap);
 
     while (!exitMenu) {
         cout << "\n----------------------------------------------\n";
@@ -208,8 +206,7 @@ void display4_2menu(Graph<Station*> graph,
                     cout << "Doesnt exist in graph";
                     break;
                 }
-                doubleTotal += removeWR(graph,flowMap,vertex,flag);
-                flag = false;
+                removeWR(graph,vertex);
                 std::cout << doubleTotal << endl;
 
                 break;
@@ -558,6 +555,8 @@ Vertex<Station*>* findWrId (Graph<Station*> &g, const std::string &wrIdentifier,
     return wrVertex;
 
 }
+
+/*
 void fillMap(Graph<Station*>& g, std::unordered_map<Vertex<Station*>*, double>& flowMap) {
 
     MaxFlowAlgo(g);
@@ -617,6 +616,11 @@ double removeWR(Graph<Station*>& g, std::unordered_map<Vertex<Station*>*, double
     flowMap.erase(wrVertex);
 
     return optimalflow;
+}
+*/
+
+void removeWR(Graph<Station*>& g, Vertex<Station*>* wrVertex){
+
 }
 
 void App::run() {

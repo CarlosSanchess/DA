@@ -23,6 +23,8 @@ private:
     std::unordered_map<std::string, WaterReservoir*> wrCodeMap;  // Map from code to Water Reservoir
     std::unordered_map<std::string, WaterReservoir*> wrNameMap;  // Map from name to Water Reservoir
 
+    std::unordered_map<std::string, double> edgeWeightMap; // New map to store edge weights
+
 public:
     Reader();
 
@@ -72,6 +74,10 @@ public:
 
     std::unordered_map<std::string, WaterReservoir*> getWrNameMap() const {
         return wrNameMap;
+    }
+
+    std::unordered_map<std::string, double> getEdgeWeightMap() const {
+        return edgeWeightMap;
     }
 };
 
