@@ -25,6 +25,7 @@ void loadBalancingMenu(Graph<Station*>& graph,
                        const std::unordered_map<std::string, DeliveryStation*>& NameMap);
 
 
+void findSuperSourceAndSuperSink(Graph<Station*>& graph, Vertex<Station*>*& superSource, Vertex<Station*>*& superSink);
 double MaxFlowAlgo(Graph<Station*>& g);
 bool hasFlows(Graph<Station*> g);
 double getFlowToCity(Graph<Station*>& g, Vertex<Station*>* deliveryStation);
@@ -161,13 +162,17 @@ void display4_2menu(Graph<Station*> graph,
                     std::unordered_map<std::string, WaterReservoir*> &wrNameMap) {
     string choice;
     bool exitMenu = false;
-    double doubleTotal = 0.0;
 
     for(auto v : graph.getVertexSet()){
         for(auto e : v->getAdj()){
             e->setFlow(0.0);
         }
     }
+
+    Vertex<Station*>* superSource = nullptr;
+    Vertex<Station*>* superSink = nullptr;
+
+    findSuperSourceAndSuperSink(graph,superSource,superSink);
 
     while (!exitMenu) {
         cout << "\n----------------------------------------------\n";
@@ -207,7 +212,7 @@ void display4_2menu(Graph<Station*> graph,
                     break;
                 }
                 removeWR(graph,vertex);
-                std::cout << doubleTotal << endl;
+                initEdmondsKarp(&graph,superSource->getInfo(),superSink->getInfo());
 
                 break;
             case '2':
@@ -307,19 +312,24 @@ void loadBalancingMenu(Graph<Station*>& graph,
     display4_1menu(graph,IdMap,CodeMap,NameMap);
 }
 
-double MaxFlowAlgo(Graph<Station*>& g) {
-
-    // Find super source and super sink
-    Vertex<Station*>* superSource = nullptr;
-    Vertex<Station*>* superSink = nullptr;
-
-    for (auto v : g.getVertexSet()) {
+void findSuperSourceAndSuperSink(Graph<Station*>& graph, Vertex<Station*>*& superSource, Vertex<Station*>*& superSink) {
+    for (auto v : graph.getVertexSet()) {
         if (v->getInfo()->getCode() == "SuperSource") {
             superSource = v;
         } else if (v->getInfo()->getCode() == "SuperSink") {
             superSink = v;
         }
     }
+}
+
+
+double MaxFlowAlgo(Graph<Station*>& g) {
+
+    // Find super source and super sink
+    Vertex<Station*>* superSource = nullptr;
+    Vertex<Station*>* superSink = nullptr;
+
+    findSuperSourceAndSuperSink(g,superSource,superSink);
 
     if (!superSource || !superSink) {
         std::cerr << "Error: Super source or super sink not found." << std::endl;
@@ -621,6 +631,19 @@ double removeWR(Graph<Station*>& g, std::unordered_map<Vertex<Station*>*, double
 
 void removeWR(Graph<Station*>& g, Vertex<Station*>* wrVertex){
 
+    Vertex<Station*>* superSource = nullptr;
+
+    for (auto v : g.getVertexSet()) {
+        if (v->getInfo()->getCode() == "SuperSource") {
+            superSource = v;
+        }
+    }
+
+    for (auto edge : superSource->getAdj()) {
+        if (edge->getDest() == wrVertex) {
+            edge->setWeight(0);
+        }
+    }
 }
 
 void App::run() {
