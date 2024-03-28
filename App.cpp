@@ -584,10 +584,10 @@ void removeWR(Graph<Station*>& g, std::unordered_map<Vertex<Station*>*, double>&
     for (auto v : affectedSubset) {
         if (flowMap.find(v) != flowMap.end()) {
             double originalValue = flowMap[v];
-            double difference = originalValue - optimalLocal;
+            double difference = originalValue - getFlowToCity(g, v);
             flowMap[v] = difference;
 
-            std::cout << "Node: " << v->getInfo()->getCode() << ", Flow Loss: " << difference;
+            std::cout << "Node: " << v->getInfo()->getCode() << ", Flow Loss: " << getFlowToCity(g, v);
 
             // Check if the vertex is a delivery station and if it meets demand after removal
             DeliveryStation* deliveryStation = dynamic_cast<DeliveryStation*>(v->getInfo());
