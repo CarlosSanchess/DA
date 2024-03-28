@@ -307,9 +307,7 @@ void loadBalancingMenu(Graph<Station*>& graph,
     std::cout << "   Load Balancing Algorithm    \n";
     std::cout << "-----------------------------\n";
 
-    if(!hasFlows(graph)){
-        MaxFlowAlgo(graph);
-    }
+    MaxFlowAlgo(graph);
 
     std::cout << "Computing initial metrics...\n";
     computeInitialMetrics(graph);
@@ -748,9 +746,6 @@ void pipelineFailure(Graph<Station*> &g, std::unordered_map<Vertex<Station*>*, d
     for(auto e : allEdges) {
 
         initalWeight = e->getWeight();
-        if(e->getDest()->getInfo()->getCode() == "C_17"){
-            int a = 0;
-        }
         e->setWeight(0);
         initEdmondsKarp(&g, superSource->getInfo(), superSink->getInfo());
 
@@ -767,8 +762,8 @@ void pipelineFailure(Graph<Station*> &g, std::unordered_map<Vertex<Station*>*, d
                 if( demand > newFlow) {
                     cout << "---------------------------\n";
                     cout << "City:" << deliveryStation->getCity() << endl;
-                    cout << "We cant deliver the desired amount, when we remove Pipes:\n";
-                    cout << "(" << e->getOrig()->getInfo()->getCode() << "," << e->getDest()->getInfo()->getCode()  << ") old: " << oldFlow << " New Flow:" << newFlow << " Loss:" << oldFlow - newFlow << endl;
+                    cout << "We cant deliver the desired amount, when we remove Pipe:\n";
+                    cout << "(" << e->getOrig()->getInfo()->getCode() << "," << e->getDest()->getInfo()->getCode()  << ") old: " << oldFlow << " New Flow:" << newFlow << " Defficit:" << oldFlow - newFlow << endl;
 
                 }
             }
