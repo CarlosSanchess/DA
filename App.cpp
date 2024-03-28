@@ -451,9 +451,8 @@ void checkWaterCity(Graph<Station*> g, const std::string& cityIdentifier,
 }
 
 void checkWaterSupply(Graph<Station*> g, const std::unordered_map<std::string, DeliveryStation*>& codeMap) {
-    if (!hasFlows(g)) {
-        MaxFlowAlgo(g);
-    }
+
+    MaxFlowAlgo(g);
 
     int citiesWithEnoughWater = 0;
     std::vector<std::tuple<std::string, std::string, double>> citiesWithoutEnoughWater;

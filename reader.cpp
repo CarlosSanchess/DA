@@ -1,7 +1,11 @@
 #include "reader.h"
 #include "Classes/Station.h"
 
-//7,PS_7,,
+/**
+ * @brief Read and parse data from the Stations.csv file to create Station objects.
+ *
+ * This function reads data from the Stations.csv file, creates Station objects, and adds them to the graph.
+ */
 void Reader::readAndParsePS() {
     std::ifstream file("../Data/Stations.csv");
     std::string line;
@@ -29,6 +33,12 @@ void Reader::readAndParsePS() {
     file.close();
 }
 
+
+/**
+ * @brief Read and parse data from the Cities.csv file to create DeliveryStation objects.
+ *
+ * This function reads data from the Cities.csv file, creates DeliveryStation objects, and adds them to the graph.
+ */
 void Reader::readAndParseDS() {
     std::ifstream file("../Data/Cities.csv");
 
@@ -65,7 +75,11 @@ void Reader::readAndParseDS() {
     file.close();
 }
 
-
+/**
+ * @brief Read and parse data from the Reservoir.csv file to create WaterReservoir objects.
+ *
+ * This function reads data from the Reservoir.csv file, creates WaterReservoir objects, and adds them to the graph.
+ */
 void Reader::readAndParseWR() {
     std::ifstream file("../Data/Reservoir.csv");
 
@@ -100,7 +114,11 @@ void Reader::readAndParseWR() {
     file.close();
 }
 
-
+/**
+ * @brief Read and parse data from the Pipes.csv file to create edges between stations in the graph.
+ *
+ * This function reads data from the Pipes.csv file and creates edges between stations in the graph based on the data.
+ */
 void Reader::readAndParsePipes() {
     std::ifstream file("../Data/Pipes.csv");
     std::string line;
@@ -140,6 +158,11 @@ void Reader::readAndParsePipes() {
     file.close();
 }
 
+/**
+ * @brief Add super source and super sink vertices to the graph.
+ *
+ * This function creates super source and super sink vertices and connects them to appropriate vertices in the graph.
+ */
 void Reader::addSuperSourceAndSink() {
     // Create super source and super sink vertices
     Station* superSource = new Station(-1, "SuperSource");
@@ -184,6 +207,12 @@ void Reader::addSuperSourceAndSink() {
     }
 }
 
+/**
+ * @brief Get a Station object from the graph by its code.
+ *
+ * @param servicePoint The code of the Station to search for.
+ * @return A pointer to the Station object if found, nullptr otherwise.
+ */
 Station* Reader::getNode(const std::string& servicePoint){
     for(auto v: graph.getVertexSet()){
         if(v->getInfo()->getCode() == servicePoint){
@@ -193,35 +222,81 @@ Station* Reader::getNode(const std::string& servicePoint){
     return nullptr;
 }
 
+/**
+ * @brief Get a DeliveryStation object by its ID from a provided map.
+ *
+ * @param id The ID of the DeliveryStation to search for.
+ * @param idMap The map containing DeliveryStation objects keyed by their IDs.
+ * @return A pointer to the DeliveryStation object if found, nullptr otherwise.
+ */
 DeliveryStation* Reader::getDeliveryStationById(int id, const std::unordered_map<int, DeliveryStation*>& idMap) {
     auto it = idMap.find(id);
     return (it != idMap.end()) ? it->second : nullptr;
 }
 
+/**
+ * @brief Get a DeliveryStation object by its code from a provided map.
+ *
+ * @param code The code of the DeliveryStation to search for.
+ * @param codeMap The map containing DeliveryStation objects keyed by their codes.
+ * @return A pointer to the DeliveryStation object if found, nullptr otherwise.
+ */
 DeliveryStation* Reader::getDeliveryStationByCode(const std::string& code, const std::unordered_map<std::string, DeliveryStation*>& codeMap) {
     auto it = codeMap.find(code);
     return (it != codeMap.end()) ? it->second : nullptr;
 }
 
+/**
+ * @brief Get a DeliveryStation object by its name from a provided map.
+ *
+ * @param name The name of the DeliveryStation to search for.
+ * @param nameMap The map containing DeliveryStation objects keyed by their names.
+ * @return A pointer to the DeliveryStation object if found, nullptr otherwise.
+ */
 DeliveryStation* Reader::getDeliveryStationByName(const std::string& name, const std::unordered_map<std::string, DeliveryStation*>& nameMap) {
     auto it = nameMap.find(name);
     return (it != nameMap.end()) ? it->second : nullptr;
 }
 
+/**
+ * @brief Get a WaterReservoir object by its ID from a provided map.
+ *
+ * @param id The ID of the WaterReservoir to search for.
+ * @param wrIdMap The map containing WaterReservoir objects keyed by their IDs.
+ * @return A pointer to the WaterReservoir object if found, nullptr otherwise.
+ */
 WaterReservoir* Reader::getWaterReservoirById(int id, const std::unordered_map<int, WaterReservoir*>& wrIdMap) {
     auto it = wrIdMap.find(id);
     return (it != wrIdMap.end()) ? it->second : nullptr;
 }
 
+/**
+ * @brief Get a WaterReservoir object by its code from a provided map.
+ *
+ * @param code The code of the WaterReservoir to search for.
+ * @param wrCodeMap The map containing WaterReservoir objects keyed by their codes.
+ * @return A pointer to the WaterReservoir object if found, nullptr otherwise.
+ */
 WaterReservoir* Reader::getWaterReservoirByCode(const std::string& code, const std::unordered_map<std::string, WaterReservoir*>& wrCodeMap) {
     auto it = wrCodeMap.find(code);
     return (it != wrCodeMap.end()) ? it->second : nullptr;
 }
 
+/**
+ * @brief Get a WaterReservoir object by its name from a provided map.
+ *
+ * @param name The name of the WaterReservoir to search for.
+ * @param wrNameMap The map containing WaterReservoir objects keyed by their names.
+ * @return A pointer to the WaterReservoir object if found, nullptr otherwise.
+ */
 WaterReservoir* Reader::getWaterReservoirByName(const std::string& name, const std::unordered_map<std::string, WaterReservoir*>& wrNameMap) {
     auto it = wrNameMap.find(name);
     return (it != wrNameMap.end()) ? it->second : nullptr;
 }
 
-
+/**
+ * @brief Constructor for the Reader class.
+ *
+ * Initializes a new Reader object.
+ */
 Reader::Reader() = default;
