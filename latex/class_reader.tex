@@ -1,0 +1,280 @@
+\doxysection{Reader Class Reference}
+\hypertarget{class_reader}{}\label{class_reader}\index{Reader@{Reader}}
+
+
+The \doxylink{class_reader}{Reader} class is responsible for reading and parsing input data to construct the graph representing the water distribution network.  
+
+
+
+
+{\ttfamily \#include $<$reader.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_reader_adcda31b507720ab44044d7a21686fba2}{Reader}} ()
+\begin{DoxyCompactList}\small\item\em Constructor for the \doxylink{class_reader}{Reader} class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_reader_a8ea2170703a7d287304c7ce377582c1d}{read\+And\+Parse\+DS}} ()
+\begin{DoxyCompactList}\small\item\em Read and parse data from the Cities.\+csv file to create Delivery\+Station objects. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_reader_aea65c08e58cefe199f7606618bcec760}{read\+And\+Parse\+PS}} ()
+\begin{DoxyCompactList}\small\item\em Read and parse data from the Stations.\+csv file to create Station objects. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_reader_a3ded9037af5cd4f1ddd93dd9def33136}{read\+And\+Parse\+WR}} ()
+\begin{DoxyCompactList}\small\item\em Read and parse data from the Reservoir.\+csv file to create Water\+Reservoir objects. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_reader_a062a23609c3ab7c7621fd91695a874f1}{read\+And\+Parse\+Pipes}} ()
+\begin{DoxyCompactList}\small\item\em Read and parse data from the Pipes.\+csv file to create edges between stations in the graph. \end{DoxyCompactList}\item 
+Station \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_reader_a8103e6785f4a6559168e68e654e57e09}{get\+Node}} (const std\+::string \&service\+Point)
+\begin{DoxyCompactList}\small\item\em Get a Station object from the graph by its code. \end{DoxyCompactList}\item 
+\Hypertarget{class_reader_a196aad3ea561494a4f1dea15788746c3}\label{class_reader_a196aad3ea561494a4f1dea15788746c3} 
+Graph$<$ Station \texorpdfstring{$\ast$}{*} $>$ {\bfseries get\+Graph} ()
+\item 
+void \mbox{\hyperlink{class_reader_a9761753099737dd67cdf7fe165e43e77}{add\+Super\+Source\+And\+Sink}} ()
+\begin{DoxyCompactList}\small\item\em Add super source and super sink vertices to the graph. \end{DoxyCompactList}\item 
+\Hypertarget{class_reader_a63c9b45ff5f3fbfec1dde81056ba76c6}\label{class_reader_a63c9b45ff5f3fbfec1dde81056ba76c6} 
+std\+::unordered\+\_\+map$<$ std\+::string, Delivery\+Station \texorpdfstring{$\ast$}{*} $>$ {\bfseries get\+Code\+Map} () const
+\item 
+\Hypertarget{class_reader_a832ff6fba4253cd6a302bf877fb50f3c}\label{class_reader_a832ff6fba4253cd6a302bf877fb50f3c} 
+std\+::unordered\+\_\+map$<$ std\+::string, Delivery\+Station \texorpdfstring{$\ast$}{*} $>$ {\bfseries get\+Name\+Map} () const
+\item 
+\Hypertarget{class_reader_a980452ebd91ba77de6e27f503d324da3}\label{class_reader_a980452ebd91ba77de6e27f503d324da3} 
+std\+::unordered\+\_\+map$<$ int, Delivery\+Station \texorpdfstring{$\ast$}{*} $>$ {\bfseries get\+Id\+Map} () const
+\item 
+\Hypertarget{class_reader_afeb31671cf0a2ec7e4acc4c794e88c1e}\label{class_reader_afeb31671cf0a2ec7e4acc4c794e88c1e} 
+std\+::unordered\+\_\+map$<$ int, Water\+Reservoir \texorpdfstring{$\ast$}{*} $>$ {\bfseries get\+Wr\+Id\+Map} () const
+\item 
+\Hypertarget{class_reader_abc2ad850cbbb43b67b3ade8d10bfb317}\label{class_reader_abc2ad850cbbb43b67b3ade8d10bfb317} 
+std\+::unordered\+\_\+map$<$ std\+::string, Water\+Reservoir \texorpdfstring{$\ast$}{*} $>$ {\bfseries get\+Wr\+Code\+Map} () const
+\item 
+\Hypertarget{class_reader_aaef619f9bb955f763eccc5a074baa960}\label{class_reader_aaef619f9bb955f763eccc5a074baa960} 
+std\+::unordered\+\_\+map$<$ std\+::string, Water\+Reservoir \texorpdfstring{$\ast$}{*} $>$ {\bfseries get\+Wr\+Name\+Map} () const
+\item 
+\Hypertarget{class_reader_a5757f2baa7d2cc2126bb6edaa31b16ce}\label{class_reader_a5757f2baa7d2cc2126bb6edaa31b16ce} 
+std\+::unordered\+\_\+map$<$ std\+::string, double $>$ {\bfseries get\+Edge\+Weight\+Map} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static Delivery\+Station \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_reader_a5563ced17e31832a4de74fad6c4f2132}{get\+Delivery\+Station\+By\+Id}} (int id, const std\+::unordered\+\_\+map$<$ int, Delivery\+Station \texorpdfstring{$\ast$}{*} $>$ \&id\+Map)
+\begin{DoxyCompactList}\small\item\em Get a Delivery\+Station object by its ID from a provided map. \end{DoxyCompactList}\item 
+static Delivery\+Station \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_reader_ae206ad9ae2244b675e88c7a6be9a6619}{get\+Delivery\+Station\+By\+Code}} (const std\+::string \&code, const std\+::unordered\+\_\+map$<$ std\+::string, Delivery\+Station \texorpdfstring{$\ast$}{*} $>$ \&code\+Map)
+\begin{DoxyCompactList}\small\item\em Get a Delivery\+Station object by its code from a provided map. \end{DoxyCompactList}\item 
+static Delivery\+Station \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_reader_a5a153aa1db3ef4c91a878860dc6691b2}{get\+Delivery\+Station\+By\+Name}} (const std\+::string \&name, const std\+::unordered\+\_\+map$<$ std\+::string, Delivery\+Station \texorpdfstring{$\ast$}{*} $>$ \&name\+Map)
+\begin{DoxyCompactList}\small\item\em Get a Delivery\+Station object by its name from a provided map. \end{DoxyCompactList}\item 
+static Water\+Reservoir \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_reader_a4823dedc71583d417928ebdcf34617f8}{get\+Water\+Reservoir\+By\+Id}} (int id, const std\+::unordered\+\_\+map$<$ int, Water\+Reservoir \texorpdfstring{$\ast$}{*} $>$ \&wr\+Id\+Map)
+\begin{DoxyCompactList}\small\item\em Get a Water\+Reservoir object by its ID from a provided map. \end{DoxyCompactList}\item 
+static Water\+Reservoir \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_reader_aa0419f037db5530dd29d157d1633ac55}{get\+Water\+Reservoir\+By\+Code}} (const std\+::string \&code, const std\+::unordered\+\_\+map$<$ std\+::string, Water\+Reservoir \texorpdfstring{$\ast$}{*} $>$ \&wr\+Code\+Map)
+\begin{DoxyCompactList}\small\item\em Get a Water\+Reservoir object by its code from a provided map. \end{DoxyCompactList}\item 
+static Water\+Reservoir \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_reader_ab8ccdfabd8cf7cd2200064d8f64ad7f9}{get\+Water\+Reservoir\+By\+Name}} (const std\+::string \&name, const std\+::unordered\+\_\+map$<$ std\+::string, Water\+Reservoir \texorpdfstring{$\ast$}{*} $>$ \&wr\+Name\+Map)
+\begin{DoxyCompactList}\small\item\em Get a Water\+Reservoir object by its name from a provided map. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \doxylink{class_reader}{Reader} class is responsible for reading and parsing input data to construct the graph representing the water distribution network. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_reader_adcda31b507720ab44044d7a21686fba2}\label{class_reader_adcda31b507720ab44044d7a21686fba2} 
+\index{Reader@{Reader}!Reader@{Reader}}
+\index{Reader@{Reader}!Reader@{Reader}}
+\doxysubsubsection{\texorpdfstring{Reader()}{Reader()}}
+{\footnotesize\ttfamily Reader\+::\+Reader (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+Constructor for the \doxylink{class_reader}{Reader} class. 
+
+Initializes a new \doxylink{class_reader}{Reader} object. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_reader_a9761753099737dd67cdf7fe165e43e77}\label{class_reader_a9761753099737dd67cdf7fe165e43e77} 
+\index{Reader@{Reader}!addSuperSourceAndSink@{addSuperSourceAndSink}}
+\index{addSuperSourceAndSink@{addSuperSourceAndSink}!Reader@{Reader}}
+\doxysubsubsection{\texorpdfstring{addSuperSourceAndSink()}{addSuperSourceAndSink()}}
+{\footnotesize\ttfamily void Reader\+::add\+Super\+Source\+And\+Sink (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Add super source and super sink vertices to the graph. 
+
+This function creates super source and super sink vertices and connects them to appropriate vertices in the graph. \Hypertarget{class_reader_ae206ad9ae2244b675e88c7a6be9a6619}\label{class_reader_ae206ad9ae2244b675e88c7a6be9a6619} 
+\index{Reader@{Reader}!getDeliveryStationByCode@{getDeliveryStationByCode}}
+\index{getDeliveryStationByCode@{getDeliveryStationByCode}!Reader@{Reader}}
+\doxysubsubsection{\texorpdfstring{getDeliveryStationByCode()}{getDeliveryStationByCode()}}
+{\footnotesize\ttfamily Delivery\+Station \texorpdfstring{$\ast$}{*} Reader\+::get\+Delivery\+Station\+By\+Code (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{code,  }\item[{const std\+::unordered\+\_\+map$<$ std\+::string, Delivery\+Station \texorpdfstring{$\ast$}{*} $>$ \&}]{code\+Map }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get a Delivery\+Station object by its code from a provided map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em code} & The code of the Delivery\+Station to search for. \\
+\hline
+{\em code\+Map} & The map containing Delivery\+Station objects keyed by their codes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the Delivery\+Station object if found, nullptr otherwise. 
+\end{DoxyReturn}
+\Hypertarget{class_reader_a5563ced17e31832a4de74fad6c4f2132}\label{class_reader_a5563ced17e31832a4de74fad6c4f2132} 
+\index{Reader@{Reader}!getDeliveryStationById@{getDeliveryStationById}}
+\index{getDeliveryStationById@{getDeliveryStationById}!Reader@{Reader}}
+\doxysubsubsection{\texorpdfstring{getDeliveryStationById()}{getDeliveryStationById()}}
+{\footnotesize\ttfamily Delivery\+Station \texorpdfstring{$\ast$}{*} Reader\+::get\+Delivery\+Station\+By\+Id (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{const std\+::unordered\+\_\+map$<$ int, Delivery\+Station \texorpdfstring{$\ast$}{*} $>$ \&}]{id\+Map }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get a Delivery\+Station object by its ID from a provided map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The ID of the Delivery\+Station to search for. \\
+\hline
+{\em id\+Map} & The map containing Delivery\+Station objects keyed by their IDs. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the Delivery\+Station object if found, nullptr otherwise. 
+\end{DoxyReturn}
+\Hypertarget{class_reader_a5a153aa1db3ef4c91a878860dc6691b2}\label{class_reader_a5a153aa1db3ef4c91a878860dc6691b2} 
+\index{Reader@{Reader}!getDeliveryStationByName@{getDeliveryStationByName}}
+\index{getDeliveryStationByName@{getDeliveryStationByName}!Reader@{Reader}}
+\doxysubsubsection{\texorpdfstring{getDeliveryStationByName()}{getDeliveryStationByName()}}
+{\footnotesize\ttfamily Delivery\+Station \texorpdfstring{$\ast$}{*} Reader\+::get\+Delivery\+Station\+By\+Name (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{const std\+::unordered\+\_\+map$<$ std\+::string, Delivery\+Station \texorpdfstring{$\ast$}{*} $>$ \&}]{name\+Map }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get a Delivery\+Station object by its name from a provided map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the Delivery\+Station to search for. \\
+\hline
+{\em name\+Map} & The map containing Delivery\+Station objects keyed by their names. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the Delivery\+Station object if found, nullptr otherwise. 
+\end{DoxyReturn}
+\Hypertarget{class_reader_a8103e6785f4a6559168e68e654e57e09}\label{class_reader_a8103e6785f4a6559168e68e654e57e09} 
+\index{Reader@{Reader}!getNode@{getNode}}
+\index{getNode@{getNode}!Reader@{Reader}}
+\doxysubsubsection{\texorpdfstring{getNode()}{getNode()}}
+{\footnotesize\ttfamily Station \texorpdfstring{$\ast$}{*} Reader\+::get\+Node (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{service\+Point }\end{DoxyParamCaption})}
+
+
+
+Get a Station object from the graph by its code. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em service\+Point} & The code of the Station to search for. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the Station object if found, nullptr otherwise. 
+\end{DoxyReturn}
+\Hypertarget{class_reader_aa0419f037db5530dd29d157d1633ac55}\label{class_reader_aa0419f037db5530dd29d157d1633ac55} 
+\index{Reader@{Reader}!getWaterReservoirByCode@{getWaterReservoirByCode}}
+\index{getWaterReservoirByCode@{getWaterReservoirByCode}!Reader@{Reader}}
+\doxysubsubsection{\texorpdfstring{getWaterReservoirByCode()}{getWaterReservoirByCode()}}
+{\footnotesize\ttfamily Water\+Reservoir \texorpdfstring{$\ast$}{*} Reader\+::get\+Water\+Reservoir\+By\+Code (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{code,  }\item[{const std\+::unordered\+\_\+map$<$ std\+::string, Water\+Reservoir \texorpdfstring{$\ast$}{*} $>$ \&}]{wr\+Code\+Map }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get a Water\+Reservoir object by its code from a provided map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em code} & The code of the Water\+Reservoir to search for. \\
+\hline
+{\em wr\+Code\+Map} & The map containing Water\+Reservoir objects keyed by their codes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the Water\+Reservoir object if found, nullptr otherwise. 
+\end{DoxyReturn}
+\Hypertarget{class_reader_a4823dedc71583d417928ebdcf34617f8}\label{class_reader_a4823dedc71583d417928ebdcf34617f8} 
+\index{Reader@{Reader}!getWaterReservoirById@{getWaterReservoirById}}
+\index{getWaterReservoirById@{getWaterReservoirById}!Reader@{Reader}}
+\doxysubsubsection{\texorpdfstring{getWaterReservoirById()}{getWaterReservoirById()}}
+{\footnotesize\ttfamily Water\+Reservoir \texorpdfstring{$\ast$}{*} Reader\+::get\+Water\+Reservoir\+By\+Id (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{const std\+::unordered\+\_\+map$<$ int, Water\+Reservoir \texorpdfstring{$\ast$}{*} $>$ \&}]{wr\+Id\+Map }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get a Water\+Reservoir object by its ID from a provided map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The ID of the Water\+Reservoir to search for. \\
+\hline
+{\em wr\+Id\+Map} & The map containing Water\+Reservoir objects keyed by their IDs. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the Water\+Reservoir object if found, nullptr otherwise. 
+\end{DoxyReturn}
+\Hypertarget{class_reader_ab8ccdfabd8cf7cd2200064d8f64ad7f9}\label{class_reader_ab8ccdfabd8cf7cd2200064d8f64ad7f9} 
+\index{Reader@{Reader}!getWaterReservoirByName@{getWaterReservoirByName}}
+\index{getWaterReservoirByName@{getWaterReservoirByName}!Reader@{Reader}}
+\doxysubsubsection{\texorpdfstring{getWaterReservoirByName()}{getWaterReservoirByName()}}
+{\footnotesize\ttfamily Water\+Reservoir \texorpdfstring{$\ast$}{*} Reader\+::get\+Water\+Reservoir\+By\+Name (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{const std\+::unordered\+\_\+map$<$ std\+::string, Water\+Reservoir \texorpdfstring{$\ast$}{*} $>$ \&}]{wr\+Name\+Map }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get a Water\+Reservoir object by its name from a provided map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the Water\+Reservoir to search for. \\
+\hline
+{\em wr\+Name\+Map} & The map containing Water\+Reservoir objects keyed by their names. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the Water\+Reservoir object if found, nullptr otherwise. 
+\end{DoxyReturn}
+\Hypertarget{class_reader_a8ea2170703a7d287304c7ce377582c1d}\label{class_reader_a8ea2170703a7d287304c7ce377582c1d} 
+\index{Reader@{Reader}!readAndParseDS@{readAndParseDS}}
+\index{readAndParseDS@{readAndParseDS}!Reader@{Reader}}
+\doxysubsubsection{\texorpdfstring{readAndParseDS()}{readAndParseDS()}}
+{\footnotesize\ttfamily void Reader\+::read\+And\+Parse\+DS (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Read and parse data from the Cities.\+csv file to create Delivery\+Station objects. 
+
+This function reads data from the Cities.\+csv file, creates Delivery\+Station objects, and adds them to the graph. \Hypertarget{class_reader_a062a23609c3ab7c7621fd91695a874f1}\label{class_reader_a062a23609c3ab7c7621fd91695a874f1} 
+\index{Reader@{Reader}!readAndParsePipes@{readAndParsePipes}}
+\index{readAndParsePipes@{readAndParsePipes}!Reader@{Reader}}
+\doxysubsubsection{\texorpdfstring{readAndParsePipes()}{readAndParsePipes()}}
+{\footnotesize\ttfamily void Reader\+::read\+And\+Parse\+Pipes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Read and parse data from the Pipes.\+csv file to create edges between stations in the graph. 
+
+This function reads data from the Pipes.\+csv file and creates edges between stations in the graph based on the data. \Hypertarget{class_reader_aea65c08e58cefe199f7606618bcec760}\label{class_reader_aea65c08e58cefe199f7606618bcec760} 
+\index{Reader@{Reader}!readAndParsePS@{readAndParsePS}}
+\index{readAndParsePS@{readAndParsePS}!Reader@{Reader}}
+\doxysubsubsection{\texorpdfstring{readAndParsePS()}{readAndParsePS()}}
+{\footnotesize\ttfamily void Reader\+::read\+And\+Parse\+PS (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Read and parse data from the Stations.\+csv file to create Station objects. 
+
+This function reads data from the Stations.\+csv file, creates Station objects, and adds them to the graph. \Hypertarget{class_reader_a3ded9037af5cd4f1ddd93dd9def33136}\label{class_reader_a3ded9037af5cd4f1ddd93dd9def33136} 
+\index{Reader@{Reader}!readAndParseWR@{readAndParseWR}}
+\index{readAndParseWR@{readAndParseWR}!Reader@{Reader}}
+\doxysubsubsection{\texorpdfstring{readAndParseWR()}{readAndParseWR()}}
+{\footnotesize\ttfamily void Reader\+::read\+And\+Parse\+WR (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Read and parse data from the Reservoir.\+csv file to create Water\+Reservoir objects. 
+
+This function reads data from the Reservoir.\+csv file, creates Water\+Reservoir objects, and adds them to the graph. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+reader.\+h\item 
+reader.\+cpp\end{DoxyCompactItemize}
