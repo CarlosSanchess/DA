@@ -662,7 +662,7 @@ void showDifference(Graph<Station*> g, std::unordered_map<Vertex<Station*>*, dou
 
             if (newValue < originalValue) { // Check for deficit
                 DeliveryStation* station = Reader::getDeliveryStationByCode(v->getInfo()->getCode(), codeMap);
-                std::string stationName = (station != nullptr) ? station->getCity() : "Unknown";
+                std::string stationName = (station != nullptr) ? (station->getCity() + " (" + station->getCode() + ")") : "Unknown";
 
                 std::cout << stationName << std::endl;
                 std::cout << "Old Flow: "<< originalValue << std::endl;
