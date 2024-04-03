@@ -203,27 +203,32 @@ void display4_2menu(Graph<Station*> graph,
         Vertex<Station*> * vertex = nullptr;
         switch (choice[0]) {
             case '1':
-                cout << "Enter the Water Reservoir identifier (wrId,wrCode or wrName) ('b' to go back): ";
-                cin >> wrId;
+            {
+                string wrId;
+                cout << "Enter the Water Reservoir identifier (wrId, wrCode, or wrName) ('b' to go back): ";
+                cin.ignore();
+                getline(cin, wrId);
                 if (wrId == "b") {
                     exitMenu = true;
                     break;
                 }
 
-                vertex = findWrId(graph,wrId,wrIdMap,wrCodeMap,wrNameMap);
-                if(!vertex)
+                vertex = findWrId(graph, wrId, wrIdMap, wrCodeMap, wrNameMap);
+                if (!vertex)
                 {
-                    cout << "Doesnt exist a node with that id";
+                    cout << "Doesn't exist a node with that id";
                     break;
                 }
-                if(!vertex->getInfo()->isActive()) {
-                    cout << "Doesnt exist in graph";
+                if (!vertex->getInfo()->isActive()) {
+                    cout << "Doesn't exist in graph";
                     break;
                 }
-                removeWR(graph,vertex);
-                initEdmondsKarp(&graph,superSource->getInfo(),superSink->getInfo());
-                showDifference(graph, flowBefore,CodeMap);
+                removeWR(graph, vertex);
+                initEdmondsKarp(&graph, superSource->getInfo(), superSink->getInfo());
+                showDifference(graph, flowBefore, CodeMap);
                 break;
+            }
+
             case '2':
                 examinePumpingStations(graph);
                 break;
@@ -274,15 +279,17 @@ void maxFlowSubMenu(Graph<Station*>& graph,
             case '2':
             {
                 string cityCode;
-                cout << "Enter the city identifier (Id,Code or name) ('b' to go back): ";
-                cin >> cityCode;
+                cout << "Enter the city identifier (Id, Code, or name) ('b' to go back): ";
+                cin.ignore();
+                getline(cin, cityCode);
                 if (cityCode == "b") {
                     exitMenu = true;
                     break;
                 }
-                checkWaterCity(graph, cityCode,IdMap,CodeMap,NameMap);
+                checkWaterCity(graph, cityCode, IdMap, CodeMap, NameMap);
                 break;
             }
+
             case 'b':
                 cout << "Returning to Previous Menu...\n";
                 exitMenu = true;
