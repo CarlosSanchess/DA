@@ -225,9 +225,11 @@ void display4_2menu(Graph<Station*> graph,
                 showDifference(graph, flowBefore,CodeMap);
                 break;
             case '2':
+                resetGraph(graph);
                 examinePumpingStations(graph);
                 break;
             case '3':
+                resetGraph(graph);
                 pipelineFailure(graph, flowBefore);
                 break;
             case 'b':
@@ -651,22 +653,24 @@ void fillMap(Graph<Station*>& g, std::unordered_map<Vertex<Station*>*, double>& 
 void showDifference(Graph<Station*> g, std::unordered_map<Vertex<Station*>*, double>& flowMap, std::unordered_map<std::string, DeliveryStation*>& codeMap){
     int affectedCities = 0;
     std::vector<std::string> affectedCityCodes;
+
     for (auto v : g.getVertexSet()) {
         auto* deliveryStation = dynamic_cast<DeliveryStation*>(v->getInfo());
         if (deliveryStation) {
             double originalValue = flowMap[v];
             double newValue = getFlowToCity(g, v);
 
-            DeliveryStation* station = Reader::getDeliveryStationByCode(v->getInfo()->getCode(), codeMap);
-            std::string stationName = (station != nullptr) ? station->getCity() : "Unknown";
+            if (newValue < originalValue) { // Check for deficit
+                DeliveryStation* station = Reader::getDeliveryStationByCode(v->getInfo()->getCode(), codeMap);
+                std::string stationName = (station != nullptr) ? station->getCity() : "Unknown";
 
-            std::cout << stationName << std::endl;
-            std::cout << "Current Flow: "<< originalValue << std::endl;
-            std::cout << "Loss after removal: " << originalValue - newValue << std::endl;
-            std::cout << "\n";
-            flowMap[v] = newValue;
+                std::cout << stationName << std::endl;
+                std::cout << "Old Flow: "<< originalValue << std::endl;
+                std::cout << "New Flow: " << newValue << std::endl;
+                std::cout << "Deficit: " << originalValue - newValue << std::endl;
+                std::cout << "\n";
+                flowMap[v] = newValue;
 
-            if (newValue != originalValue) {
                 affectedCities++;
                 affectedCityCodes.push_back(station->getCode());
             }
@@ -684,6 +688,7 @@ void showDifference(Graph<Station*> g, std::unordered_map<Vertex<Station*>*, dou
     }
     std::cout << ")" << std::endl;
 }
+
 void restoreGraph(Graph<Station*> *g, std::unordered_map<std::string, double> initialWeights){
     Vertex<Station*>* superSource = nullptr;
     for (auto v : g->getVertexSet()) {
@@ -808,28 +813,30 @@ void examinePumpingStations(Graph<Station*>& g) {
             auto* deliveryStation = dynamic_cast<DeliveryStation*>(entry.first->getInfo());
             if (deliveryStation) {
                 double deficit = initialFlowMap[entry.first] - entry.second;
-                stationDifferenceMap[entry.first] = deficit;
                 if (deficit > 0) {
                     deficitFound = true;
+                    stationDifferenceMap[entry.first] = deficit;
                 }
             }
         }
 
-        std::cout << "Pumping Station: " << pumpingStation.first->getInfo()->getCode() << std::endl;
-        for (auto& entry : stationDifferenceMap) {
-            Vertex<Station*>* stationVertex = entry.first;
-            auto* station = dynamic_cast<DeliveryStation*>(stationVertex->getInfo());
-            if (station) {
-                std::string cityName = station->getCity();
-                std::cout << "City Name: " << cityName << ", Water Supply Deficit: " << entry.second << std::endl;
+        if (deficitFound) {
+            std::cout << "Pumping Station: " << pumpingStation.first->getInfo()->getCode() << std::endl;
+            for (auto& entry : stationDifferenceMap) {
+                Vertex<Station*>* stationVertex = entry.first;
+                auto* station = dynamic_cast<DeliveryStation*>(stationVertex->getInfo());
+                if (station) {
+                    std::string cityName = station->getCity();
+                    std::cout << "City Name: " << cityName << " (" << station->getCode() << "), Water Supply Deficit: " << entry.second << std::endl;
+                    std::cout << "Old Flow: " << initialFlowMap[entry.first] << ", New Flow: " << stationFlowMap[entry.first] << std::endl;
+                }
             }
+            std::cout << "----------------------------------------" << std::endl;
         }
 
         for (auto& entry : pumpingStation.second) {
             entry.first->setWeight(entry.second);
         }
-
-        std::cout << "----------------------------------------" << std::endl;
 
         if (!deficitFound) {
             pumpsWithoutDeficit++;

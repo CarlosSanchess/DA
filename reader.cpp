@@ -80,7 +80,7 @@ void Reader::readAndParseDS() {
  * This function reads data from the Reservoir.csv file, creates WaterReservoir objects, and adds them to the graph.
  */
 void Reader::readAndParseWR() {
-    std::ifstream file("../Data/Reservoir.csv");
+    std::ifstream file("../Data/Reservoirs.csv");
 
     std::string line;
     int id;
