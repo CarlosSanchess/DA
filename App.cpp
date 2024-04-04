@@ -200,28 +200,47 @@ void display4_2menu(Graph<Station*> graph,
         switch (choice[0]) {
             case '1':
             {
-                string wrId;
-                cout << "Enter the Water Reservoir identifier (wrId, wrCode, or wrName) ('b' to go back): ";
-                cin.ignore();
-                getline(cin, wrId);
-                if (wrId == "b") {
-                    exitMenu = true;
-                    break;
-                }
+                bool continueInput = true;
+                while (continueInput) {
+                    string wrId;
+                    cout << "Enter the Water Reservoir identifier (wrId, wrCode, or wrName) ('b' to go back): ";
+                    cin.ignore();
+                    getline(cin, wrId);
+                    if (wrId == "b") {
+                        exitMenu = true;
+                        break;
+                    }
 
-                vertex = findWrId(graph, wrId, wrIdMap, wrCodeMap, wrNameMap);
-                if (!vertex)
-                {
-                    cout << "Doesn't exist a node with that id";
-                    break;
+                    vertex = findWrId(graph, wrId, wrIdMap, wrCodeMap, wrNameMap);
+                    if (!vertex) {
+                        cout << "Doesn't exist a node with that id";
+                        break;
+                    }
+                    if (!vertex->getInfo()->isActive()) {
+                        cout << "Doesn't exist in graph";
+                        break;
+                    }
+                    removeWR(graph, vertex);
+                    initEdmondsKarp(&graph, superSource->getInfo(), superSink->getInfo());
+                    showDifference(graph, flowBefore, CodeMap);
+
+                    string response;
+                    while (true) {
+                        cout << "Do you want to remove another water reservoir? (yes/no): ";
+                        cin >> response;
+                        if (response == "yes") {
+                            break;
+                        } else if (response == "no") {
+                            continueInput = false;
+                            break;
+                        } else {
+                            cout << "Invalid input. Please enter 'yes' or 'no'." << endl;
+                        }
+                    }
                 }
-                if (!vertex->getInfo()->isActive()) {
-                    cout << "Doesn't exist in graph";
-                    break;
-                }
-                removeWR(graph, vertex);
-                initEdmondsKarp(&graph, superSource->getInfo(), superSink->getInfo());
-                showDifference(graph, flowBefore, CodeMap);
+                restoreGraph(&graph, initialWeights);
+                resetGraph(graph);
+                fillMap(graph, flowBefore);
                 break;
             }
 
@@ -834,7 +853,7 @@ void showDifference(Graph<Station*> g, std::unordered_map<Vertex<Station*>*, dou
             double originalValue = flowMap[v];
             double newValue = getFlowToCity(g, v);
 
-            if (newValue < originalValue) { // Check for deficit faz sentido ?
+            if (newValue < originalValue) {
                 DeliveryStation* station = Reader::getDeliveryStationByCode(v->getInfo()->getCode(), codeMap);
                 std::string stationName = (station != nullptr) ? (station->getCity() + " (" + station->getCode() + ")") : "Unknown";
 
