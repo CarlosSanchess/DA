@@ -226,14 +226,18 @@ void display4_2menu(Graph<Station*> graph,
             }
 
             case '2':
-                resetGraph(graph);
                 restoreGraph(&graph,initialWeights);
+                resetGraph(graph);
                 examinePumpingStations(graph);
+                resetGraph(graph);
+                fillMap(graph,flowBefore);
                 break;
             case '3':
-                resetGraph(graph);
                 restoreGraph(&graph,initialWeights);
+                resetGraph(graph);
                 pipelineFailure(graph, flowBefore);
+                resetGraph(graph);
+                fillMap(graph,flowBefore);
                 break;
             case 'b':
                 cout << "Returning to Main Menu...\n";
@@ -246,6 +250,7 @@ void display4_2menu(Graph<Station*> graph,
     resetGraph(graph);
     restoreGraph(&graph, std::move(initialWeights));
 }
+
 
 void maxFlowSubMenu(Graph<Station*>& graph,
                     const std::unordered_map<int, DeliveryStation*>& IdMap,
@@ -624,22 +629,34 @@ Vertex<Station*>* findWrId (Graph<Station*> &g, const std::string &wrIdentifier,
 void removeWR(Graph<Station*>& g, Vertex<Station*>* wrVertex){
 
     Vertex<Station*>* superSource = nullptr;
-
     for (auto v : g.getVertexSet()) {
         if (v->getInfo()->getCode() == "SuperSource") {
             superSource = v;
+            break;
         }
     }
     if(!superSource){
-        std::cerr << "Didn't find the superSource \n";
+        std::cout << "Didn't find the superSource \n";
         return;
     }
+    bool found = false;
     for (auto edge : superSource->getAdj()) {
         if (edge->getDest() == wrVertex) {
+            if (edge->getWeight() == 0) {
+                std::cout << "VWater Reservoir has already been removed\n";
+                found = true;
+                break;
+            }
             edge->setWeight(0);
+            found = true;
+            break;
         }
     }
+    if (!found) {
+        std::cout << "Edge to the vertex not found\n";
+    }
 }
+
 void fillMap(Graph<Station*>& g, std::unordered_map<Vertex<Station*>*, double>& flowMap) {
 
     MaxFlowAlgo(g);
