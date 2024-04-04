@@ -933,17 +933,19 @@ void pipelineFailure(Graph<Station*> &g, std::unordered_map<Vertex<Station*>*, d
             auto *deliveryStation = dynamic_cast<DeliveryStation *>(v->getInfo());
 
             if(deliveryStation) {
-                double demand = deliveryStation->getDemand();
                 double oldFlow = flowMap[v];
-                if (demand > oldFlow) {
-                    continue;
-                }
                 double newFlow = getFlowToCity(g, v);
-                if( demand > newFlow) {
+                if(oldFlow > newFlow) {
                     cout << "---------------------------\n";
                     cout << "Pipe:(" << e->getOrig()->getInfo()->getCode() << "," << e->getDest()->getInfo()->getCode() << ")" << endl;
                     cout << "We cant deliver the desired amount, to City:" << deliveryStation->getCity() << endl;
                     cout << "Flow Before:" << oldFlow << " Flow After:" << newFlow << " Deficit:" << oldFlow - newFlow << endl;
+                }
+                if(newFlow > oldFlow) {
+                    cout << "---------------------------\n";
+                    cout << "Pipe:(" << e->getOrig()->getInfo()->getCode() << "," << e->getDest()->getInfo()->getCode() << ")" << endl;
+                    cout << "We can now deliver more flow:" << deliveryStation->getCity() << endl;
+                    cout << "Flow Before:" << oldFlow << " Flow After:" << newFlow << " Flow increase:" << newFlow - oldFlow << endl;
                 }
             }
         }
