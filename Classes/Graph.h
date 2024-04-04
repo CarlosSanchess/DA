@@ -8,7 +8,6 @@
 #include <limits>
 #include <algorithm>
 #include <unordered_set>
-//#include "../data_structures/MutablePriorityQueue.h"
 
 template <class T>
 class Edge;
@@ -21,7 +20,7 @@ template <class T>
 class Vertex {
 public:
     Vertex(T in);
-    bool operator<(Vertex<T> & vertex) const; // // required by MutablePriorityQueue
+    bool operator<(Vertex<T> & vertex) const;
 
     T getInfo() const;
     std::vector<Edge<T> *> getAdj() const;
@@ -49,15 +48,13 @@ protected:
     std::vector<Edge<T> *> adj;  // outgoing edges
 
     // auxiliary fields
-    bool visited = false; // used by DFS, BFS, Prim ...
-    bool processing = false; // used by isDAG (in addition to the visited attribute)
-    unsigned int indegree; // used by topsort
+    bool visited = false; // used by DFS, BFS, ...
+    bool processing = false;
+    unsigned int indegree;
     double dist = 0;
     Edge<T> *path = nullptr;
 
     std::vector<Edge<T> *> incoming; // incoming edges
-
-    int queueIndex = 0; 		// required by MutablePriorityQueue and UFDS
 
     void deleteEdge(Edge<T> *edge);
 };
@@ -93,7 +90,7 @@ protected:
     Vertex<T> *orig;
     Edge<T> *reverse = nullptr;
 
-    double flow; // for flow-related problems
+    double flow;
 };
 
 template <class T>
@@ -592,10 +589,7 @@ bool Graph<T>::isDAG() const {
     return true;
 }
 
-/**
- * Auxiliary function that visits a vertex (v) and its adjacent, recursively.
- * Returns false (not acyclic) if an edge to a vertex in the stack is found.
- */
+
 template <class T>
 bool Graph<T>::dfsIsDAG(Vertex<T> *v) const {
     v->setVisited(true);
@@ -610,18 +604,6 @@ bool Graph<T>::dfsIsDAG(Vertex<T> *v) const {
     v->setProcesssing(false);
     return true;
 }
-
-/****************** toposort ********************/
-//=============================================================================
-// Exercise 1: Topological Sorting
-//=============================================================================
-// TODO
-/*
- * Performs a topological sorting of the vertices of a graph (this).
- * Returns a vector with the contents of the vertices by topological order.
- * If the graph has cycles, returns an empty vector.
- * Follows the algorithm described in theoretical classes.
- */
 
 template<class T>
 std::vector<T> Graph<T>::topsort() const {
@@ -666,6 +648,20 @@ std::vector<T> Graph<T>::topsort() const {
     return res;
 }
 
+/**
+ * @brief Tests a vertex and visits it if necessary.
+ *
+ * This function tests a vertex to determine if it needs to be visited
+ * based on the residual capacity of an edge. If the vertex has not been
+ * visited and the residual capacity is greater than 0, the vertex is
+ * marked as visited, its path is set, and it is added to the queue.
+ *
+ * @tparam T The type of data stored in the graph vertices.
+ * @param q A reference to the queue used for BFS traversal.
+ * @param e The edge being considered.
+ * @param w The vertex being tested and possibly visited.
+ * @param residual The residual capacity of the edge.
+ */
 template <class T>
 void testAndVisit(std::queue< Vertex<T>*> &q, Edge<T> *e, Vertex<T> *w, double residual) {
 
@@ -677,6 +673,19 @@ void testAndVisit(std::queue< Vertex<T>*> &q, Edge<T> *e, Vertex<T> *w, double r
     }
 }
 
+/**
+ * @brief Finds an augmenting path in the graph using BFS.
+ *
+ * This function finds an augmenting path in the graph using BFS traversal.
+ * It marks vertices as visited and explores edges to find paths from the
+ * source to the target vertex.
+ *
+ * @tparam T The type of data stored in the graph vertices.
+ * @param g A pointer to the graph.
+ * @param s The source vertex.
+ * @param t The target vertex.
+ * @return True if an augmenting path is found, false otherwise.
+ */
 template <class T>
 bool findAugmentingPath(Graph<T> *g, Vertex<T> *s, Vertex<T> *t) {
 
@@ -704,6 +713,17 @@ bool findAugmentingPath(Graph<T> *g, Vertex<T> *s, Vertex<T> *t) {
     return t->isVisited();
 }
 
+/**
+ * @brief Finds the minimum residual capacity along an augmenting path.
+ *
+ * This function finds the minimum residual capacity along an augmenting
+ * path from the source to the target vertex.
+ *
+ * @tparam T The type of data stored in the graph vertices.
+ * @param s The source vertex.
+ * @param t The target vertex.
+ * @return The minimum residual capacity along the augmenting path.
+ */
 template <class T>
 double findMinResidualAlongPath(Vertex<T> *s, Vertex<T> *t) {
     double f = INF;
@@ -723,6 +743,17 @@ double findMinResidualAlongPath(Vertex<T> *s, Vertex<T> *t) {
     return f;
 }
 
+/**
+ * @brief Augments flow along an augmenting path in the graph.
+ *
+ * This function augments flow along an augmenting path in the graph based
+ * on the minimum residual capacity found along the path.
+ *
+ * @tparam T The type of data stored in the graph vertices.
+ * @param s The source vertex.
+ * @param t The target vertex.
+ * @param f The minimum residual capacity along the augmenting path.
+ */
 template <class T>
 void augmentFlowAlongPath(Vertex<T> *s, Vertex<T> *t, double f) {
 
@@ -740,6 +771,21 @@ void augmentFlowAlongPath(Vertex<T> *s, Vertex<T> *t, double f) {
     }
 }
 
+/**
+ * @brief Initializes the Edmonds-Karp algorithm and computes the maximum flow.
+ *
+ * This function initializes the Edmonds-Karp algorithm by setting up the graph
+ * and finding augmenting paths until no more augmenting paths can be found.
+ * It computes the maximum flow through the graph and returns the optimal flow value.
+ *
+ * @tparam T The type of data stored in the graph vertices.
+ * @param g A pointer to the graph.
+ * @param source The source station.
+ * @param target The target station.
+ * @return The optimal flow through the graph.
+ * @throw std::logic_error if source or target vertex is invalid.
+ * @note Time Complexity: O(V * E^2)
+ */
 template <class T>
 double initEdmondsKarp(Graph<T> *g, Station * source, Station * target) {
 
@@ -782,6 +828,18 @@ inline void deleteMatrix(double **m, int n) {
     }
 }
 
+/**
+ * @brief Finds the subset of vertices affected by the removal of a given vertex.
+ *
+ * This function is a theoretical proposal for a graph algorithm that we will use in the presentation. It finds the subset of vertices
+ * that are affected by the removal of a specified vertex from the graph. This function is not
+ * utilized in the project and is provided for theoretical discussion purposes.
+ *
+ * @tparam T The type of data held by vertices in the graph.
+ * @param g Pointer to the graph structure.
+ * @param removedVertex Pointer to the vertex being removed.
+ * @return An unordered set of vertices affected by the removal of the specified vertex.
+ */
 template <class T>
 std::unordered_set<Vertex<T>*> findAffectedSubset(Graph<T>* g, Vertex<T>* removedVertex) {
     std::unordered_set<Vertex<T>*> affectedSubset;
@@ -792,14 +850,11 @@ std::unordered_set<Vertex<T>*> findAffectedSubset(Graph<T>* g, Vertex<T>* remove
         Vertex<T>* v = q.front();
         q.pop();
 
-        // Mark vertex as visited
         affectedSubset.insert(v);
         v->setVisited(true);
 
-        // Traverse outward edges
         for (auto edge : v->getAdj()) {
             Vertex<T>* w = edge->getDest();
-            // Check if w is a delivery station and not visited yet
             if (w && !w->isVisited()) {
                 q.push(w);
             }
@@ -809,17 +864,28 @@ std::unordered_set<Vertex<T>*> findAffectedSubset(Graph<T>* g, Vertex<T>* remove
     return affectedSubset;
 }
 
-
+/**
+ * @brief Calculates the maximum flow incrementally in a graph from a source to a sink.
+ *
+ * This function is a theoretical proposal for calculating the maximum flow in a graph incrementally.
+ * It implements the relabel-to-front algorithm. This function is not utilized in the project and is
+ * provided for theoretical discussion purposes.
+ *
+ * @tparam T The type of data held by vertices in the graph.
+ * @param graph Reference to the graph structure.
+ * @param source Pointer to the source station.
+ * @param sink Pointer to the sink station.
+ * @return The total flow out of the source station.
+ * @note Time Complexity: O(E * V^2)
+ */
 template <class T>
 double maxFlowIncremental(Graph<T> &graph, Station* source, Station* sink) {
-    // Initialize flow to 0 for all edges
     for (auto v : graph.getVertexSet()) {
         for (auto edge : v->getAdj()) {
             edge->setFlow(0.0);
         }
     }
 
-    // Initialize preflow and height arrays
     std::unordered_map<T*, double> preflow;
     std::unordered_map<T*, double> height;
     std::unordered_map<T*, double> excess;
@@ -832,7 +898,6 @@ double maxFlowIncremental(Graph<T> &graph, Station* source, Station* sink) {
     }
     height[source] = graph.getVertexSet().size();
 
-    // Push excess flow out of the source node
     for (auto edge : graph.getVertex(source)->getAdj()) {
         T* neighbor = edge->getDest()->getInfo();
         double capacity = edge->getWeight();
@@ -850,17 +915,32 @@ double maxFlowIncremental(Graph<T> &graph, Station* source, Station* sink) {
         }
     }
 
-    // Perform relabel-to-front algorithm
     while (!activeNodes.empty()) {
         T* u = activeNodes.front();
         activeNodes.pop();
         discharge(graph, u, source, sink, preflow, height, excess, activeNodes);
     }
 
-    // Return the total flow out of the source node
     return preflow[source];
 }
 
+/**
+ * @brief Discharges excess flow from a node in the graph.
+ *
+ * This function is a theoretical proposal for discharging excess flow from a node in the graph.
+ * It is part of the relabel-to-front algorithm for calculating maximum flow incrementally.
+ * This function is not utilized in the project and is provided for theoretical discussion purposes.
+ *
+ * @tparam T The type of data held by vertices in the graph.
+ * @param graph Reference to the graph structure.
+ * @param u Pointer to the node being discharged.
+ * @param source Pointer to the source station.
+ * @param sink Pointer to the sink station.
+ * @param preflow Map containing preflow values for nodes.
+ * @param height Map containing height values for nodes.
+ * @param excess Map containing excess flow values for nodes.
+ * @param activeNodes Queue containing active nodes in the algorithm.
+ */
 template <class T>
 void discharge(Graph<T>& graph, T* u, T* source, T* sink, std::unordered_map<T*, double>& preflow,
                std::unordered_map<T*, double>& height, std::unordered_map<T*, double>& excess,
@@ -889,6 +969,23 @@ void discharge(Graph<T>& graph, T* u, T* source, T* sink, std::unordered_map<T*,
     }
 }
 
+/**
+ * @brief Relabels a node in the graph to maintain the feasibility of the preflow.
+ *
+ * This function is a theoretical proposal for relabeling a node in the graph to maintain the
+ * feasibility of the preflow. It is part of the relabel-to-front algorithm for calculating
+ * maximum flow incrementally. This function is not utilized in the project and is provided for
+ * theoretical discussion purposes.
+ *
+ * @tparam T The type of data held by vertices in the graph.
+ * @param graph Reference to the graph structure.
+ * @param u Pointer to the node being relabeled.
+ * @param source Pointer to the source station.
+ * @param sink Pointer to the sink station.
+ * @param preflow Map containing preflow values for nodes.
+ * @param height Map containing height values for nodes.
+ * @param excess Map containing excess flow values for nodes.
+ */
 template <class T>
 void relabel(Graph<T>& graph, T* u, T* source, T* sink, std::unordered_map<T*, double>& preflow,
              std::unordered_map<T*, double>& height, std::unordered_map<T*, double>& excess) {

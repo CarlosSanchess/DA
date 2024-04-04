@@ -130,9 +130,9 @@ void display4_1menu(Graph<Station*>& graph,
         cout << "       Basic Service Metrics       \n";
         cout << "-----------------------------\n";
         cout << "Select an option:\n";
-        cout << "1. Maximum amount of water to reach each or a specific city (4.1.1)\n";
-        cout << "2. Verify if the network configuration meets water needs (4.1.2)\n";
-        cout << "3. Balance the load across the network (4.1.3)\n";
+        cout << "1. Maximum amount of water to reach each or a specific city\n";
+        cout << "2. Verify if the network configuration meets water needs\n";
+        cout << "3. Balance the load across the network\n";
         cout << "b. Back to Main Menu\n";
         cout << "-----------------------------\n";
         cout << "Your choice: ";
@@ -331,6 +331,18 @@ void loadBalancingMenu(Graph<Station*>& graph,
     display4_1menu(graph,IdMap,CodeMap,NameMap);
 }
 
+/**
+ * @brief Finds the vertices representing the super source and super sink in the graph.
+ *
+ * This function iterates through the vertices of the graph to find the vertices
+ * representing the super source and super sink, assigning them to the provided pointers.
+ *
+ * @param graph The graph to search for super source and super sink vertices.
+ * @param superSource Pointer to the vertex representing the super source (output parameter).
+ * @param superSink Pointer to the vertex representing the super sink (output parameter).
+ * @tparam Station The type of data held by vertices in the graph.
+ * @note Time Complexity: O(V)
+ */
 void findSuperSourceAndSuperSink(Graph<Station*>& graph, Vertex<Station*>*& superSource, Vertex<Station*>*& superSink) {
     for (auto v : graph.getVertexSet()) {
         if (v->getInfo()->getCode() == "SuperSource") {
@@ -341,7 +353,17 @@ void findSuperSourceAndSuperSink(Graph<Station*>& graph, Vertex<Station*>*& supe
     }
 }
 
-
+/**
+ * @brief Calculates the maximum flow in the graph using the Edmonds-Karp algorithm.
+ *
+ * This function calculates the maximum flow in the graph using the Edmonds-Karp algorithm,
+ * which finds the maximum flow from a source to a sink in a flow network.
+ *
+ * @param g The graph representing the flow network.
+ * @return The maximum flow in the graph.
+ * @tparam Station The type of data held by vertices in the graph.
+ * @note Time Complexity: O(V * E^2).
+ */
 double MaxFlowAlgo(Graph<Station*>& g) {
 
     Vertex<Station*>* superSource = nullptr;
@@ -369,6 +391,18 @@ bool hasFlows(Graph<Station*> g){
     return false;
 }
 
+/**
+ * @brief Calculates the total flow to a given delivery station.
+ *
+ * This function calculates the total flow to a given delivery station
+ * by summing up the flow along incoming edges.
+ *
+ * @param g The graph representing the network.
+ * @param deliveryStation Pointer to the delivery station vertex.
+ * @return The total flow to the given delivery station.
+ * @tparam Station The type of data held by vertices in the graph.
+ * @note Time Complexity: O(degree(v)).
+ */
 double getFlowToCity(Graph<Station*>& g, Vertex<Station*>* deliveryStation){
     double flowToCity = 0.0;
     for (auto incomingEdge : deliveryStation->getIncoming()) {
@@ -377,6 +411,17 @@ double getFlowToCity(Graph<Station*>& g, Vertex<Station*>* deliveryStation){
     return flowToCity;
 }
 
+/**
+ * @brief Prints the maximum flow for each city to a file.
+ *
+ * This function prints the maximum flow for each city in the graph to a file,
+ * along with the total maximum flow of the network.
+ *
+ * @param graph The graph representing the network.
+ * @param totalFlow The total maximum flow of the network.
+ * @tparam Station The type of data held by vertices in the graph.
+ * @note Time Complexity: O(V).
+ */
 void PrintMaxFlowForCities(Graph<Station*>& graph, double totalFlow) {
     std::ofstream outputFile("../max_flow.txt");
     if (!outputFile.is_open()) {
@@ -413,6 +458,20 @@ void PrintMaxFlowForCities(Graph<Station*>& graph, double totalFlow) {
     std::cout << "Results saved to ../max_flow.txt" << std::endl;
 }
 
+/**
+ * @brief Checks the water flow to a specific city and prints the flow information.
+ *
+ * This function checks the water flow to a specific city identified by its ID, code, or name
+ * and prints the flow information if the city is found in the graph.
+ *
+ * @param g The graph representing the water network.
+ * @param cityIdentifier The identifier (ID, code, or name) of the city to check.
+ * @param idMap Map containing delivery stations indexed by ID.
+ * @param codeMap Map containing delivery stations indexed by code.
+ * @param nameMap Map containing delivery stations indexed by name.
+ * @tparam Station The type of data held by vertices in the graph.
+ * @note Time Complexity: O(V).
+ */
 void checkWaterCity(Graph<Station*> g, const std::string& cityIdentifier,
                     const std::unordered_map<int, DeliveryStation*>& idMap,
                     const std::unordered_map<std::string, DeliveryStation*>& codeMap,
@@ -451,6 +510,17 @@ void checkWaterCity(Graph<Station*> g, const std::string& cityIdentifier,
     std::cout << "City with identifier " << cityIdentifier << " not found." << std::endl;
 }
 
+/**
+ * @brief Checks water supply to cities and reports cities with insufficient water supply.
+ *
+ * This function calculates the flow to each city and compares it with the city's demand.
+ * It then reports cities that do not fulfill their water demand along with the deficit.
+ *
+ * @param g The graph representing the water network.
+ * @param codeMap Map containing delivery stations indexed by city code.
+ * @tparam Station The type of data held by vertices in the graph.
+ * @note Time Complexity: O(V).
+ */
 void checkWaterSupply(Graph<Station*> g, const std::unordered_map<std::string, DeliveryStation*>& codeMap) {
 
     MaxFlowAlgo(g);
@@ -486,6 +556,16 @@ void checkWaterSupply(Graph<Station*> g, const std::unordered_map<std::string, D
     std::cout << "Number of cities that don't fulfill their demand: " << citiesWithoutEnoughWater.size() << '\n';
 }
 
+/**
+ * @brief Computes initial metrics of the water network.
+ *
+ * This function computes and prints the average difference, variance, and maximum difference
+ * between capacity and flow for all edges in the water network.
+ *
+ * @param graph The graph representing the water network.
+ * @tparam Station The type of data held by vertices in the graph.
+ * @note Time Complexity: O(V + E).
+ */
 void computeInitialMetrics(Graph<Station*>& graph) {
     double totalDifference = 0.0;
     double maxDifference = std::numeric_limits<double>::min();
@@ -537,11 +617,31 @@ void computeInitialMetrics(Graph<Station*>& graph) {
     }
 }
 
+/**
+ * @brief Shows the initial metrics of the water network.
+ *
+ * This function displays the initial metrics of the water network by calling the computeInitialMetrics function.
+ *
+ * @param graph The graph representing the water network.
+ * @tparam Station The type of data held by vertices in the graph.
+ * @note Time Complexity: O(V + E).
+ */
 void showImprovedMetrics(Graph<Station*>& graph) {
     computeInitialMetrics(graph);
 }
 
-
+/**
+ * @brief Balances the load across the water network by redistributing flow in underflow pipes.
+ *
+ * This function balances the load across the water network by redistributing flow in pipes
+ * where the flow is less than the capacity. It calculates the average difference and variance
+ * of flow capacity and flow, identifies underflow pipes, sorts them by the difference
+ * between capacity and flow, and then redistributes flow to achieve a more balanced network.
+ *
+ * @param graph The graph representing the water network.
+ * @tparam Station The type of data held by vertices in the graph.
+ * @note Time Complexity: O(V + E * log(E)), where V is the number of vertices and E is the number of edges in the graph.
+ */
 void balanceLoad(Graph<Station*>& graph) {
     double totalDifference = 0.0;
     int pipeCount = 0;
@@ -603,6 +703,21 @@ void balanceLoad(Graph<Station*>& graph) {
     std::cout << "Total flow incoming to delivery stations after balancing: " << totalFlowToDeliveryStations << std::endl;
 }
 
+/**
+ * @brief Finds a water reservoir vertex in the graph by its identifier (ID, code, or name).
+ *
+ * This function searches for a water reservoir vertex in the graph based on its identifier
+ * (ID, code, or name) and returns the vertex if found.
+ *
+ * @param g The graph representing the water network.
+ * @param wrIdentifier The identifier (ID, code, or name) of the water reservoir.
+ * @param wrIdMap Map containing water reservoirs indexed by ID.
+ * @param wrCodeMap Map containing water reservoirs indexed by code.
+ * @param wrNameMap Map containing water reservoirs indexed by name.
+ * @tparam Station The type of data held by vertices in the graph.
+ * @return Pointer to the water reservoir vertex if found, nullptr otherwise.
+ * @note Time Complexity: O(1).
+ */
 Vertex<Station*>* findWrId (Graph<Station*> &g, const std::string &wrIdentifier,
                           std::unordered_map<int, WaterReservoir*> &wrIdMap,
                           std::unordered_map<std::string, WaterReservoir*> &wrCodeMap,
@@ -626,6 +741,18 @@ Vertex<Station*>* findWrId (Graph<Station*> &g, const std::string &wrIdentifier,
 
 }
 
+/**
+ * @brief Removes a water reservoir from the water network by modifying its adjacent edges.
+ *
+ * This function removes a water reservoir from the water network by setting the weight of
+ * the edge connecting the water reservoir to the super source to 0. It ensures that the
+ * water reservoir has not been previously removed and finds the edge to remove.
+ *
+ * @param g The graph representing the water network.
+ * @param wrVertex Pointer to the vertex representing the water reservoir to remove.
+ * @tparam Station The type of data held by vertices in the graph.
+ * @note Time Complexity: O(V + E).
+ */
 void removeWR(Graph<Station*>& g, Vertex<Station*>* wrVertex){
 
     Vertex<Station*>* superSource = nullptr;
@@ -657,6 +784,18 @@ void removeWR(Graph<Station*>& g, Vertex<Station*>* wrVertex){
     }
 }
 
+/**
+ * @brief Fills a map with the flow of water to each delivery station in the water network.
+ *
+ * This function calculates the maximum flow in the water network using the maximum flow algorithm,
+ * resets the visited flag for all vertices, and then iterates through each delivery station
+ * to compute the flow of water to each city and store it in the provided map it is used to see the impact of removing parts of the network infrastructure.
+ *
+ * @param g The graph representing the water network.
+ * @param flowMap The map to store the flow of water to each delivery station.
+ * @tparam Station The type of data held by vertices in the graph.
+ * @note Time Complexity: O(V + E * log(E)), where V is the number of vertices and E is the number of edges in the graph.
+ */
 void fillMap(Graph<Station*>& g, std::unordered_map<Vertex<Station*>*, double>& flowMap) {
 
     MaxFlowAlgo(g);
@@ -673,6 +812,18 @@ void fillMap(Graph<Station*>& g, std::unordered_map<Vertex<Station*>*, double>& 
     }
 }
 
+/**
+ * @brief Shows the difference in flow before and after a change in the water network.
+ *
+ * This function compares the flow of water to each delivery station before and after a change
+ * in the water network and displays the difference, indicating the affected cities and their codes.
+ *
+ * @param g The graph representing the water network.
+ * @param flowMap The map containing the original flow of water to each delivery station.
+ * @param codeMap Map containing delivery stations indexed by code.
+ * @tparam Station The type of data held by vertices in the graph.
+ * @note Time Complexity: O(V).
+ */
 void showDifference(Graph<Station*> g, std::unordered_map<Vertex<Station*>*, double>& flowMap, std::unordered_map<std::string, DeliveryStation*>& codeMap){
     int affectedCities = 0;
     std::vector<std::string> affectedCityCodes;
@@ -712,6 +863,17 @@ void showDifference(Graph<Station*> g, std::unordered_map<Vertex<Station*>*, dou
     std::cout << ")" << std::endl;
 }
 
+/**
+ * @brief Restores the graph to its initial state by resetting edge weights of the supersource to the water reservoirs.
+ *
+ * This function restores the graph to its initial state by setting the weights of edges
+ * originating from the super source vertex to their original values stored in the provided map.
+ *
+ * @param g Pointer to the graph representing the water network.
+ * @param initialWeights Map containing the initial weights of edges indexed by destination vertex code.
+ * @tparam Station The type of data held by vertices in the graph.
+ * @note Time Complexity: O(V + E).
+ */
 void restoreGraph(Graph<Station*> *g, std::unordered_map<std::string, double> initialWeights){
     Vertex<Station*>* superSource = nullptr;
     for (auto v : g->getVertexSet()) {
@@ -731,6 +893,16 @@ void restoreGraph(Graph<Station*> *g, std::unordered_map<std::string, double> in
     }
 }
 
+/**
+ * @brief Resets the flow of water in the graph by setting it to zero.
+ *
+ * This function resets the flow of water in the graph by setting the flow of all edges to zero
+ * and setting the active flag of all vertices to true.
+ *
+ * @param graph The graph representing the water network.
+ * @tparam Station The type of data held by vertices in the graph.
+ * @note Time Complexity: O(V + E).
+ */
 void resetGraph(Graph<Station*>& graph) {
     for(auto v : graph.getVertexSet()){
         v->getInfo()->setActive(true);
@@ -779,6 +951,18 @@ void pipelineFailure(Graph<Station*> &g, std::unordered_map<Vertex<Station*>*, d
     }
 }
 
+/**
+ * @brief Retrieves all edges in the graph that have not been selected yet.
+ *
+ * This function iterates through each vertex in the graph and adds all edges
+ * that have not been selected and whose origin and destination vertices are not special markers
+ * (with IDs -1 and -2 since those are the super source and super sink special nodes) to a vector. It sets the 'isSelected' flag of each selected edge to true.
+ *
+ * @param g The graph representing the water network.
+ * @return A vector containing pointers to all selected edges in the graph.
+ * @tparam Station The type of data held by vertices in the graph.
+ * @note Time Complexity: O(V + E).
+ */
 vector<Edge<Station *>*> getAllEdges(const Graph<Station*>& g){
 
     vector<Edge<Station *>*> vector;
@@ -794,6 +978,18 @@ vector<Edge<Station *>*> getAllEdges(const Graph<Station*>& g){
     return vector;
 }
 
+/**
+ * @brief Examines pumping stations in the water network for their impact on water supply.
+ *
+ * This function examines each pumping station in the water network and determines its impact
+ * on water supply. It calculates the flow of water before and after removing each pumping station (by setting the capacity of the incoming edges to 0)
+ * and checks for any deficit in water supply to delivery stations. It then outputs the pumping stations
+ * causing deficits and those that can be removed without causing deficits.
+ *
+ * @param g The graph representing the water network.
+ * @tparam Station The type of data held by vertices in the graph.
+ * @note Time Complexity:
+ */
 void examinePumpingStations(Graph<Station*>& g) {
     Vertex<Station*>* superSource = nullptr;
     Vertex<Station*>* superSink = nullptr;

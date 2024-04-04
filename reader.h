@@ -25,7 +25,7 @@ private:
     std::unordered_map<int, WaterReservoir*> wrIdMap;  ///< Map from ID to WaterReservoir.
     std::unordered_map<std::string, WaterReservoir*> wrCodeMap;  ///< Map from code to WaterReservoir.
     std::unordered_map<std::string, WaterReservoir*> wrNameMap;  ///< Map from name to WaterReservoir.
-    std::unordered_map<std::string, double> edgeWeightMap;  ///< Map to store edge weights.
+    std::unordered_map<std::string, double> edgeWeightMap;  ///< Map to store edge weights, it is used to restore the super source edges after the basic failure removing wr runs.
 
 public:
     Reader();
