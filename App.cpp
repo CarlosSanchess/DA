@@ -225,7 +225,9 @@ void display4_2menu(Graph<Station*> graph,
 
                     string response;
                     while (true) {
-                        cout << "Do you want to remove another water reservoir? (yes/no): ";
+                        cout << "Do you want to remove another water reservoir? (yes/no): " << endl;
+                        cout << "(Selecting \"no\" will reset the graph data allowing to test the removal of only 1 water reservoir again)" << endl;
+                        cout << "(Selecting \"yes\" allows the user to continue removing water reservoirs)" << endl;
                         cin >> response;
                         if (response == "yes") {
                             break;
