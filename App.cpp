@@ -930,9 +930,20 @@ void resetGraph(Graph<Station*>& graph) {
         }
     }
 }
-
+/**
+ * @brief Computes the consequences of a pipeline rupture.
+ *
+ *
+ * This function, computes the consequences of a pipeline failure, listing the affected cities displaying their codes and water
+ * supply in deficit.
+ *
+ * @param g Pointer to the graph representing the water network.
+ * @param flowMap The map containing the original flow of water to each delivery station.
+ *
+ * @note Time Complexity: O(E*(V*E^2)).
+ */
 void pipelineFailure(Graph<Station*> &g, std::unordered_map<Vertex<Station*>*, double>& flowMap){
-    std::vector<std::pair<Pipe, std::pair<std::string ,double>>> dataStructure;
+
 
     Vertex<Station*>* superSource = nullptr;
     Vertex<Station*>* superSink = nullptr;
