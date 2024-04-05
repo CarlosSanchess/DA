@@ -1,0 +1,183 @@
+\doxysection{Water\+Reservoir Class Reference}
+\hypertarget{class_water_reservoir}{}\label{class_water_reservoir}\index{WaterReservoir@{WaterReservoir}}
+
+
+The \doxylink{class_water_reservoir}{Water\+Reservoir} class represents a water reservoir station.  
+
+
+
+
+{\ttfamily \#include $<$Water\+Reservoir.\+h$>$}
+
+Inheritance diagram for Water\+Reservoir\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_water_reservoir}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_water_reservoir_a1e08a384175ccc5d72ed38b6ca00d5fa}{Water\+Reservoir}} (\mbox{\hyperlink{class_edge}{int}} \mbox{\hyperlink{class_station_a4144cd1a5a69d5900f473ea9d792b3fe}{id}}, std\+::string \mbox{\hyperlink{class_station_a7f51ddd0c9efdd4c6463deeb9b9f330b}{code}}, std\+::string \mbox{\hyperlink{class_edge}{name}}, std\+::string municipality, \mbox{\hyperlink{class_edge}{int}} \mbox{\hyperlink{class_edge}{max\+Del}})
+\begin{DoxyCompactList}\small\item\em Constructor for the \doxylink{class_water_reservoir}{Water\+Reservoir} class. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_water_reservoir_a9c3637bbeeacc2421368117ddbf7bd92}{get\+Reservoir\+Name}} () \mbox{\hyperlink{class_edge}{const}}
+\begin{DoxyCompactList}\small\item\em Get the name of the water reservoir. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_water_reservoir_ac2ceb7f8e8889aa1e871208aecf6397f}{get\+Municipality}} () \mbox{\hyperlink{class_edge}{const}}
+\begin{DoxyCompactList}\small\item\em Get the municipality where the water reservoir is located. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_edge}{int}} \mbox{\hyperlink{class_water_reservoir_a18f8c55a846d97ba02c82b040099ebe2}{get\+Max\+Delivery}} () \mbox{\hyperlink{class_edge}{const}}
+\begin{DoxyCompactList}\small\item\em Get the maximum delivery capacity of the water reservoir. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_edge}{void}} \mbox{\hyperlink{class_water_reservoir_aaa8a28ffb66641d089f522051f37298b}{set\+Reservoir\+Name}} (\mbox{\hyperlink{class_edge}{const}} std\+::string \&\mbox{\hyperlink{class_edge}{name}})
+\begin{DoxyCompactList}\small\item\em Set the name of the water reservoir. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_edge}{void}} \mbox{\hyperlink{class_water_reservoir_afc53b28cc066301f48ae167bc4eb28fe}{set\+Municipality}} (\mbox{\hyperlink{class_edge}{const}} std\+::string \&municipality)
+\begin{DoxyCompactList}\small\item\em Set the municipality where the water reservoir is located. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_edge}{void}} \mbox{\hyperlink{class_water_reservoir_a28d799955513ae25926399ba664b7095}{set\+Max\+Delivery}} (\mbox{\hyperlink{class_edge}{int}} max\+Delivery)
+\begin{DoxyCompactList}\small\item\em Set the maximum delivery capacity of the water reservoir. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_station}{Station}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_station_aca5d1d7de6052a396c7a8fe9affd153c}{Station}} (\mbox{\hyperlink{class_edge}{int}} \mbox{\hyperlink{class_station_a4144cd1a5a69d5900f473ea9d792b3fe}{id}}, std\+::string \mbox{\hyperlink{class_station_a7f51ddd0c9efdd4c6463deeb9b9f330b}{code}})
+\begin{DoxyCompactList}\small\item\em Constructor for the \doxylink{class_station}{Station} class. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_edge}{virtual}} \mbox{\hyperlink{class_station_a00434e79e8ee7f4ebd6d3b631dde5ac0}{\texorpdfstring{$\sim$}{\string~}\+Station}} ()
+\begin{DoxyCompactList}\small\item\em Destructor for the \doxylink{class_station}{Station} class. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_edge}{int}} \mbox{\hyperlink{class_station_afd0de4c1f7e51648bfe465c5b8b02c88}{get\+Id}} () \mbox{\hyperlink{class_edge}{const}}
+\begin{DoxyCompactList}\small\item\em Get the unique identifier of the station. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_station_acebe4b1627bbce79ace0e3e0b655c9a9}{get\+Code}} () \mbox{\hyperlink{class_edge}{const}}
+\begin{DoxyCompactList}\small\item\em Get the code identifying the station. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_edge}{void}} \mbox{\hyperlink{class_station_a262a2a1bd0b27c0a162e880b00b69a96}{set\+Active}} (\mbox{\hyperlink{class_edge}{bool}} \mbox{\hyperlink{class_station_aab9526520d0f03cb1da7b76c5d37e37e}{active}})
+\begin{DoxyCompactList}\small\item\em Set the activity status of the station. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_edge}{bool}} \mbox{\hyperlink{class_station_a395b0107c629fd77f921a9e352413789}{is\+Active}} () \mbox{\hyperlink{class_edge}{const}}
+\begin{DoxyCompactList}\small\item\em Check if the station is active. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_station}{Station}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_edge}{int}} \mbox{\hyperlink{class_station_a4144cd1a5a69d5900f473ea9d792b3fe}{id}}
+\begin{DoxyCompactList}\small\item\em The unique identifier of the station. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_station_a7f51ddd0c9efdd4c6463deeb9b9f330b}{code}}
+\begin{DoxyCompactList}\small\item\em The code identifying the station. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_edge}{bool}} \mbox{\hyperlink{class_station_aab9526520d0f03cb1da7b76c5d37e37e}{active}}
+\begin{DoxyCompactList}\small\item\em Indicates whether the station is active or not. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \doxylink{class_water_reservoir}{Water\+Reservoir} class represents a water reservoir station. 
+
+It inherits from the \doxylink{class_station}{Station} class and adds attributes specific to water reservoirs, such as reservoir name, municipality, and maximum delivery capacity. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_water_reservoir_a1e08a384175ccc5d72ed38b6ca00d5fa}\label{class_water_reservoir_a1e08a384175ccc5d72ed38b6ca00d5fa} 
+\index{WaterReservoir@{WaterReservoir}!WaterReservoir@{WaterReservoir}}
+\index{WaterReservoir@{WaterReservoir}!WaterReservoir@{WaterReservoir}}
+\doxysubsubsection{\texorpdfstring{WaterReservoir()}{WaterReservoir()}}
+{\footnotesize\ttfamily Water\+Reservoir\+::\+Water\+Reservoir (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_edge}{int}}}]{id,  }\item[{std\+::string}]{code,  }\item[{std\+::string}]{name,  }\item[{std\+::string}]{municipality,  }\item[{\mbox{\hyperlink{class_edge}{int}}}]{max\+Del }\end{DoxyParamCaption})}
+
+
+
+Constructor for the \doxylink{class_water_reservoir}{Water\+Reservoir} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The unique identifier of the water reservoir. \\
+\hline
+{\em code} & The code identifying the water reservoir. \\
+\hline
+{\em name} & The name of the water reservoir. \\
+\hline
+{\em municipality} & The municipality where the water reservoir is located. \\
+\hline
+{\em max\+Del} & The maximum delivery capacity of the water reservoir. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_water_reservoir_a18f8c55a846d97ba02c82b040099ebe2}\label{class_water_reservoir_a18f8c55a846d97ba02c82b040099ebe2} 
+\index{WaterReservoir@{WaterReservoir}!getMaxDelivery@{getMaxDelivery}}
+\index{getMaxDelivery@{getMaxDelivery}!WaterReservoir@{WaterReservoir}}
+\doxysubsubsection{\texorpdfstring{getMaxDelivery()}{getMaxDelivery()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_edge}{int}} Water\+Reservoir\+::get\+Max\+Delivery (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the maximum delivery capacity of the water reservoir. 
+
+\begin{DoxyReturn}{Returns}
+The maximum delivery capacity of the water reservoir. 
+\end{DoxyReturn}
+\Hypertarget{class_water_reservoir_ac2ceb7f8e8889aa1e871208aecf6397f}\label{class_water_reservoir_ac2ceb7f8e8889aa1e871208aecf6397f} 
+\index{WaterReservoir@{WaterReservoir}!getMunicipality@{getMunicipality}}
+\index{getMunicipality@{getMunicipality}!WaterReservoir@{WaterReservoir}}
+\doxysubsubsection{\texorpdfstring{getMunicipality()}{getMunicipality()}}
+{\footnotesize\ttfamily std\+::string Water\+Reservoir\+::get\+Municipality (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the municipality where the water reservoir is located. 
+
+\begin{DoxyReturn}{Returns}
+The municipality where the water reservoir is located. 
+\end{DoxyReturn}
+\Hypertarget{class_water_reservoir_a9c3637bbeeacc2421368117ddbf7bd92}\label{class_water_reservoir_a9c3637bbeeacc2421368117ddbf7bd92} 
+\index{WaterReservoir@{WaterReservoir}!getReservoirName@{getReservoirName}}
+\index{getReservoirName@{getReservoirName}!WaterReservoir@{WaterReservoir}}
+\doxysubsubsection{\texorpdfstring{getReservoirName()}{getReservoirName()}}
+{\footnotesize\ttfamily std\+::string Water\+Reservoir\+::get\+Reservoir\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the name of the water reservoir. 
+
+\begin{DoxyReturn}{Returns}
+The name of the water reservoir. 
+\end{DoxyReturn}
+\Hypertarget{class_water_reservoir_a28d799955513ae25926399ba664b7095}\label{class_water_reservoir_a28d799955513ae25926399ba664b7095} 
+\index{WaterReservoir@{WaterReservoir}!setMaxDelivery@{setMaxDelivery}}
+\index{setMaxDelivery@{setMaxDelivery}!WaterReservoir@{WaterReservoir}}
+\doxysubsubsection{\texorpdfstring{setMaxDelivery()}{setMaxDelivery()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_edge}{void}} Water\+Reservoir\+::set\+Max\+Delivery (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_edge}{int}}}]{max\+Delivery }\end{DoxyParamCaption})}
+
+
+
+Set the maximum delivery capacity of the water reservoir. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em max\+Delivery} & The new maximum delivery capacity of the water reservoir. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_water_reservoir_afc53b28cc066301f48ae167bc4eb28fe}\label{class_water_reservoir_afc53b28cc066301f48ae167bc4eb28fe} 
+\index{WaterReservoir@{WaterReservoir}!setMunicipality@{setMunicipality}}
+\index{setMunicipality@{setMunicipality}!WaterReservoir@{WaterReservoir}}
+\doxysubsubsection{\texorpdfstring{setMunicipality()}{setMunicipality()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_edge}{void}} Water\+Reservoir\+::set\+Municipality (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_edge}{const}} std\+::string \&}]{municipality }\end{DoxyParamCaption})}
+
+
+
+Set the municipality where the water reservoir is located. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em municipality} & The new municipality where the water reservoir is located. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_water_reservoir_aaa8a28ffb66641d089f522051f37298b}\label{class_water_reservoir_aaa8a28ffb66641d089f522051f37298b} 
+\index{WaterReservoir@{WaterReservoir}!setReservoirName@{setReservoirName}}
+\index{setReservoirName@{setReservoirName}!WaterReservoir@{WaterReservoir}}
+\doxysubsubsection{\texorpdfstring{setReservoirName()}{setReservoirName()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_edge}{void}} Water\+Reservoir\+::set\+Reservoir\+Name (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_edge}{const}} std\+::string \&}]{name }\end{DoxyParamCaption})}
+
+
+
+Set the name of the water reservoir. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The new name of the water reservoir. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Classes/\mbox{\hyperlink{_water_reservoir_8h}{Water\+Reservoir.\+h}}\item 
+Classes/\mbox{\hyperlink{_water_reservoir_8cpp}{Water\+Reservoir.\+cpp}}\end{DoxyCompactItemize}

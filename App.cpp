@@ -29,7 +29,6 @@ void loadBalancingMenu(Graph<Station*>& graph,
 
 void findSuperSourceAndSuperSink(Graph<Station*>& graph, Vertex<Station*>*& superSource, Vertex<Station*>*& superSink);
 double MaxFlowAlgo(Graph<Station*>& g);
-bool hasFlows(Graph<Station*> g);
 double getFlowToCity(Graph<Station*>& g, Vertex<Station*>* deliveryStation);
 void PrintMaxFlowForCities(Graph<Station*>& graph, double totalFlow);
 
@@ -396,18 +395,6 @@ double MaxFlowAlgo(Graph<Station*>& g) {
     }
 
     return initEdmondsKarp(&g, superSource->getInfo(), superSink->getInfo());
-}
-
-bool hasFlows(Graph<Station*> g){
-    for(auto v : g.getVertexSet()){
-        auto* deliveryStation = dynamic_cast<DeliveryStation*>(v->getInfo());
-        if (deliveryStation){
-            double flow = getFlowToCity(g,v);
-
-            return !flow ? false : true;
-        }
-    }
-    return false;
 }
 
 /**

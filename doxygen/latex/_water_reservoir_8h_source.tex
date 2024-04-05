@@ -1,0 +1,30 @@
+\doxysection{Water\+Reservoir.\+h}
+\hypertarget{_water_reservoir_8h_source}{}\label{_water_reservoir_8h_source}\index{Classes/WaterReservoir.h@{Classes/WaterReservoir.h}}
+\mbox{\hyperlink{_water_reservoir_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ PROJ1\_WATERRESERVOIR\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ PROJ1\_WATERRESERVOIR\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_station_8h}{Station.h}}"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_water_reservoir}{WaterReservoir}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_station}{Station}}\ \{}
+\DoxyCodeLine{00014\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00015\ \ \ \ \ std::string\ reservoirName;\ }
+\DoxyCodeLine{00016\ \ \ \ \ std::string\ municipality;\ \ }
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{int}\ maxDelivery;\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{class_water_reservoir_a1e08a384175ccc5d72ed38b6ca00d5fa}{WaterReservoir}}(\textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id},\ std::string\ \mbox{\hyperlink{class_station_a7f51ddd0c9efdd4c6463deeb9b9f330b}{code}},std::string\ \ \mbox{\hyperlink{class_edge}{name}},\ std::string\ \ municipality,\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_edge}{maxDel}});}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ std::string\ \mbox{\hyperlink{class_water_reservoir_a9c3637bbeeacc2421368117ddbf7bd92}{getReservoirName}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00022\ \ \ \ \ std::string\ \mbox{\hyperlink{class_water_reservoir_ac2ceb7f8e8889aa1e871208aecf6397f}{getMunicipality}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_water_reservoir_a18f8c55a846d97ba02c82b040099ebe2}{getMaxDelivery}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_water_reservoir_aaa8a28ffb66641d089f522051f37298b}{setReservoirName}}(\textcolor{keyword}{const}\ std::string\ \&\mbox{\hyperlink{class_edge}{name}});}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_water_reservoir_afc53b28cc066301f48ae167bc4eb28fe}{setMunicipality}}(\textcolor{keyword}{const}\ std::string\ \&municipality);}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_water_reservoir_a28d799955513ae25926399ba664b7095}{setMaxDelivery}}(\textcolor{keywordtype}{int}\ maxDelivery);}
+\DoxyCodeLine{00028\ \};}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//PROJ1\_WATERRESERVOIR\_H}}
+
+\end{DoxyCode}

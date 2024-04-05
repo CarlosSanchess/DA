@@ -1,0 +1,356 @@
+\doxysection{Classes/\+Graph.h File Reference}
+\hypertarget{_graph_8h}{}\label{_graph_8h}\index{Classes/Graph.h@{Classes/Graph.h}}
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$queue$>$}\newline
+{\ttfamily \#include $<$limits$>$}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$unordered\+\_\+set$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_vertex}{Vertex$<$ T $>$}}
+\item 
+class \mbox{\hyperlink{class_edge}{Edge$<$ T $>$}}
+\item 
+class \mbox{\hyperlink{class_graph}{Graph$<$ T $>$}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#\mbox{\hyperlink{class_edge}{define}} \mbox{\hyperlink{_graph_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF}}~std\+::numeric\+\_\+limits$<$\mbox{\hyperlink{class_edge}{double}}$>$\mbox{\hyperlink{class_edge}{\+::max}}()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_edge}{void}} \mbox{\hyperlink{_graph_8h_ad56527992afe31a371065e795da57d25}{delete\+Matrix}} (\mbox{\hyperlink{class_edge}{int}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_edge}{m}}, \mbox{\hyperlink{class_edge}{int}} \mbox{\hyperlink{class_edge}{n}})
+\item 
+\mbox{\hyperlink{class_edge}{void}} \mbox{\hyperlink{_graph_8h_af077bc8682a1a1d97e30b08eb1131b19}{delete\+Matrix}} (\mbox{\hyperlink{class_edge}{double}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_edge}{m}}, \mbox{\hyperlink{class_edge}{int}} \mbox{\hyperlink{class_edge}{n}})
+\item 
+{\footnotesize template$<$\mbox{\hyperlink{class_edge}{class}} \mbox{\hyperlink{class_edge}{T}} $>$ }\\\mbox{\hyperlink{class_edge}{void}} \mbox{\hyperlink{_graph_8h_acb329d42a9a476d072878ef35a6a343c}{test\+And\+Visit}} (std\+::queue$<$ \mbox{\hyperlink{class_vertex}{Vertex}}$<$ \mbox{\hyperlink{class_edge}{T}} $>$ \texorpdfstring{$\ast$}{*} $>$ \&\mbox{\hyperlink{class_edge}{q}}, \mbox{\hyperlink{class_edge}{Edge}}$<$ \mbox{\hyperlink{class_edge}{T}} $>$ \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_edge}{e}}, \mbox{\hyperlink{class_vertex}{Vertex}}$<$ \mbox{\hyperlink{class_edge}{T}} $>$ \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_edge}{w}}, \mbox{\hyperlink{class_edge}{double}} \mbox{\hyperlink{class_edge}{residual}})
+\begin{DoxyCompactList}\small\item\em Tests a vertex and visits it if necessary. \end{DoxyCompactList}\item 
+{\footnotesize template$<$\mbox{\hyperlink{class_edge}{class}} \mbox{\hyperlink{class_edge}{T}} $>$ }\\\mbox{\hyperlink{class_edge}{bool}} \mbox{\hyperlink{_graph_8h_a7ef59ca73ad539b2405ee93bb9e1b8de}{find\+Augmenting\+Path}} (\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{class_edge}{T}} $>$ \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_edge}{g}}, \mbox{\hyperlink{class_vertex}{Vertex}}$<$ \mbox{\hyperlink{class_edge}{T}} $>$ \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_edge}{s}}, \mbox{\hyperlink{class_vertex}{Vertex}}$<$ \mbox{\hyperlink{class_edge}{T}} $>$ \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_edge}{t}})
+\begin{DoxyCompactList}\small\item\em Finds an augmenting path in the graph using BFS. \end{DoxyCompactList}\item 
+{\footnotesize template$<$\mbox{\hyperlink{class_edge}{class}} \mbox{\hyperlink{class_edge}{T}} $>$ }\\\mbox{\hyperlink{class_edge}{double}} \mbox{\hyperlink{_graph_8h_ab38647bac4738e296aba7b1bc4744835}{find\+Min\+Residual\+Along\+Path}} (\mbox{\hyperlink{class_vertex}{Vertex}}$<$ \mbox{\hyperlink{class_edge}{T}} $>$ \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_edge}{s}}, \mbox{\hyperlink{class_vertex}{Vertex}}$<$ \mbox{\hyperlink{class_edge}{T}} $>$ \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_edge}{t}})
+\begin{DoxyCompactList}\small\item\em Finds the minimum residual capacity along an augmenting path. \end{DoxyCompactList}\item 
+{\footnotesize template$<$\mbox{\hyperlink{class_edge}{class}} \mbox{\hyperlink{class_edge}{T}} $>$ }\\\mbox{\hyperlink{class_edge}{void}} \mbox{\hyperlink{_graph_8h_a9813dc412187df7cc322afea1283c22c}{augment\+Flow\+Along\+Path}} (\mbox{\hyperlink{class_vertex}{Vertex}}$<$ \mbox{\hyperlink{class_edge}{T}} $>$ \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_edge}{s}}, \mbox{\hyperlink{class_vertex}{Vertex}}$<$ \mbox{\hyperlink{class_edge}{T}} $>$ \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_edge}{t}}, \mbox{\hyperlink{class_edge}{double}} \mbox{\hyperlink{class_edge}{f}})
+\begin{DoxyCompactList}\small\item\em Augments flow along an augmenting path in the graph. \end{DoxyCompactList}\item 
+{\footnotesize template$<$\mbox{\hyperlink{class_edge}{class}} \mbox{\hyperlink{class_edge}{T}} $>$ }\\\mbox{\hyperlink{class_edge}{double}} \mbox{\hyperlink{_graph_8h_a3f4aa1e2e5bc60693999f7fccdd763f0}{init\+Edmonds\+Karp}} (\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{class_edge}{T}} $>$ \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_edge}{g}}, \mbox{\hyperlink{class_station}{Station}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_edge}{source}}, \mbox{\hyperlink{class_station}{Station}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_edge}{target}})
+\begin{DoxyCompactList}\small\item\em Initializes the Edmonds-\/\+Karp algorithm and computes the maximum flow. \end{DoxyCompactList}\item 
+{\footnotesize template$<$\mbox{\hyperlink{class_edge}{class}} \mbox{\hyperlink{class_edge}{T}} $>$ }\\std\+::unordered\+\_\+set$<$ \mbox{\hyperlink{class_vertex}{Vertex}}$<$ \mbox{\hyperlink{class_edge}{T}} $>$ \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{_graph_8h_a652b0374820c128668326325e6b13eb8}{find\+Affected\+Subset}} (\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{class_edge}{T}} $>$ \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_edge}{g}}, \mbox{\hyperlink{class_vertex}{Vertex}}$<$ \mbox{\hyperlink{class_edge}{T}} $>$ \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_edge}{removed\+Vertex}})
+\begin{DoxyCompactList}\small\item\em Finds the subset of vertices affected by the removal of a given vertex. \end{DoxyCompactList}\item 
+{\footnotesize template$<$\mbox{\hyperlink{class_edge}{class}} \mbox{\hyperlink{class_edge}{T}} $>$ }\\\mbox{\hyperlink{class_edge}{double}} \mbox{\hyperlink{_graph_8h_ade6984e7258a7c03c9d6fbaaec5bcbd5}{max\+Flow\+Incremental}} (\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{class_edge}{T}} $>$ \&graph, \mbox{\hyperlink{class_station}{Station}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_edge}{source}}, \mbox{\hyperlink{class_station}{Station}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_edge}{sink}})
+\begin{DoxyCompactList}\small\item\em Calculates the maximum flow incrementally in a graph from a source to a sink. \end{DoxyCompactList}\item 
+{\footnotesize template$<$\mbox{\hyperlink{class_edge}{class}} \mbox{\hyperlink{class_edge}{T}} $>$ }\\\mbox{\hyperlink{class_edge}{void}} \mbox{\hyperlink{_graph_8h_a7c14d9d7bfcd5818f9d2e6f2c78472d0}{discharge}} (\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{class_edge}{T}} $>$ \&graph, \mbox{\hyperlink{class_edge}{T}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_edge}{u}}, \mbox{\hyperlink{class_edge}{T}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_edge}{source}}, \mbox{\hyperlink{class_edge}{T}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_edge}{sink}}, std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{class_edge}{T}} \texorpdfstring{$\ast$}{*}, \mbox{\hyperlink{class_edge}{double}} $>$ \&\mbox{\hyperlink{class_edge}{preflow}}, std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{class_edge}{T}} \texorpdfstring{$\ast$}{*}, \mbox{\hyperlink{class_edge}{double}} $>$ \&\mbox{\hyperlink{class_edge}{height}}, std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{class_edge}{T}} \texorpdfstring{$\ast$}{*}, \mbox{\hyperlink{class_edge}{double}} $>$ \&\mbox{\hyperlink{class_edge}{excess}}, std\+::queue$<$ \mbox{\hyperlink{class_edge}{T}} \texorpdfstring{$\ast$}{*} $>$ \&\mbox{\hyperlink{class_edge}{active\+Nodes}})
+\begin{DoxyCompactList}\small\item\em Discharges excess flow from a node in the graph. \end{DoxyCompactList}\item 
+{\footnotesize template$<$\mbox{\hyperlink{class_edge}{class}} \mbox{\hyperlink{class_edge}{T}} $>$ }\\\mbox{\hyperlink{class_edge}{void}} \mbox{\hyperlink{_graph_8h_a5eb6892ea2df0c4d3b0654a15dc8b783}{relabel}} (\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{class_edge}{T}} $>$ \&graph, \mbox{\hyperlink{class_edge}{T}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_edge}{u}}, \mbox{\hyperlink{class_edge}{T}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_edge}{source}}, \mbox{\hyperlink{class_edge}{T}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_edge}{sink}}, std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{class_edge}{T}} \texorpdfstring{$\ast$}{*}, \mbox{\hyperlink{class_edge}{double}} $>$ \&\mbox{\hyperlink{class_edge}{preflow}}, std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{class_edge}{T}} \texorpdfstring{$\ast$}{*}, \mbox{\hyperlink{class_edge}{double}} $>$ \&\mbox{\hyperlink{class_edge}{height}}, std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{class_edge}{T}} \texorpdfstring{$\ast$}{*}, \mbox{\hyperlink{class_edge}{double}} $>$ \&\mbox{\hyperlink{class_edge}{excess}})
+\begin{DoxyCompactList}\small\item\em Relabels a node in the graph to maintain the feasibility of the preflow. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{_graph_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}\label{_graph_8h_a12c2040f25d8e3a7b9e1c2024c618cb6} 
+\index{Graph.h@{Graph.h}!INF@{INF}}
+\index{INF@{INF}!Graph.h@{Graph.h}}
+\doxysubsubsection{\texorpdfstring{INF}{INF}}
+{\footnotesize\ttfamily \#\mbox{\hyperlink{class_edge}{define}} INF~std\+::numeric\+\_\+limits$<$\mbox{\hyperlink{class_edge}{double}}$>$\mbox{\hyperlink{class_edge}{\+::max}}()}
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_graph_8h_a9813dc412187df7cc322afea1283c22c}\label{_graph_8h_a9813dc412187df7cc322afea1283c22c} 
+\index{Graph.h@{Graph.h}!augmentFlowAlongPath@{augmentFlowAlongPath}}
+\index{augmentFlowAlongPath@{augmentFlowAlongPath}!Graph.h@{Graph.h}}
+\doxysubsubsection{\texorpdfstring{augmentFlowAlongPath()}{augmentFlowAlongPath()}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{class_edge}{class}} \mbox{\hyperlink{class_edge}{T}} $>$ \\
+\mbox{\hyperlink{class_edge}{void}} augment\+Flow\+Along\+Path (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_vertex}{Vertex}}$<$ \mbox{\hyperlink{class_edge}{T}} $>$ \texorpdfstring{$\ast$}{*}}]{s,  }\item[{\mbox{\hyperlink{class_vertex}{Vertex}}$<$ \mbox{\hyperlink{class_edge}{T}} $>$ \texorpdfstring{$\ast$}{*}}]{t,  }\item[{\mbox{\hyperlink{class_edge}{double}}}]{f }\end{DoxyParamCaption})}
+
+
+
+Augments flow along an augmenting path in the graph. 
+
+This function augments flow along an augmenting path in the graph based on the minimum residual capacity found along the path.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of data stored in the graph vertices. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em s} & The source vertex. \\
+\hline
+{\em t} & The target vertex. \\
+\hline
+{\em f} & The minimum residual capacity along the augmenting path. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_graph_8h_af077bc8682a1a1d97e30b08eb1131b19}\label{_graph_8h_af077bc8682a1a1d97e30b08eb1131b19} 
+\index{Graph.h@{Graph.h}!deleteMatrix@{deleteMatrix}}
+\index{deleteMatrix@{deleteMatrix}!Graph.h@{Graph.h}}
+\doxysubsubsection{\texorpdfstring{deleteMatrix()}{deleteMatrix()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_edge}{void}} delete\+Matrix (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_edge}{double}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{m,  }\item[{\mbox{\hyperlink{class_edge}{int}}}]{n }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{_graph_8h_ad56527992afe31a371065e795da57d25}\label{_graph_8h_ad56527992afe31a371065e795da57d25} 
+\index{Graph.h@{Graph.h}!deleteMatrix@{deleteMatrix}}
+\index{deleteMatrix@{deleteMatrix}!Graph.h@{Graph.h}}
+\doxysubsubsection{\texorpdfstring{deleteMatrix()}{deleteMatrix()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_edge}{void}} delete\+Matrix (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_edge}{int}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{m,  }\item[{\mbox{\hyperlink{class_edge}{int}}}]{n }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{_graph_8h_a7c14d9d7bfcd5818f9d2e6f2c78472d0}\label{_graph_8h_a7c14d9d7bfcd5818f9d2e6f2c78472d0} 
+\index{Graph.h@{Graph.h}!discharge@{discharge}}
+\index{discharge@{discharge}!Graph.h@{Graph.h}}
+\doxysubsubsection{\texorpdfstring{discharge()}{discharge()}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{class_edge}{class}} \mbox{\hyperlink{class_edge}{T}} $>$ \\
+\mbox{\hyperlink{class_edge}{void}} discharge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{class_edge}{T}} $>$ \&}]{graph,  }\item[{\mbox{\hyperlink{class_edge}{T}} \texorpdfstring{$\ast$}{*}}]{u,  }\item[{\mbox{\hyperlink{class_edge}{T}} \texorpdfstring{$\ast$}{*}}]{source,  }\item[{\mbox{\hyperlink{class_edge}{T}} \texorpdfstring{$\ast$}{*}}]{sink,  }\item[{std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{class_edge}{T}} \texorpdfstring{$\ast$}{*}, \mbox{\hyperlink{class_edge}{double}} $>$ \&}]{preflow,  }\item[{std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{class_edge}{T}} \texorpdfstring{$\ast$}{*}, \mbox{\hyperlink{class_edge}{double}} $>$ \&}]{height,  }\item[{std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{class_edge}{T}} \texorpdfstring{$\ast$}{*}, \mbox{\hyperlink{class_edge}{double}} $>$ \&}]{excess,  }\item[{std\+::queue$<$ \mbox{\hyperlink{class_edge}{T}} \texorpdfstring{$\ast$}{*} $>$ \&}]{active\+Nodes }\end{DoxyParamCaption})}
+
+
+
+Discharges excess flow from a node in the graph. 
+
+This function is a theoretical proposal for discharging excess flow from a node in the graph. It is part of the relabel-\/to-\/front algorithm for calculating maximum flow incrementally. This function is not utilized in the project and is provided for theoretical discussion purposes.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of data held by vertices in the graph. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & Reference to the graph structure. \\
+\hline
+{\em u} & Pointer to the node being discharged. \\
+\hline
+{\em source} & Pointer to the source station. \\
+\hline
+{\em sink} & Pointer to the sink station. \\
+\hline
+{\em preflow} & Map containing preflow values for nodes. \\
+\hline
+{\em height} & Map containing height values for nodes. \\
+\hline
+{\em excess} & Map containing excess flow values for nodes. \\
+\hline
+{\em active\+Nodes} & Queue containing active nodes in the algorithm. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_graph_8h_a652b0374820c128668326325e6b13eb8}\label{_graph_8h_a652b0374820c128668326325e6b13eb8} 
+\index{Graph.h@{Graph.h}!findAffectedSubset@{findAffectedSubset}}
+\index{findAffectedSubset@{findAffectedSubset}!Graph.h@{Graph.h}}
+\doxysubsubsection{\texorpdfstring{findAffectedSubset()}{findAffectedSubset()}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{class_edge}{class}} \mbox{\hyperlink{class_edge}{T}} $>$ \\
+std\+::unordered\+\_\+set$<$ \mbox{\hyperlink{class_vertex}{Vertex}}$<$ \mbox{\hyperlink{class_edge}{T}} $>$ \texorpdfstring{$\ast$}{*} $>$ find\+Affected\+Subset (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{class_edge}{T}} $>$ \texorpdfstring{$\ast$}{*}}]{g,  }\item[{\mbox{\hyperlink{class_vertex}{Vertex}}$<$ \mbox{\hyperlink{class_edge}{T}} $>$ \texorpdfstring{$\ast$}{*}}]{removed\+Vertex }\end{DoxyParamCaption})}
+
+
+
+Finds the subset of vertices affected by the removal of a given vertex. 
+
+This function is a theoretical proposal for a graph algorithm that we will use in the presentation. It finds the subset of vertices that are affected by the removal of a specified vertex from the graph. This function is not utilized in the project and is provided for theoretical discussion purposes.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of data held by vertices in the graph. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em g} & Pointer to the graph structure. \\
+\hline
+{\em removed\+Vertex} & Pointer to the vertex being removed. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An unordered set of vertices affected by the removal of the specified vertex. 
+\end{DoxyReturn}
+\Hypertarget{_graph_8h_a7ef59ca73ad539b2405ee93bb9e1b8de}\label{_graph_8h_a7ef59ca73ad539b2405ee93bb9e1b8de} 
+\index{Graph.h@{Graph.h}!findAugmentingPath@{findAugmentingPath}}
+\index{findAugmentingPath@{findAugmentingPath}!Graph.h@{Graph.h}}
+\doxysubsubsection{\texorpdfstring{findAugmentingPath()}{findAugmentingPath()}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{class_edge}{class}} \mbox{\hyperlink{class_edge}{T}} $>$ \\
+\mbox{\hyperlink{class_edge}{bool}} find\+Augmenting\+Path (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{class_edge}{T}} $>$ \texorpdfstring{$\ast$}{*}}]{g,  }\item[{\mbox{\hyperlink{class_vertex}{Vertex}}$<$ \mbox{\hyperlink{class_edge}{T}} $>$ \texorpdfstring{$\ast$}{*}}]{s,  }\item[{\mbox{\hyperlink{class_vertex}{Vertex}}$<$ \mbox{\hyperlink{class_edge}{T}} $>$ \texorpdfstring{$\ast$}{*}}]{t }\end{DoxyParamCaption})}
+
+
+
+Finds an augmenting path in the graph using BFS. 
+
+This function finds an augmenting path in the graph using BFS traversal. It marks vertices as visited and explores edges to find paths from the source to the target vertex.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of data stored in the graph vertices. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em g} & A pointer to the graph. \\
+\hline
+{\em s} & The source vertex. \\
+\hline
+{\em t} & The target vertex. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if an augmenting path is found, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{_graph_8h_ab38647bac4738e296aba7b1bc4744835}\label{_graph_8h_ab38647bac4738e296aba7b1bc4744835} 
+\index{Graph.h@{Graph.h}!findMinResidualAlongPath@{findMinResidualAlongPath}}
+\index{findMinResidualAlongPath@{findMinResidualAlongPath}!Graph.h@{Graph.h}}
+\doxysubsubsection{\texorpdfstring{findMinResidualAlongPath()}{findMinResidualAlongPath()}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{class_edge}{class}} \mbox{\hyperlink{class_edge}{T}} $>$ \\
+\mbox{\hyperlink{class_edge}{double}} find\+Min\+Residual\+Along\+Path (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_vertex}{Vertex}}$<$ \mbox{\hyperlink{class_edge}{T}} $>$ \texorpdfstring{$\ast$}{*}}]{s,  }\item[{\mbox{\hyperlink{class_vertex}{Vertex}}$<$ \mbox{\hyperlink{class_edge}{T}} $>$ \texorpdfstring{$\ast$}{*}}]{t }\end{DoxyParamCaption})}
+
+
+
+Finds the minimum residual capacity along an augmenting path. 
+
+This function finds the minimum residual capacity along an augmenting path from the source to the target vertex.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of data stored in the graph vertices. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em s} & The source vertex. \\
+\hline
+{\em t} & The target vertex. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The minimum residual capacity along the augmenting path. 
+\end{DoxyReturn}
+\Hypertarget{_graph_8h_a3f4aa1e2e5bc60693999f7fccdd763f0}\label{_graph_8h_a3f4aa1e2e5bc60693999f7fccdd763f0} 
+\index{Graph.h@{Graph.h}!initEdmondsKarp@{initEdmondsKarp}}
+\index{initEdmondsKarp@{initEdmondsKarp}!Graph.h@{Graph.h}}
+\doxysubsubsection{\texorpdfstring{initEdmondsKarp()}{initEdmondsKarp()}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{class_edge}{class}} \mbox{\hyperlink{class_edge}{T}} $>$ \\
+\mbox{\hyperlink{class_edge}{double}} init\+Edmonds\+Karp (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{class_edge}{T}} $>$ \texorpdfstring{$\ast$}{*}}]{g,  }\item[{\mbox{\hyperlink{class_station}{Station}} \texorpdfstring{$\ast$}{*}}]{source,  }\item[{\mbox{\hyperlink{class_station}{Station}} \texorpdfstring{$\ast$}{*}}]{target }\end{DoxyParamCaption})}
+
+
+
+Initializes the Edmonds-\/\+Karp algorithm and computes the maximum flow. 
+
+This function initializes the Edmonds-\/\+Karp algorithm by setting up the graph and finding augmenting paths until no more augmenting paths can be found. It computes the maximum flow through the graph and returns the optimal flow value.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of data stored in the graph vertices. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em g} & A pointer to the graph. \\
+\hline
+{\em source} & The source station. \\
+\hline
+{\em target} & The target station. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The optimal flow through the graph. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::logic\+\_\+error} & if source or target vertex is invalid. \\
+\hline
+\end{DoxyExceptions}
+\begin{DoxyNote}{Note}
+Time Complexity\+: O(\+V \texorpdfstring{$\ast$}{*} E\texorpdfstring{$^\wedge$}{\string^}2) 
+\end{DoxyNote}
+\Hypertarget{_graph_8h_ade6984e7258a7c03c9d6fbaaec5bcbd5}\label{_graph_8h_ade6984e7258a7c03c9d6fbaaec5bcbd5} 
+\index{Graph.h@{Graph.h}!maxFlowIncremental@{maxFlowIncremental}}
+\index{maxFlowIncremental@{maxFlowIncremental}!Graph.h@{Graph.h}}
+\doxysubsubsection{\texorpdfstring{maxFlowIncremental()}{maxFlowIncremental()}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{class_edge}{class}} \mbox{\hyperlink{class_edge}{T}} $>$ \\
+\mbox{\hyperlink{class_edge}{double}} max\+Flow\+Incremental (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{class_edge}{T}} $>$ \&}]{graph,  }\item[{\mbox{\hyperlink{class_station}{Station}} \texorpdfstring{$\ast$}{*}}]{source,  }\item[{\mbox{\hyperlink{class_station}{Station}} \texorpdfstring{$\ast$}{*}}]{sink }\end{DoxyParamCaption})}
+
+
+
+Calculates the maximum flow incrementally in a graph from a source to a sink. 
+
+This function is a theoretical proposal for calculating the maximum flow in a graph incrementally. It implements the relabel-\/to-\/front algorithm. This function is not utilized in the project and is provided for theoretical discussion purposes.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of data held by vertices in the graph. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & Reference to the graph structure. \\
+\hline
+{\em source} & Pointer to the source station. \\
+\hline
+{\em sink} & Pointer to the sink station. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The total flow out of the source station. 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Time Complexity\+: O(\+E \texorpdfstring{$\ast$}{*} V\texorpdfstring{$^\wedge$}{\string^}2) 
+\end{DoxyNote}
+\Hypertarget{_graph_8h_a5eb6892ea2df0c4d3b0654a15dc8b783}\label{_graph_8h_a5eb6892ea2df0c4d3b0654a15dc8b783} 
+\index{Graph.h@{Graph.h}!relabel@{relabel}}
+\index{relabel@{relabel}!Graph.h@{Graph.h}}
+\doxysubsubsection{\texorpdfstring{relabel()}{relabel()}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{class_edge}{class}} \mbox{\hyperlink{class_edge}{T}} $>$ \\
+\mbox{\hyperlink{class_edge}{void}} relabel (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{class_edge}{T}} $>$ \&}]{graph,  }\item[{\mbox{\hyperlink{class_edge}{T}} \texorpdfstring{$\ast$}{*}}]{u,  }\item[{\mbox{\hyperlink{class_edge}{T}} \texorpdfstring{$\ast$}{*}}]{source,  }\item[{\mbox{\hyperlink{class_edge}{T}} \texorpdfstring{$\ast$}{*}}]{sink,  }\item[{std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{class_edge}{T}} \texorpdfstring{$\ast$}{*}, \mbox{\hyperlink{class_edge}{double}} $>$ \&}]{preflow,  }\item[{std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{class_edge}{T}} \texorpdfstring{$\ast$}{*}, \mbox{\hyperlink{class_edge}{double}} $>$ \&}]{height,  }\item[{std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{class_edge}{T}} \texorpdfstring{$\ast$}{*}, \mbox{\hyperlink{class_edge}{double}} $>$ \&}]{excess }\end{DoxyParamCaption})}
+
+
+
+Relabels a node in the graph to maintain the feasibility of the preflow. 
+
+This function is a theoretical proposal for relabeling a node in the graph to maintain the feasibility of the preflow. It is part of the relabel-\/to-\/front algorithm for calculating maximum flow incrementally. This function is not utilized in the project and is provided for theoretical discussion purposes.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of data held by vertices in the graph. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & Reference to the graph structure. \\
+\hline
+{\em u} & Pointer to the node being relabeled. \\
+\hline
+{\em source} & Pointer to the source station. \\
+\hline
+{\em sink} & Pointer to the sink station. \\
+\hline
+{\em preflow} & Map containing preflow values for nodes. \\
+\hline
+{\em height} & Map containing height values for nodes. \\
+\hline
+{\em excess} & Map containing excess flow values for nodes. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_graph_8h_acb329d42a9a476d072878ef35a6a343c}\label{_graph_8h_acb329d42a9a476d072878ef35a6a343c} 
+\index{Graph.h@{Graph.h}!testAndVisit@{testAndVisit}}
+\index{testAndVisit@{testAndVisit}!Graph.h@{Graph.h}}
+\doxysubsubsection{\texorpdfstring{testAndVisit()}{testAndVisit()}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{class_edge}{class}} \mbox{\hyperlink{class_edge}{T}} $>$ \\
+\mbox{\hyperlink{class_edge}{void}} test\+And\+Visit (\begin{DoxyParamCaption}\item[{std\+::queue$<$ \mbox{\hyperlink{class_vertex}{Vertex}}$<$ \mbox{\hyperlink{class_edge}{T}} $>$ \texorpdfstring{$\ast$}{*} $>$ \&}]{q,  }\item[{\mbox{\hyperlink{class_edge}{Edge}}$<$ \mbox{\hyperlink{class_edge}{T}} $>$ \texorpdfstring{$\ast$}{*}}]{e,  }\item[{\mbox{\hyperlink{class_vertex}{Vertex}}$<$ \mbox{\hyperlink{class_edge}{T}} $>$ \texorpdfstring{$\ast$}{*}}]{w,  }\item[{\mbox{\hyperlink{class_edge}{double}}}]{residual }\end{DoxyParamCaption})}
+
+
+
+Tests a vertex and visits it if necessary. 
+
+This function tests a vertex to determine if it needs to be visited based on the residual capacity of an edge. If the vertex has not been visited and the residual capacity is greater than 0, the vertex is marked as visited, its path is set, and it is added to the queue.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of data stored in the graph vertices. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em q} & A reference to the queue used for BFS traversal. \\
+\hline
+{\em e} & The edge being considered. \\
+\hline
+{\em w} & The vertex being tested and possibly visited. \\
+\hline
+{\em residual} & The residual capacity of the edge. \\
+\hline
+\end{DoxyParams}

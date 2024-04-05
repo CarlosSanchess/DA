@@ -1,0 +1,606 @@
+\doxysection{App Class Reference}
+\hypertarget{class_app}{}\label{class_app}\index{App@{App}}
+
+
+This class represents the application.  
+
+
+
+
+{\ttfamily \#include $<$App.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_edge}{void}} \mbox{\hyperlink{class_app_a7ffec8ed8539d3d9648d2d201ca2e407}{display4\+\_\+1menu}} (\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{class_station}{Station}} \texorpdfstring{$\ast$}{*} $>$ \&graph, \mbox{\hyperlink{class_edge}{const}} std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{class_edge}{int}}, \mbox{\hyperlink{class_delivery_station}{Delivery\+Station}} \texorpdfstring{$\ast$}{*} $>$ \&\mbox{\hyperlink{class_edge}{Id\+Map}}, \mbox{\hyperlink{class_edge}{const}} std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{class_delivery_station}{Delivery\+Station}} \texorpdfstring{$\ast$}{*} $>$ \&\mbox{\hyperlink{class_edge}{Code\+Map}}, \mbox{\hyperlink{class_edge}{const}} std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{class_delivery_station}{Delivery\+Station}} \texorpdfstring{$\ast$}{*} $>$ \&\mbox{\hyperlink{class_edge}{Name\+Map}})
+\item 
+\mbox{\hyperlink{class_edge}{void}} \mbox{\hyperlink{class_app_a857cc11aadd3b476b574ea6d7940d7a2}{display4\+\_\+2menu}} (\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{class_station}{Station}} \texorpdfstring{$\ast$}{*} $>$ graph, std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{class_edge}{int}}, \mbox{\hyperlink{class_water_reservoir}{Water\+Reservoir}} \texorpdfstring{$\ast$}{*} $>$ \&wr\+Id\+Map, std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{class_water_reservoir}{Water\+Reservoir}} \texorpdfstring{$\ast$}{*} $>$ \&wr\+Code\+Map, std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{class_water_reservoir}{Water\+Reservoir}} \texorpdfstring{$\ast$}{*} $>$ \&wr\+Name\+Map, std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{class_edge}{double}} $>$ \mbox{\hyperlink{class_edge}{initial\+Weights}}, std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{class_delivery_station}{Delivery\+Station}} \texorpdfstring{$\ast$}{*} $>$ \&\mbox{\hyperlink{class_edge}{Code\+Map}})
+\item 
+\mbox{\hyperlink{class_edge}{void}} \mbox{\hyperlink{class_app_a9f6b89bd6fde5999b74d5941ae1ef266}{max\+Flow\+Sub\+Menu}} (\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{class_station}{Station}} \texorpdfstring{$\ast$}{*} $>$ \&graph, \mbox{\hyperlink{class_edge}{const}} std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{class_edge}{int}}, \mbox{\hyperlink{class_delivery_station}{Delivery\+Station}} \texorpdfstring{$\ast$}{*} $>$ \&\mbox{\hyperlink{class_edge}{Id\+Map}}, \mbox{\hyperlink{class_edge}{const}} std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{class_delivery_station}{Delivery\+Station}} \texorpdfstring{$\ast$}{*} $>$ \&\mbox{\hyperlink{class_edge}{Code\+Map}}, \mbox{\hyperlink{class_edge}{const}} std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{class_delivery_station}{Delivery\+Station}} \texorpdfstring{$\ast$}{*} $>$ \&\mbox{\hyperlink{class_edge}{Name\+Map}})
+\item 
+\mbox{\hyperlink{class_edge}{void}} \mbox{\hyperlink{class_app_aff5e3a2f344d94bddf614526b1b2dccd}{load\+Balancing\+Menu}} (\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{class_station}{Station}} \texorpdfstring{$\ast$}{*} $>$ \&graph, \mbox{\hyperlink{class_edge}{const}} std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{class_edge}{int}}, \mbox{\hyperlink{class_delivery_station}{Delivery\+Station}} \texorpdfstring{$\ast$}{*} $>$ \&\mbox{\hyperlink{class_edge}{Id\+Map}}, \mbox{\hyperlink{class_edge}{const}} std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{class_delivery_station}{Delivery\+Station}} \texorpdfstring{$\ast$}{*} $>$ \&\mbox{\hyperlink{class_edge}{Code\+Map}}, \mbox{\hyperlink{class_edge}{const}} std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{class_delivery_station}{Delivery\+Station}} \texorpdfstring{$\ast$}{*} $>$ \&\mbox{\hyperlink{class_edge}{Name\+Map}})
+\item 
+\mbox{\hyperlink{class_edge}{void}} \mbox{\hyperlink{class_app_a5128ad7451a5b55a977615238d16ae41}{find\+Super\+Source\+And\+Super\+Sink}} (\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{class_station}{Station}} \texorpdfstring{$\ast$}{*} $>$ \&graph, \mbox{\hyperlink{class_vertex}{Vertex}}$<$ \mbox{\hyperlink{class_station}{Station}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*}\&\mbox{\hyperlink{class_edge}{super\+Source}}, \mbox{\hyperlink{class_vertex}{Vertex}}$<$ \mbox{\hyperlink{class_station}{Station}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*}\&\mbox{\hyperlink{class_edge}{super\+Sink}})
+\begin{DoxyCompactList}\small\item\em Finds the vertices representing the super source and super sink in the graph. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_edge}{double}} \mbox{\hyperlink{class_app_afbb7425b28266905d3b458827ac235b2}{Max\+Flow\+Algo}} (\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{class_station}{Station}} \texorpdfstring{$\ast$}{*} $>$ \&\mbox{\hyperlink{class_edge}{g}})
+\begin{DoxyCompactList}\small\item\em Calculates the maximum flow in the graph using the Edmonds-\/\+Karp algorithm. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_edge}{double}} \mbox{\hyperlink{class_app_aa82e8ec56c28e5524773727d34742041}{get\+Flow\+To\+City}} (\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{class_station}{Station}} \texorpdfstring{$\ast$}{*} $>$ \&\mbox{\hyperlink{class_edge}{g}}, \mbox{\hyperlink{class_vertex}{Vertex}}$<$ \mbox{\hyperlink{class_station}{Station}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_edge}{delivery\+Station}})
+\begin{DoxyCompactList}\small\item\em Calculates the total flow to a given delivery station. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_edge}{void}} \mbox{\hyperlink{class_app_a1f6f95288f065a55bf73a75a31bbf3e1}{Print\+Max\+Flow\+For\+Cities}} (\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{class_station}{Station}} \texorpdfstring{$\ast$}{*} $>$ \&graph, \mbox{\hyperlink{class_edge}{double}} \mbox{\hyperlink{class_edge}{total\+Flow}})
+\begin{DoxyCompactList}\small\item\em Prints the maximum flow for each city to a file. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_edge}{void}} \mbox{\hyperlink{class_app_ab4e4bb60e2718691472b843fec6add7d}{check\+Water\+City}} (\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{class_station}{Station}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{class_edge}{g}}, \mbox{\hyperlink{class_edge}{const}} std\+::string \&\mbox{\hyperlink{class_edge}{city\+Identifier}}, \mbox{\hyperlink{class_edge}{const}} std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{class_edge}{int}}, \mbox{\hyperlink{class_delivery_station}{Delivery\+Station}} \texorpdfstring{$\ast$}{*} $>$ \&\mbox{\hyperlink{class_edge}{Id\+Map}}, \mbox{\hyperlink{class_edge}{const}} std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{class_delivery_station}{Delivery\+Station}} \texorpdfstring{$\ast$}{*} $>$ \&\mbox{\hyperlink{class_edge}{Code\+Map}}, \mbox{\hyperlink{class_edge}{const}} std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{class_delivery_station}{Delivery\+Station}} \texorpdfstring{$\ast$}{*} $>$ \&\mbox{\hyperlink{class_edge}{Name\+Map}})
+\begin{DoxyCompactList}\small\item\em Checks the flow to a given city. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_edge}{void}} \mbox{\hyperlink{class_app_a8ed005d81563043e96ea9c3e7b8f176a}{check\+Water\+Supply}} (\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{class_station}{Station}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{class_edge}{g}}, \mbox{\hyperlink{class_edge}{const}} std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{class_delivery_station}{Delivery\+Station}} \texorpdfstring{$\ast$}{*} $>$ \&code\+Map)
+\begin{DoxyCompactList}\small\item\em Checks water supply to cities and reports cities with insufficient water supply. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_edge}{void}} \mbox{\hyperlink{class_app_ae988fdd2d2a8edf7b7e15433a022367c}{compute\+Initial\+Metrics}} (\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{class_station}{Station}} \texorpdfstring{$\ast$}{*} $>$ \&graph)
+\begin{DoxyCompactList}\small\item\em Computes initial metrics of the water network. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_edge}{void}} \mbox{\hyperlink{class_app_a1fd39ebb13d50c125d1fefa9b6c6dfb2}{show\+Improved\+Metrics}} (\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{class_station}{Station}} \texorpdfstring{$\ast$}{*} $>$ \&graph)
+\begin{DoxyCompactList}\small\item\em Shows the initial metrics of the water network. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_edge}{void}} \mbox{\hyperlink{class_app_ab33e6543f251953d7165a61a24f4987d}{balance\+Load}} (\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{class_station}{Station}} \texorpdfstring{$\ast$}{*} $>$ \&graph)
+\begin{DoxyCompactList}\small\item\em Balances the load across the water network by redistributing flow in underflow pipes. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_edge}{void}} \mbox{\hyperlink{class_app_a976edbc9d3626ecf9b52937df60c4afd}{fill\+Map}} (\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{class_station}{Station}} \texorpdfstring{$\ast$}{*} $>$ \&\mbox{\hyperlink{class_edge}{g}}, std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{class_vertex}{Vertex}}$<$ \mbox{\hyperlink{class_station}{Station}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*}, \mbox{\hyperlink{class_edge}{double}} $>$ \&\mbox{\hyperlink{class_edge}{flow\+Map}})
+\begin{DoxyCompactList}\small\item\em Fills a map with the flow of water to each delivery station in the water network. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_edge}{void}} \mbox{\hyperlink{class_app_a3c01dc38a9b2d89f5a0e96f7a5c3889b}{remove\+WR}} (\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{class_station}{Station}} \texorpdfstring{$\ast$}{*} $>$ \&\mbox{\hyperlink{class_edge}{g}}, \mbox{\hyperlink{class_vertex}{Vertex}}$<$ \mbox{\hyperlink{class_station}{Station}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_edge}{wr\+Vertex}})
+\begin{DoxyCompactList}\small\item\em Removes a water reservoir from the water network by modifying its adjacent edges. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_vertex}{Vertex}}$<$ \mbox{\hyperlink{class_station}{Station}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_app_ae8a8d76bf433ec095e15f2a0b6e70b73}{find\+Wr\+Id}} (\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{class_station}{Station}} \texorpdfstring{$\ast$}{*} $>$ \&\mbox{\hyperlink{class_edge}{g}}, \mbox{\hyperlink{class_edge}{const}} std\+::string \&\mbox{\hyperlink{class_edge}{wr\+Identifier}}, std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{class_edge}{int}}, \mbox{\hyperlink{class_water_reservoir}{Water\+Reservoir}} \texorpdfstring{$\ast$}{*} $>$ \&wr\+Id\+Map, std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{class_water_reservoir}{Water\+Reservoir}} \texorpdfstring{$\ast$}{*} $>$ \&wr\+Code\+Map, std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{class_water_reservoir}{Water\+Reservoir}} \texorpdfstring{$\ast$}{*} $>$ \&wr\+Name\+Map)
+\begin{DoxyCompactList}\small\item\em Finds a water reservoir vertex in the graph by its identifier (ID, code, or name). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_edge}{void}} \mbox{\hyperlink{class_app_a5d22ff18798f4631df320c47464c463f}{show\+Difference}} (\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{class_station}{Station}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{class_edge}{g}}, std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{class_vertex}{Vertex}}$<$ \mbox{\hyperlink{class_station}{Station}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*}, \mbox{\hyperlink{class_edge}{double}} $>$ \&\mbox{\hyperlink{class_edge}{flow\+Map}}, std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{class_delivery_station}{Delivery\+Station}} \texorpdfstring{$\ast$}{*} $>$ \&code\+Map)
+\begin{DoxyCompactList}\small\item\em Shows the difference in flow before and after a change in the water network. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_edge}{void}} \mbox{\hyperlink{class_app_ae6c3770fb310a6ca4064a7feec513447}{restore\+Graph}} (\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{class_station}{Station}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_edge}{g}}, std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{class_edge}{double}} $>$ \mbox{\hyperlink{class_edge}{initial\+Weights}})
+\begin{DoxyCompactList}\small\item\em Restores the graph to its initial state by resetting edge weights of the supersource to the water reservoirs. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_edge}{void}} \mbox{\hyperlink{class_app_acc76f4b883ac26d2d7983f34c29f760d}{pipeline\+Failure}} (\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{class_station}{Station}} \texorpdfstring{$\ast$}{*} $>$ \&\mbox{\hyperlink{class_edge}{g}}, std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{class_vertex}{Vertex}}$<$ \mbox{\hyperlink{class_station}{Station}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*}, \mbox{\hyperlink{class_edge}{double}} $>$ \&\mbox{\hyperlink{class_edge}{flow\+Map}})
+\begin{DoxyCompactList}\small\item\em Computes the consequences of a pipeline rupture. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_edge}{vector}}$<$ \mbox{\hyperlink{class_edge}{Edge}}$<$ \mbox{\hyperlink{class_station}{Station}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{class_app_aa709e37d792c3a6d0fc7f9d0fb0af40a}{get\+All\+Edges}} (\mbox{\hyperlink{class_edge}{const}} \mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{class_station}{Station}} \texorpdfstring{$\ast$}{*} $>$ \&\mbox{\hyperlink{class_edge}{g}})
+\begin{DoxyCompactList}\small\item\em Retrieves all edges in the graph that have not been selected yet. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_edge}{void}} \mbox{\hyperlink{class_app_a8ccc8da606dec58780cb758970e17d4b}{examine\+Pumping\+Stations}} (\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{class_station}{Station}} \texorpdfstring{$\ast$}{*} $>$ \&\mbox{\hyperlink{class_edge}{g}})
+\begin{DoxyCompactList}\small\item\em Examines pumping stations in the water network for their impact on water supply. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_edge}{void}} \mbox{\hyperlink{class_app_a2e1a06da083b5bda97d11935a41c510a}{reset\+Graph}} (\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{class_station}{Station}} \texorpdfstring{$\ast$}{*} $>$ \&graph)
+\begin{DoxyCompactList}\small\item\em Resets the flow of water in the graph by setting it to zero. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_edge}{static}} \mbox{\hyperlink{class_edge}{void}} \mbox{\hyperlink{class_app_ae09dc71078b64c56c673b1ad1d25b5d1}{run}} ()
+\begin{DoxyCompactList}\small\item\em Runs the application. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class represents the application. 
+
+The \doxylink{class_app}{App} class provides a static method to run the application. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_app_ab33e6543f251953d7165a61a24f4987d}\label{class_app_ab33e6543f251953d7165a61a24f4987d} 
+\index{App@{App}!balanceLoad@{balanceLoad}}
+\index{balanceLoad@{balanceLoad}!App@{App}}
+\doxysubsubsection{\texorpdfstring{balanceLoad()}{balanceLoad()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_edge}{void}} App\+::balance\+Load (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{class_station}{Station}} \texorpdfstring{$\ast$}{*} $>$ \&}]{graph }\end{DoxyParamCaption})}
+
+
+
+Balances the load across the water network by redistributing flow in underflow pipes. 
+
+This function balances the load across the water network by redistributing flow in pipes where the flow is less than the capacity. It calculates the average difference and variance of flow capacity and flow, identifies underflow pipes, sorts them by the difference between capacity and flow, and then redistributes flow to achieve a more balanced network.
+
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & The graph representing the water network. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em \doxylink{class_station}{Station}} & The type of data held by vertices in the graph. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyNote}{Note}
+Time Complexity\+: O(V + E \texorpdfstring{$\ast$}{*} log(\+E)), where V is the number of vertices and E is the number of edges in the graph. 
+\end{DoxyNote}
+\Hypertarget{class_app_ab4e4bb60e2718691472b843fec6add7d}\label{class_app_ab4e4bb60e2718691472b843fec6add7d} 
+\index{App@{App}!checkWaterCity@{checkWaterCity}}
+\index{checkWaterCity@{checkWaterCity}!App@{App}}
+\doxysubsubsection{\texorpdfstring{checkWaterCity()}{checkWaterCity()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_edge}{void}} App\+::check\+Water\+City (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{class_station}{Station}} \texorpdfstring{$\ast$}{*} $>$}]{g,  }\item[{\mbox{\hyperlink{class_edge}{const}} std\+::string \&}]{city\+Identifier,  }\item[{\mbox{\hyperlink{class_edge}{const}} std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{class_edge}{int}}, \mbox{\hyperlink{class_delivery_station}{Delivery\+Station}} \texorpdfstring{$\ast$}{*} $>$ \&}]{Id\+Map,  }\item[{\mbox{\hyperlink{class_edge}{const}} std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{class_delivery_station}{Delivery\+Station}} \texorpdfstring{$\ast$}{*} $>$ \&}]{Code\+Map,  }\item[{\mbox{\hyperlink{class_edge}{const}} std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{class_delivery_station}{Delivery\+Station}} \texorpdfstring{$\ast$}{*} $>$ \&}]{Name\+Map }\end{DoxyParamCaption})}
+
+
+
+Checks the flow to a given city. 
+
+This function checks if the total flow to the city is greater than the city\textquotesingle{}s demand and checks the flow to that city.
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & The graph representing the network. \\
+\hline
+{\em city\+Identifier} & The identifier of the city to check. \\
+\hline
+{\em Id\+Map} & The map of delivery station IDs to delivery station pointers. \\
+\hline
+{\em Code\+Map} & The map of delivery station codes to delivery station pointers. \\
+\hline
+{\em Name\+Map} & The map of delivery station names to delivery station pointers. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em \doxylink{class_station}{Station}} & The type of data held by vertices in the graph. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyNote}{Note}
+Time Complexity\+: O(\+V). 
+\end{DoxyNote}
+\Hypertarget{class_app_a8ed005d81563043e96ea9c3e7b8f176a}\label{class_app_a8ed005d81563043e96ea9c3e7b8f176a} 
+\index{App@{App}!checkWaterSupply@{checkWaterSupply}}
+\index{checkWaterSupply@{checkWaterSupply}!App@{App}}
+\doxysubsubsection{\texorpdfstring{checkWaterSupply()}{checkWaterSupply()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_edge}{void}} App\+::check\+Water\+Supply (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{class_station}{Station}} \texorpdfstring{$\ast$}{*} $>$}]{g,  }\item[{\mbox{\hyperlink{class_edge}{const}} std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{class_delivery_station}{Delivery\+Station}} \texorpdfstring{$\ast$}{*} $>$ \&}]{code\+Map }\end{DoxyParamCaption})}
+
+
+
+Checks water supply to cities and reports cities with insufficient water supply. 
+
+This function calculates the flow to each city and compares it with the city\textquotesingle{}s demand. It then reports cities that do not fulfill their water demand along with the deficit.
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & The graph representing the water network. \\
+\hline
+{\em code\+Map} & Map containing delivery stations indexed by city code. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em \doxylink{class_station}{Station}} & The type of data held by vertices in the graph. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyNote}{Note}
+Time Complexity\+: O(\+V). 
+\end{DoxyNote}
+\Hypertarget{class_app_ae988fdd2d2a8edf7b7e15433a022367c}\label{class_app_ae988fdd2d2a8edf7b7e15433a022367c} 
+\index{App@{App}!computeInitialMetrics@{computeInitialMetrics}}
+\index{computeInitialMetrics@{computeInitialMetrics}!App@{App}}
+\doxysubsubsection{\texorpdfstring{computeInitialMetrics()}{computeInitialMetrics()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_edge}{void}} App\+::compute\+Initial\+Metrics (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{class_station}{Station}} \texorpdfstring{$\ast$}{*} $>$ \&}]{graph }\end{DoxyParamCaption})}
+
+
+
+Computes initial metrics of the water network. 
+
+This function computes and prints the average difference, variance, and maximum difference between capacity and flow for all edges in the water network.
+
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & The graph representing the water network. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em \doxylink{class_station}{Station}} & The type of data held by vertices in the graph. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyNote}{Note}
+Time Complexity\+: O(V + E). 
+\end{DoxyNote}
+\Hypertarget{class_app_a7ffec8ed8539d3d9648d2d201ca2e407}\label{class_app_a7ffec8ed8539d3d9648d2d201ca2e407} 
+\index{App@{App}!display4\_1menu@{display4\_1menu}}
+\index{display4\_1menu@{display4\_1menu}!App@{App}}
+\doxysubsubsection{\texorpdfstring{display4\_1menu()}{display4\_1menu()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_edge}{void}} App\+::display4\+\_\+1menu (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{class_station}{Station}} \texorpdfstring{$\ast$}{*} $>$ \&}]{graph,  }\item[{\mbox{\hyperlink{class_edge}{const}} std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{class_edge}{int}}, \mbox{\hyperlink{class_delivery_station}{Delivery\+Station}} \texorpdfstring{$\ast$}{*} $>$ \&}]{Id\+Map,  }\item[{\mbox{\hyperlink{class_edge}{const}} std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{class_delivery_station}{Delivery\+Station}} \texorpdfstring{$\ast$}{*} $>$ \&}]{Code\+Map,  }\item[{\mbox{\hyperlink{class_edge}{const}} std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{class_delivery_station}{Delivery\+Station}} \texorpdfstring{$\ast$}{*} $>$ \&}]{Name\+Map }\end{DoxyParamCaption})}
+
+\Hypertarget{class_app_a857cc11aadd3b476b574ea6d7940d7a2}\label{class_app_a857cc11aadd3b476b574ea6d7940d7a2} 
+\index{App@{App}!display4\_2menu@{display4\_2menu}}
+\index{display4\_2menu@{display4\_2menu}!App@{App}}
+\doxysubsubsection{\texorpdfstring{display4\_2menu()}{display4\_2menu()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_edge}{void}} App\+::display4\+\_\+2menu (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{class_station}{Station}} \texorpdfstring{$\ast$}{*} $>$}]{graph,  }\item[{std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{class_edge}{int}}, \mbox{\hyperlink{class_water_reservoir}{Water\+Reservoir}} \texorpdfstring{$\ast$}{*} $>$ \&}]{wr\+Id\+Map,  }\item[{std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{class_water_reservoir}{Water\+Reservoir}} \texorpdfstring{$\ast$}{*} $>$ \&}]{wr\+Code\+Map,  }\item[{std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{class_water_reservoir}{Water\+Reservoir}} \texorpdfstring{$\ast$}{*} $>$ \&}]{wr\+Name\+Map,  }\item[{std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{class_edge}{double}} $>$}]{initial\+Weights,  }\item[{std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{class_delivery_station}{Delivery\+Station}} \texorpdfstring{$\ast$}{*} $>$ \&}]{Code\+Map }\end{DoxyParamCaption})}
+
+\Hypertarget{class_app_a8ccc8da606dec58780cb758970e17d4b}\label{class_app_a8ccc8da606dec58780cb758970e17d4b} 
+\index{App@{App}!examinePumpingStations@{examinePumpingStations}}
+\index{examinePumpingStations@{examinePumpingStations}!App@{App}}
+\doxysubsubsection{\texorpdfstring{examinePumpingStations()}{examinePumpingStations()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_edge}{void}} App\+::examine\+Pumping\+Stations (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{class_station}{Station}} \texorpdfstring{$\ast$}{*} $>$ \&}]{g }\end{DoxyParamCaption})}
+
+
+
+Examines pumping stations in the water network for their impact on water supply. 
+
+This function examines each pumping station in the water network and determines its impact on water supply. It calculates the flow of water before and after removing each pumping station (by setting the capacity of the incoming edges to 0) and checks for any deficit in water supply to delivery stations. It then outputs the pumping stations causing deficits and those that can be removed without causing deficits.
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & The graph representing the water network. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em \doxylink{class_station}{Station}} & The type of data held by vertices in the graph. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyNote}{Note}
+Time Complexity\+: O(Pumping\+Stations \texorpdfstring{$\ast$}{*} (V + E)). 
+\end{DoxyNote}
+\Hypertarget{class_app_a976edbc9d3626ecf9b52937df60c4afd}\label{class_app_a976edbc9d3626ecf9b52937df60c4afd} 
+\index{App@{App}!fillMap@{fillMap}}
+\index{fillMap@{fillMap}!App@{App}}
+\doxysubsubsection{\texorpdfstring{fillMap()}{fillMap()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_edge}{void}} App\+::fill\+Map (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{class_station}{Station}} \texorpdfstring{$\ast$}{*} $>$ \&}]{g,  }\item[{std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{class_vertex}{Vertex}}$<$ \mbox{\hyperlink{class_station}{Station}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*}, \mbox{\hyperlink{class_edge}{double}} $>$ \&}]{flow\+Map }\end{DoxyParamCaption})}
+
+
+
+Fills a map with the flow of water to each delivery station in the water network. 
+
+This function calculates the maximum flow in the water network using the maximum flow algorithm, resets the visited flag for all vertices, and then iterates through each delivery station to compute the flow of water to each city and store it in the provided map it is used to see the impact of removing parts of the network infrastructure.
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & The graph representing the water network. \\
+\hline
+{\em flow\+Map} & The map to store the flow of water to each delivery station. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em \doxylink{class_station}{Station}} & The type of data held by vertices in the graph. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyNote}{Note}
+Time Complexity\+: O(V + E \texorpdfstring{$\ast$}{*} log(\+E)), where V is the number of vertices and E is the number of edges in the graph. 
+\end{DoxyNote}
+\Hypertarget{class_app_a5128ad7451a5b55a977615238d16ae41}\label{class_app_a5128ad7451a5b55a977615238d16ae41} 
+\index{App@{App}!findSuperSourceAndSuperSink@{findSuperSourceAndSuperSink}}
+\index{findSuperSourceAndSuperSink@{findSuperSourceAndSuperSink}!App@{App}}
+\doxysubsubsection{\texorpdfstring{findSuperSourceAndSuperSink()}{findSuperSourceAndSuperSink()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_edge}{void}} App\+::find\+Super\+Source\+And\+Super\+Sink (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{class_station}{Station}} \texorpdfstring{$\ast$}{*} $>$ \&}]{graph,  }\item[{\mbox{\hyperlink{class_vertex}{Vertex}}$<$ \mbox{\hyperlink{class_station}{Station}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*}\&}]{super\+Source,  }\item[{\mbox{\hyperlink{class_vertex}{Vertex}}$<$ \mbox{\hyperlink{class_station}{Station}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*}\&}]{super\+Sink }\end{DoxyParamCaption})}
+
+
+
+Finds the vertices representing the super source and super sink in the graph. 
+
+This function iterates through the vertices of the graph to find the vertices representing the super source and super sink, assigning them to the provided pointers.
+
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & The graph to search for super source and super sink vertices. \\
+\hline
+{\em super\+Source} & Pointer to the vertex representing the super source (output parameter). \\
+\hline
+{\em super\+Sink} & Pointer to the vertex representing the super sink (output parameter). \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em \doxylink{class_station}{Station}} & The type of data held by vertices in the graph. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyNote}{Note}
+Time Complexity\+: O(\+V) 
+\end{DoxyNote}
+\Hypertarget{class_app_ae8a8d76bf433ec095e15f2a0b6e70b73}\label{class_app_ae8a8d76bf433ec095e15f2a0b6e70b73} 
+\index{App@{App}!findWrId@{findWrId}}
+\index{findWrId@{findWrId}!App@{App}}
+\doxysubsubsection{\texorpdfstring{findWrId()}{findWrId()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_vertex}{Vertex}}$<$ \mbox{\hyperlink{class_station}{Station}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*} App\+::find\+Wr\+Id (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{class_station}{Station}} \texorpdfstring{$\ast$}{*} $>$ \&}]{g,  }\item[{\mbox{\hyperlink{class_edge}{const}} std\+::string \&}]{wr\+Identifier,  }\item[{std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{class_edge}{int}}, \mbox{\hyperlink{class_water_reservoir}{Water\+Reservoir}} \texorpdfstring{$\ast$}{*} $>$ \&}]{wr\+Id\+Map,  }\item[{std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{class_water_reservoir}{Water\+Reservoir}} \texorpdfstring{$\ast$}{*} $>$ \&}]{wr\+Code\+Map,  }\item[{std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{class_water_reservoir}{Water\+Reservoir}} \texorpdfstring{$\ast$}{*} $>$ \&}]{wr\+Name\+Map }\end{DoxyParamCaption})}
+
+
+
+Finds a water reservoir vertex in the graph by its identifier (ID, code, or name). 
+
+This function searches for a water reservoir vertex in the graph based on its identifier (ID, code, or name) and returns the vertex if found.
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & The graph representing the water network. \\
+\hline
+{\em wr\+Identifier} & The identifier (ID, code, or name) of the water reservoir. \\
+\hline
+{\em wr\+Id\+Map} & Map containing water reservoirs indexed by ID. \\
+\hline
+{\em wr\+Code\+Map} & Map containing water reservoirs indexed by code. \\
+\hline
+{\em wr\+Name\+Map} & Map containing water reservoirs indexed by name. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em \doxylink{class_station}{Station}} & The type of data held by vertices in the graph. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the water reservoir vertex if found, nullptr otherwise. 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Time Complexity\+: O(1). 
+\end{DoxyNote}
+\Hypertarget{class_app_aa709e37d792c3a6d0fc7f9d0fb0af40a}\label{class_app_aa709e37d792c3a6d0fc7f9d0fb0af40a} 
+\index{App@{App}!getAllEdges@{getAllEdges}}
+\index{getAllEdges@{getAllEdges}!App@{App}}
+\doxysubsubsection{\texorpdfstring{getAllEdges()}{getAllEdges()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_edge}{vector}}$<$ \mbox{\hyperlink{class_edge}{Edge}}$<$ \mbox{\hyperlink{class_station}{Station}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*} $>$ App\+::get\+All\+Edges (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_edge}{const}} \mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{class_station}{Station}} \texorpdfstring{$\ast$}{*} $>$ \&}]{g }\end{DoxyParamCaption})}
+
+
+
+Retrieves all edges in the graph that have not been selected yet. 
+
+This function iterates through each vertex in the graph and adds all edges that have not been selected and whose origin and destination vertices are not special markers (with IDs -\/1 and -\/2 since those are the super source and super sink special nodes) to a vector. It sets the \textquotesingle{}is\+Selected\textquotesingle{} flag of each selected edge to true.
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & The graph representing the water network. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector containing pointers to all selected edges in the graph. 
+\end{DoxyReturn}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em \doxylink{class_station}{Station}} & The type of data held by vertices in the graph. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyNote}{Note}
+Time Complexity\+: O(V + E). 
+\end{DoxyNote}
+\Hypertarget{class_app_aa82e8ec56c28e5524773727d34742041}\label{class_app_aa82e8ec56c28e5524773727d34742041} 
+\index{App@{App}!getFlowToCity@{getFlowToCity}}
+\index{getFlowToCity@{getFlowToCity}!App@{App}}
+\doxysubsubsection{\texorpdfstring{getFlowToCity()}{getFlowToCity()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_edge}{double}} App\+::get\+Flow\+To\+City (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{class_station}{Station}} \texorpdfstring{$\ast$}{*} $>$ \&}]{g,  }\item[{\mbox{\hyperlink{class_vertex}{Vertex}}$<$ \mbox{\hyperlink{class_station}{Station}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*}}]{delivery\+Station }\end{DoxyParamCaption})}
+
+
+
+Calculates the total flow to a given delivery station. 
+
+This function calculates the total flow to a given delivery station by summing up the flow along incoming edges.
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & The graph representing the network. \\
+\hline
+{\em delivery\+Station} & Pointer to the delivery station vertex. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The total flow to the given delivery station. 
+\end{DoxyReturn}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em \doxylink{class_station}{Station}} & The type of data held by vertices in the graph. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyNote}{Note}
+Time Complexity\+: O(degree(v)). 
+\end{DoxyNote}
+\Hypertarget{class_app_aff5e3a2f344d94bddf614526b1b2dccd}\label{class_app_aff5e3a2f344d94bddf614526b1b2dccd} 
+\index{App@{App}!loadBalancingMenu@{loadBalancingMenu}}
+\index{loadBalancingMenu@{loadBalancingMenu}!App@{App}}
+\doxysubsubsection{\texorpdfstring{loadBalancingMenu()}{loadBalancingMenu()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_edge}{void}} App\+::load\+Balancing\+Menu (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{class_station}{Station}} \texorpdfstring{$\ast$}{*} $>$ \&}]{graph,  }\item[{\mbox{\hyperlink{class_edge}{const}} std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{class_edge}{int}}, \mbox{\hyperlink{class_delivery_station}{Delivery\+Station}} \texorpdfstring{$\ast$}{*} $>$ \&}]{Id\+Map,  }\item[{\mbox{\hyperlink{class_edge}{const}} std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{class_delivery_station}{Delivery\+Station}} \texorpdfstring{$\ast$}{*} $>$ \&}]{Code\+Map,  }\item[{\mbox{\hyperlink{class_edge}{const}} std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{class_delivery_station}{Delivery\+Station}} \texorpdfstring{$\ast$}{*} $>$ \&}]{Name\+Map }\end{DoxyParamCaption})}
+
+\Hypertarget{class_app_afbb7425b28266905d3b458827ac235b2}\label{class_app_afbb7425b28266905d3b458827ac235b2} 
+\index{App@{App}!MaxFlowAlgo@{MaxFlowAlgo}}
+\index{MaxFlowAlgo@{MaxFlowAlgo}!App@{App}}
+\doxysubsubsection{\texorpdfstring{MaxFlowAlgo()}{MaxFlowAlgo()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_edge}{double}} App\+::\+Max\+Flow\+Algo (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{class_station}{Station}} \texorpdfstring{$\ast$}{*} $>$ \&}]{g }\end{DoxyParamCaption})}
+
+
+
+Calculates the maximum flow in the graph using the Edmonds-\/\+Karp algorithm. 
+
+This function calculates the maximum flow in the graph using the Edmonds-\/\+Karp algorithm, which finds the maximum flow from a source to a sink in a flow network.
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & The graph representing the flow network. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The maximum flow in the graph. 
+\end{DoxyReturn}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em \doxylink{class_station}{Station}} & The type of data held by vertices in the graph. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyNote}{Note}
+Time Complexity\+: O(\+V \texorpdfstring{$\ast$}{*} E\texorpdfstring{$^\wedge$}{\string^}2). 
+\end{DoxyNote}
+\Hypertarget{class_app_a9f6b89bd6fde5999b74d5941ae1ef266}\label{class_app_a9f6b89bd6fde5999b74d5941ae1ef266} 
+\index{App@{App}!maxFlowSubMenu@{maxFlowSubMenu}}
+\index{maxFlowSubMenu@{maxFlowSubMenu}!App@{App}}
+\doxysubsubsection{\texorpdfstring{maxFlowSubMenu()}{maxFlowSubMenu()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_edge}{void}} App\+::max\+Flow\+Sub\+Menu (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{class_station}{Station}} \texorpdfstring{$\ast$}{*} $>$ \&}]{graph,  }\item[{\mbox{\hyperlink{class_edge}{const}} std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{class_edge}{int}}, \mbox{\hyperlink{class_delivery_station}{Delivery\+Station}} \texorpdfstring{$\ast$}{*} $>$ \&}]{Id\+Map,  }\item[{\mbox{\hyperlink{class_edge}{const}} std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{class_delivery_station}{Delivery\+Station}} \texorpdfstring{$\ast$}{*} $>$ \&}]{Code\+Map,  }\item[{\mbox{\hyperlink{class_edge}{const}} std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{class_delivery_station}{Delivery\+Station}} \texorpdfstring{$\ast$}{*} $>$ \&}]{Name\+Map }\end{DoxyParamCaption})}
+
+\Hypertarget{class_app_acc76f4b883ac26d2d7983f34c29f760d}\label{class_app_acc76f4b883ac26d2d7983f34c29f760d} 
+\index{App@{App}!pipelineFailure@{pipelineFailure}}
+\index{pipelineFailure@{pipelineFailure}!App@{App}}
+\doxysubsubsection{\texorpdfstring{pipelineFailure()}{pipelineFailure()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_edge}{void}} App\+::pipeline\+Failure (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{class_station}{Station}} \texorpdfstring{$\ast$}{*} $>$ \&}]{g,  }\item[{std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{class_vertex}{Vertex}}$<$ \mbox{\hyperlink{class_station}{Station}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*}, \mbox{\hyperlink{class_edge}{double}} $>$ \&}]{flow\+Map }\end{DoxyParamCaption})}
+
+
+
+Computes the consequences of a pipeline rupture. 
+
+This function, computes the consequences of a pipeline failure, listing the affected cities displaying their codes and water supply in deficit.
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & Pointer to the graph representing the water network. \\
+\hline
+{\em flow\+Map} & The map containing the original flow of water to each delivery station.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Time Complexity\+: O(\+E\texorpdfstring{$\ast$}{*}(\+V\texorpdfstring{$\ast$}{*}\+E\texorpdfstring{$^\wedge$}{\string^}2)). 
+\end{DoxyNote}
+\Hypertarget{class_app_a1f6f95288f065a55bf73a75a31bbf3e1}\label{class_app_a1f6f95288f065a55bf73a75a31bbf3e1} 
+\index{App@{App}!PrintMaxFlowForCities@{PrintMaxFlowForCities}}
+\index{PrintMaxFlowForCities@{PrintMaxFlowForCities}!App@{App}}
+\doxysubsubsection{\texorpdfstring{PrintMaxFlowForCities()}{PrintMaxFlowForCities()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_edge}{void}} App\+::\+Print\+Max\+Flow\+For\+Cities (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{class_station}{Station}} \texorpdfstring{$\ast$}{*} $>$ \&}]{graph,  }\item[{\mbox{\hyperlink{class_edge}{double}}}]{total\+Flow }\end{DoxyParamCaption})}
+
+
+
+Prints the maximum flow for each city to a file. 
+
+This function prints the maximum flow for each city in the graph to a file, along with the total maximum flow of the network.
+
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & The graph representing the network. \\
+\hline
+{\em total\+Flow} & The total maximum flow of the network. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em \doxylink{class_station}{Station}} & The type of data held by vertices in the graph. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyNote}{Note}
+Time Complexity\+: O(\+V). 
+\end{DoxyNote}
+\Hypertarget{class_app_a3c01dc38a9b2d89f5a0e96f7a5c3889b}\label{class_app_a3c01dc38a9b2d89f5a0e96f7a5c3889b} 
+\index{App@{App}!removeWR@{removeWR}}
+\index{removeWR@{removeWR}!App@{App}}
+\doxysubsubsection{\texorpdfstring{removeWR()}{removeWR()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_edge}{void}} App\+::remove\+WR (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{class_station}{Station}} \texorpdfstring{$\ast$}{*} $>$ \&}]{g,  }\item[{\mbox{\hyperlink{class_vertex}{Vertex}}$<$ \mbox{\hyperlink{class_station}{Station}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*}}]{wr\+Vertex }\end{DoxyParamCaption})}
+
+
+
+Removes a water reservoir from the water network by modifying its adjacent edges. 
+
+This function removes a water reservoir from the water network by setting the weight of the edge connecting the water reservoir to the super source to 0. It ensures that the water reservoir has not been previously removed and finds the edge to remove.
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & The graph representing the water network. \\
+\hline
+{\em wr\+Vertex} & Pointer to the vertex representing the water reservoir to remove. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em \doxylink{class_station}{Station}} & The type of data held by vertices in the graph. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyNote}{Note}
+Time Complexity\+: O(V + E). 
+\end{DoxyNote}
+\Hypertarget{class_app_a2e1a06da083b5bda97d11935a41c510a}\label{class_app_a2e1a06da083b5bda97d11935a41c510a} 
+\index{App@{App}!resetGraph@{resetGraph}}
+\index{resetGraph@{resetGraph}!App@{App}}
+\doxysubsubsection{\texorpdfstring{resetGraph()}{resetGraph()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_edge}{void}} App\+::reset\+Graph (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{class_station}{Station}} \texorpdfstring{$\ast$}{*} $>$ \&}]{graph }\end{DoxyParamCaption})}
+
+
+
+Resets the flow of water in the graph by setting it to zero. 
+
+This function resets the flow of water in the graph by setting the flow of all edges to zero and setting the active flag of all vertices to true.
+
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & The graph representing the water network. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em \doxylink{class_station}{Station}} & The type of data held by vertices in the graph. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyNote}{Note}
+Time Complexity\+: O(V + E). 
+\end{DoxyNote}
+\Hypertarget{class_app_ae6c3770fb310a6ca4064a7feec513447}\label{class_app_ae6c3770fb310a6ca4064a7feec513447} 
+\index{App@{App}!restoreGraph@{restoreGraph}}
+\index{restoreGraph@{restoreGraph}!App@{App}}
+\doxysubsubsection{\texorpdfstring{restoreGraph()}{restoreGraph()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_edge}{void}} App\+::restore\+Graph (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{class_station}{Station}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*}}]{g,  }\item[{std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{class_edge}{double}} $>$}]{initial\+Weights }\end{DoxyParamCaption})}
+
+
+
+Restores the graph to its initial state by resetting edge weights of the supersource to the water reservoirs. 
+
+This function restores the graph to its initial state by setting the weights of edges originating from the super source vertex to their original values stored in the provided map.
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & Pointer to the graph representing the water network. \\
+\hline
+{\em initial\+Weights} & Map containing the initial weights of edges indexed by destination vertex code. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em \doxylink{class_station}{Station}} & The type of data held by vertices in the graph. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyNote}{Note}
+Time Complexity\+: O(V + E). 
+\end{DoxyNote}
+\Hypertarget{class_app_ae09dc71078b64c56c673b1ad1d25b5d1}\label{class_app_ae09dc71078b64c56c673b1ad1d25b5d1} 
+\index{App@{App}!run@{run}}
+\index{run@{run}!App@{App}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_edge}{void}} App\+::run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Runs the application. 
+
+This static method is used to run the application. \Hypertarget{class_app_a5d22ff18798f4631df320c47464c463f}\label{class_app_a5d22ff18798f4631df320c47464c463f} 
+\index{App@{App}!showDifference@{showDifference}}
+\index{showDifference@{showDifference}!App@{App}}
+\doxysubsubsection{\texorpdfstring{showDifference()}{showDifference()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_edge}{void}} App\+::show\+Difference (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{class_station}{Station}} \texorpdfstring{$\ast$}{*} $>$}]{g,  }\item[{std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{class_vertex}{Vertex}}$<$ \mbox{\hyperlink{class_station}{Station}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*}, \mbox{\hyperlink{class_edge}{double}} $>$ \&}]{flow\+Map,  }\item[{std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{class_delivery_station}{Delivery\+Station}} \texorpdfstring{$\ast$}{*} $>$ \&}]{code\+Map }\end{DoxyParamCaption})}
+
+
+
+Shows the difference in flow before and after a change in the water network. 
+
+This function compares the flow of water to each delivery station before and after a change in the water network and displays the difference, indicating the affected cities and their codes.
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & The graph representing the water network. \\
+\hline
+{\em flow\+Map} & The map containing the original flow of water to each delivery station. \\
+\hline
+{\em code\+Map} & Map containing delivery stations indexed by code. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em \doxylink{class_station}{Station}} & The type of data held by vertices in the graph. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyNote}{Note}
+Time Complexity\+: O(\+V). 
+\end{DoxyNote}
+\Hypertarget{class_app_a1fd39ebb13d50c125d1fefa9b6c6dfb2}\label{class_app_a1fd39ebb13d50c125d1fefa9b6c6dfb2} 
+\index{App@{App}!showImprovedMetrics@{showImprovedMetrics}}
+\index{showImprovedMetrics@{showImprovedMetrics}!App@{App}}
+\doxysubsubsection{\texorpdfstring{showImprovedMetrics()}{showImprovedMetrics()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_edge}{void}} App\+::show\+Improved\+Metrics (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_graph}{Graph}}$<$ \mbox{\hyperlink{class_station}{Station}} \texorpdfstring{$\ast$}{*} $>$ \&}]{graph }\end{DoxyParamCaption})}
+
+
+
+Shows the initial metrics of the water network. 
+
+This function displays the initial metrics of the water network by calling the compute\+Initial\+Metrics function.
+
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & The graph representing the water network. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em \doxylink{class_station}{Station}} & The type of data held by vertices in the graph. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyNote}{Note}
+Time Complexity\+: O(V + E). 
+\end{DoxyNote}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_app_8h}{App.\+h}}\item 
+\mbox{\hyperlink{_app_8cpp}{App.\+cpp}}\end{DoxyCompactItemize}

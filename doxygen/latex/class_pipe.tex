@@ -1,0 +1,112 @@
+\doxysection{Pipe Class Reference}
+\hypertarget{class_pipe}{}\label{class_pipe}\index{Pipe@{Pipe}}
+
+
+The \doxylink{class_pipe}{Pipe} class represents a pipe connecting two service points.  
+
+
+
+
+{\ttfamily \#include $<$Pipe.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_pipe_ada415ac3ab5a062ffce679b5e2944a32}{Pipe}} (std\+::string service\+PointA, std\+::string service\+PointB, \mbox{\hyperlink{class_edge}{int}} capacity, \mbox{\hyperlink{class_edge}{bool}} direction)
+\begin{DoxyCompactList}\small\item\em Constructor for the \doxylink{class_pipe}{Pipe} class. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_pipe_a0fd6dba1bc18b9f53b85b618cbca4c9d}{get\+Service\+PointA}} () \mbox{\hyperlink{class_edge}{const}}
+\begin{DoxyCompactList}\small\item\em Get the code of the first service point connected by the pipe. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_pipe_abea0acd3f28c721d8e376d4647be636d}{get\+Service\+PointB}} () \mbox{\hyperlink{class_edge}{const}}
+\begin{DoxyCompactList}\small\item\em Get the code of the second service point connected by the pipe. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_edge}{int}} \mbox{\hyperlink{class_pipe_a3c79c6d7d5120eeb516c3f5ed75d2386}{get\+Capacity}} () \mbox{\hyperlink{class_edge}{const}}
+\begin{DoxyCompactList}\small\item\em Get the capacity of the pipe. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_edge}{bool}} \mbox{\hyperlink{class_pipe_a5c0980efc8e1664a1d39449f92982a85}{get\+Direction}} () \mbox{\hyperlink{class_edge}{const}}
+\begin{DoxyCompactList}\small\item\em Get the direction of flow through the pipe. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \doxylink{class_pipe}{Pipe} class represents a pipe connecting two service points. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_pipe_ada415ac3ab5a062ffce679b5e2944a32}\label{class_pipe_ada415ac3ab5a062ffce679b5e2944a32} 
+\index{Pipe@{Pipe}!Pipe@{Pipe}}
+\index{Pipe@{Pipe}!Pipe@{Pipe}}
+\doxysubsubsection{\texorpdfstring{Pipe()}{Pipe()}}
+{\footnotesize\ttfamily Pipe\+::\+Pipe (\begin{DoxyParamCaption}\item[{std\+::string}]{service\+PointA,  }\item[{std\+::string}]{service\+PointB,  }\item[{\mbox{\hyperlink{class_edge}{int}}}]{capacity,  }\item[{\mbox{\hyperlink{class_edge}{bool}}}]{direction }\end{DoxyParamCaption})}
+
+
+
+Constructor for the \doxylink{class_pipe}{Pipe} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em service\+PointA} & The code of the first service point connected by the pipe. \\
+\hline
+{\em service\+PointB} & The code of the second service point connected by the pipe. \\
+\hline
+{\em capacity} & The capacity of the pipe. \\
+\hline
+{\em direction} & The direction of flow through the pipe. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_pipe_a3c79c6d7d5120eeb516c3f5ed75d2386}\label{class_pipe_a3c79c6d7d5120eeb516c3f5ed75d2386} 
+\index{Pipe@{Pipe}!getCapacity@{getCapacity}}
+\index{getCapacity@{getCapacity}!Pipe@{Pipe}}
+\doxysubsubsection{\texorpdfstring{getCapacity()}{getCapacity()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_edge}{int}} Pipe\+::get\+Capacity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the capacity of the pipe. 
+
+\begin{DoxyReturn}{Returns}
+The capacity of the pipe. 
+\end{DoxyReturn}
+\Hypertarget{class_pipe_a5c0980efc8e1664a1d39449f92982a85}\label{class_pipe_a5c0980efc8e1664a1d39449f92982a85} 
+\index{Pipe@{Pipe}!getDirection@{getDirection}}
+\index{getDirection@{getDirection}!Pipe@{Pipe}}
+\doxysubsubsection{\texorpdfstring{getDirection()}{getDirection()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_edge}{bool}} Pipe\+::get\+Direction (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the direction of flow through the pipe. 
+
+\begin{DoxyReturn}{Returns}
+The direction of flow through the pipe. True if the flow is from service\+PointA to service\+PointB, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{class_pipe_a0fd6dba1bc18b9f53b85b618cbca4c9d}\label{class_pipe_a0fd6dba1bc18b9f53b85b618cbca4c9d} 
+\index{Pipe@{Pipe}!getServicePointA@{getServicePointA}}
+\index{getServicePointA@{getServicePointA}!Pipe@{Pipe}}
+\doxysubsubsection{\texorpdfstring{getServicePointA()}{getServicePointA()}}
+{\footnotesize\ttfamily std\+::string Pipe\+::get\+Service\+PointA (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the code of the first service point connected by the pipe. 
+
+\begin{DoxyReturn}{Returns}
+The code of the first service point connected by the pipe. 
+\end{DoxyReturn}
+\Hypertarget{class_pipe_abea0acd3f28c721d8e376d4647be636d}\label{class_pipe_abea0acd3f28c721d8e376d4647be636d} 
+\index{Pipe@{Pipe}!getServicePointB@{getServicePointB}}
+\index{getServicePointB@{getServicePointB}!Pipe@{Pipe}}
+\doxysubsubsection{\texorpdfstring{getServicePointB()}{getServicePointB()}}
+{\footnotesize\ttfamily std\+::string Pipe\+::get\+Service\+PointB (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the code of the second service point connected by the pipe. 
+
+\begin{DoxyReturn}{Returns}
+The code of the second service point connected by the pipe. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Classes/\mbox{\hyperlink{_pipe_8h}{Pipe.\+h}}\item 
+Classes/\mbox{\hyperlink{_pipe_8cpp}{Pipe.\+cpp}}\end{DoxyCompactItemize}

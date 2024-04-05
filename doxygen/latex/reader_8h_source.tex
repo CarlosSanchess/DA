@@ -1,0 +1,87 @@
+\doxysection{reader.\+h}
+\hypertarget{reader_8h_source}{}\label{reader_8h_source}\mbox{\hyperlink{reader_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ READER\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ READER\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <set>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_delivery_station_8h}{Classes/DeliveryStation.h}}"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_station_8h}{Classes/Station.h}}"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_graph_8h}{Classes/Graph.h}}"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_water_reservoir_8h}{Classes/WaterReservoir.h}}"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_pipe_8h}{Classes/Pipe.h}}"{}}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_reader}{Reader}}\ \{}
+\DoxyCodeLine{00020\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00021\ \ \ \ \ \mbox{\hyperlink{class_edge}{Graph<Station*>}}\ graph;\ \ }
+\DoxyCodeLine{00022\ \ \ \ \ std::unordered\_map<int,\ DeliveryStation*>\ idMap;\ \ }
+\DoxyCodeLine{00023\ \ \ \ \ std::unordered\_map<std::string,\ DeliveryStation*>\ codeMap;\ \ }
+\DoxyCodeLine{00024\ \ \ \ \ std::unordered\_map<std::string,\ DeliveryStation*>\ nameMap;\ \ }
+\DoxyCodeLine{00025\ \ \ \ \ std::unordered\_map<int,\ WaterReservoir*>\ wrIdMap;\ \ }
+\DoxyCodeLine{00026\ \ \ \ \ std::unordered\_map<std::string,\ WaterReservoir*>\ wrCodeMap;\ \ }
+\DoxyCodeLine{00027\ \ \ \ \ std::unordered\_map<std::string,\ WaterReservoir*>\ wrNameMap;\ \ }
+\DoxyCodeLine{00028\ \ \ \ \ std::unordered\_map<std::string,\ double>\ edgeWeightMap;\ \ }
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00031\ \ \ \ \ \mbox{\hyperlink{class_reader_adcda31b507720ab44044d7a21686fba2}{Reader}}();}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_reader_a8ea2170703a7d287304c7ce377582c1d}{readAndParseDS}}();}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_reader_aea65c08e58cefe199f7606618bcec760}{readAndParsePS}}();}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_reader_a3ded9037af5cd4f1ddd93dd9def33136}{readAndParseWR}}();}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_reader_a062a23609c3ab7c7621fd91695a874f1}{readAndParsePipes}}();}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \mbox{\hyperlink{class_station}{Station}}*\ \mbox{\hyperlink{class_reader_a8103e6785f4a6559168e68e654e57e09}{getNode}}(\textcolor{keyword}{const}\ std::string\&\ \mbox{\hyperlink{class_edge}{servicePoint}});}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \mbox{\hyperlink{class_edge}{Graph<Station*>}}\ \mbox{\hyperlink{class_reader_a196aad3ea561494a4f1dea15788746c3}{getGraph}}()\{}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ graph;}
+\DoxyCodeLine{00045\ \ \ \ \ \}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_reader_a9761753099737dd67cdf7fe165e43e77}{addSuperSourceAndSink}}();}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_delivery_station}{DeliveryStation}}*\ \mbox{\hyperlink{class_reader_a5563ced17e31832a4de74fad6c4f2132}{getDeliveryStationById}}(\textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id},\ \textcolor{keyword}{const}\ std::unordered\_map<int,\ DeliveryStation*>\&\ idMap);}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_delivery_station}{DeliveryStation}}*\ \mbox{\hyperlink{class_reader_ae206ad9ae2244b675e88c7a6be9a6619}{getDeliveryStationByCode}}(\textcolor{keyword}{const}\ std::string\&\ code,\ \textcolor{keyword}{const}\ std::unordered\_map<std::string,\ DeliveryStation*>\&\ codeMap);}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_delivery_station}{DeliveryStation}}*\ \mbox{\hyperlink{class_reader_a5a153aa1db3ef4c91a878860dc6691b2}{getDeliveryStationByName}}(\textcolor{keyword}{const}\ std::string\&\ \mbox{\hyperlink{class_edge}{name}},\ \textcolor{keyword}{const}\ std::unordered\_map<std::string,\ DeliveryStation*>\&\ nameMap);}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_water_reservoir}{WaterReservoir}}*\ \mbox{\hyperlink{class_reader_a4823dedc71583d417928ebdcf34617f8}{getWaterReservoirById}}(\textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id},\ \textcolor{keyword}{const}\ std::unordered\_map<int,\ WaterReservoir*>\&\ wrIdMap);}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_water_reservoir}{WaterReservoir}}*\ \mbox{\hyperlink{class_reader_aa0419f037db5530dd29d157d1633ac55}{getWaterReservoirByCode}}(\textcolor{keyword}{const}\ std::string\&\ code,\ \textcolor{keyword}{const}\ std::unordered\_map<std::string,\ WaterReservoir*>\&\ wrCodeMap);}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_water_reservoir}{WaterReservoir}}*\ \mbox{\hyperlink{class_reader_ab8ccdfabd8cf7cd2200064d8f64ad7f9}{getWaterReservoirByName}}(\textcolor{keyword}{const}\ std::string\&\ \mbox{\hyperlink{class_edge}{name}},\ \textcolor{keyword}{const}\ std::unordered\_map<std::string,\ WaterReservoir*>\&\ wrNameMap);}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ std::unordered\_map<std::string,\ DeliveryStation*>\ \mbox{\hyperlink{class_reader_a63c9b45ff5f3fbfec1dde81056ba76c6}{getCodeMap}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ codeMap;}
+\DoxyCodeLine{00059\ \ \ \ \ \}}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ std::unordered\_map<std::string,\ DeliveryStation*>\ \mbox{\hyperlink{class_reader_a832ff6fba4253cd6a302bf877fb50f3c}{getNameMap}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ nameMap;}
+\DoxyCodeLine{00063\ \ \ \ \ \}}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \ \ std::unordered\_map<int,\ DeliveryStation*>\ \mbox{\hyperlink{class_reader_a980452ebd91ba77de6e27f503d324da3}{getIdMap}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ idMap;}
+\DoxyCodeLine{00067\ \ \ \ \ \}}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \ \ \ \ std::unordered\_map<int,\ WaterReservoir*>\ \mbox{\hyperlink{class_reader_afeb31671cf0a2ec7e4acc4c794e88c1e}{getWrIdMap}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ wrIdMap;}
+\DoxyCodeLine{00071\ \ \ \ \ \}}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ std::unordered\_map<std::string,\ WaterReservoir*>\ \mbox{\hyperlink{class_reader_abc2ad850cbbb43b67b3ade8d10bfb317}{getWrCodeMap}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ wrCodeMap;}
+\DoxyCodeLine{00075\ \ \ \ \ \}}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \ \ \ \ std::unordered\_map<std::string,\ WaterReservoir*>\ \mbox{\hyperlink{class_reader_aaef619f9bb955f763eccc5a074baa960}{getWrNameMap}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ wrNameMap;}
+\DoxyCodeLine{00079\ \ \ \ \ \}}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \ \ std::unordered\_map<std::string,\ double>\ \mbox{\hyperlink{class_reader_a5757f2baa7d2cc2126bb6edaa31b16ce}{getEdgeWeightMap}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ edgeWeightMap;}
+\DoxyCodeLine{00083\ \ \ \ \ \}}
+\DoxyCodeLine{00084\ \};}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ READER\_H\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

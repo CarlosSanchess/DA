@@ -1,0 +1,132 @@
+\doxysection{Delivery\+Station Class Reference}
+\hypertarget{class_delivery_station}{}\label{class_delivery_station}\index{DeliveryStation@{DeliveryStation}}
+
+
+A class representing a delivery station.  
+
+
+
+
+{\ttfamily \#include $<$Delivery\+Station.\+h$>$}
+
+Inheritance diagram for Delivery\+Station\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_delivery_station}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_delivery_station_aadebec9398b9f0ee84b6bef8805c0bf6}{Delivery\+Station}} (\mbox{\hyperlink{class_edge}{int}} \mbox{\hyperlink{class_station_a4144cd1a5a69d5900f473ea9d792b3fe}{id}}, std\+::string \mbox{\hyperlink{class_station_a7f51ddd0c9efdd4c6463deeb9b9f330b}{code}}, std\+::string city, \mbox{\hyperlink{class_edge}{double}} demand, \mbox{\hyperlink{class_edge}{int}} population)
+\begin{DoxyCompactList}\small\item\em Constructor for the \doxylink{class_delivery_station}{Delivery\+Station} class. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_delivery_station_ad6ba15b645cba0557d513dffddcf08c9}{get\+City}} () \mbox{\hyperlink{class_edge}{const}}
+\begin{DoxyCompactList}\small\item\em Get the city where the delivery station is located. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_edge}{double}} \mbox{\hyperlink{class_delivery_station_af279e985e40d22b28eb27d7fd37f9b91}{get\+Demand}} () \mbox{\hyperlink{class_edge}{const}}
+\begin{DoxyCompactList}\small\item\em Get the demand of the delivery station. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_edge}{int}} \mbox{\hyperlink{class_delivery_station_acfd0412fa9ad6edf3fbbcf3184e48444}{get\+Population}} () \mbox{\hyperlink{class_edge}{const}}
+\begin{DoxyCompactList}\small\item\em Get the population served by the delivery station. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_station}{Station}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_station_aca5d1d7de6052a396c7a8fe9affd153c}{Station}} (\mbox{\hyperlink{class_edge}{int}} \mbox{\hyperlink{class_station_a4144cd1a5a69d5900f473ea9d792b3fe}{id}}, std\+::string \mbox{\hyperlink{class_station_a7f51ddd0c9efdd4c6463deeb9b9f330b}{code}})
+\begin{DoxyCompactList}\small\item\em Constructor for the \doxylink{class_station}{Station} class. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_edge}{virtual}} \mbox{\hyperlink{class_station_a00434e79e8ee7f4ebd6d3b631dde5ac0}{\texorpdfstring{$\sim$}{\string~}\+Station}} ()
+\begin{DoxyCompactList}\small\item\em Destructor for the \doxylink{class_station}{Station} class. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_edge}{int}} \mbox{\hyperlink{class_station_afd0de4c1f7e51648bfe465c5b8b02c88}{get\+Id}} () \mbox{\hyperlink{class_edge}{const}}
+\begin{DoxyCompactList}\small\item\em Get the unique identifier of the station. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_station_acebe4b1627bbce79ace0e3e0b655c9a9}{get\+Code}} () \mbox{\hyperlink{class_edge}{const}}
+\begin{DoxyCompactList}\small\item\em Get the code identifying the station. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_edge}{void}} \mbox{\hyperlink{class_station_a262a2a1bd0b27c0a162e880b00b69a96}{set\+Active}} (\mbox{\hyperlink{class_edge}{bool}} \mbox{\hyperlink{class_station_aab9526520d0f03cb1da7b76c5d37e37e}{active}})
+\begin{DoxyCompactList}\small\item\em Set the activity status of the station. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_edge}{bool}} \mbox{\hyperlink{class_station_a395b0107c629fd77f921a9e352413789}{is\+Active}} () \mbox{\hyperlink{class_edge}{const}}
+\begin{DoxyCompactList}\small\item\em Check if the station is active. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_station}{Station}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_edge}{int}} \mbox{\hyperlink{class_station_a4144cd1a5a69d5900f473ea9d792b3fe}{id}}
+\begin{DoxyCompactList}\small\item\em The unique identifier of the station. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_station_a7f51ddd0c9efdd4c6463deeb9b9f330b}{code}}
+\begin{DoxyCompactList}\small\item\em The code identifying the station. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_edge}{bool}} \mbox{\hyperlink{class_station_aab9526520d0f03cb1da7b76c5d37e37e}{active}}
+\begin{DoxyCompactList}\small\item\em Indicates whether the station is active or not. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A class representing a delivery station. 
+
+This class extends the functionality of the \doxylink{class_station}{Station} class to include information specific to delivery stations, such as the city served, demand, and population. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_delivery_station_aadebec9398b9f0ee84b6bef8805c0bf6}\label{class_delivery_station_aadebec9398b9f0ee84b6bef8805c0bf6} 
+\index{DeliveryStation@{DeliveryStation}!DeliveryStation@{DeliveryStation}}
+\index{DeliveryStation@{DeliveryStation}!DeliveryStation@{DeliveryStation}}
+\doxysubsubsection{\texorpdfstring{DeliveryStation()}{DeliveryStation()}}
+{\footnotesize\ttfamily Delivery\+Station\+::\+Delivery\+Station (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_edge}{int}}}]{id,  }\item[{std\+::string}]{code,  }\item[{std\+::string}]{city,  }\item[{\mbox{\hyperlink{class_edge}{double}}}]{demand,  }\item[{\mbox{\hyperlink{class_edge}{int}}}]{population }\end{DoxyParamCaption})}
+
+
+
+Constructor for the \doxylink{class_delivery_station}{Delivery\+Station} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The ID of the delivery station. \\
+\hline
+{\em code} & The code of the delivery station. \\
+\hline
+{\em city} & The city where the delivery station is located. \\
+\hline
+{\em demand} & The demand of the delivery station. \\
+\hline
+{\em population} & The population served by the delivery station. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_delivery_station_ad6ba15b645cba0557d513dffddcf08c9}\label{class_delivery_station_ad6ba15b645cba0557d513dffddcf08c9} 
+\index{DeliveryStation@{DeliveryStation}!getCity@{getCity}}
+\index{getCity@{getCity}!DeliveryStation@{DeliveryStation}}
+\doxysubsubsection{\texorpdfstring{getCity()}{getCity()}}
+{\footnotesize\ttfamily std\+::string Delivery\+Station\+::get\+City (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the city where the delivery station is located. 
+
+\begin{DoxyReturn}{Returns}
+The city where the delivery station is located. 
+\end{DoxyReturn}
+\Hypertarget{class_delivery_station_af279e985e40d22b28eb27d7fd37f9b91}\label{class_delivery_station_af279e985e40d22b28eb27d7fd37f9b91} 
+\index{DeliveryStation@{DeliveryStation}!getDemand@{getDemand}}
+\index{getDemand@{getDemand}!DeliveryStation@{DeliveryStation}}
+\doxysubsubsection{\texorpdfstring{getDemand()}{getDemand()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_edge}{double}} Delivery\+Station\+::get\+Demand (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the demand of the delivery station. 
+
+\begin{DoxyReturn}{Returns}
+The demand of the delivery station. 
+\end{DoxyReturn}
+\Hypertarget{class_delivery_station_acfd0412fa9ad6edf3fbbcf3184e48444}\label{class_delivery_station_acfd0412fa9ad6edf3fbbcf3184e48444} 
+\index{DeliveryStation@{DeliveryStation}!getPopulation@{getPopulation}}
+\index{getPopulation@{getPopulation}!DeliveryStation@{DeliveryStation}}
+\doxysubsubsection{\texorpdfstring{getPopulation()}{getPopulation()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_edge}{int}} Delivery\+Station\+::get\+Population (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the population served by the delivery station. 
+
+\begin{DoxyReturn}{Returns}
+The population served by the delivery station. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Classes/\mbox{\hyperlink{_delivery_station_8h}{Delivery\+Station.\+h}}\item 
+Classes/\mbox{\hyperlink{_delivery_station_8cpp}{Delivery\+Station.\+cpp}}\end{DoxyCompactItemize}

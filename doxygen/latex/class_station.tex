@@ -1,0 +1,170 @@
+\doxysection{Station Class Reference}
+\hypertarget{class_station}{}\label{class_station}\index{Station@{Station}}
+
+
+The \doxylink{class_station}{Station} class represents a generic station in the network.  
+
+
+
+
+{\ttfamily \#include $<$Station.\+h$>$}
+
+Inheritance diagram for Station\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_station}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_station_aca5d1d7de6052a396c7a8fe9affd153c}{Station}} (\mbox{\hyperlink{class_edge}{int}} \mbox{\hyperlink{class_station_a4144cd1a5a69d5900f473ea9d792b3fe}{id}}, std\+::string \mbox{\hyperlink{class_station_a7f51ddd0c9efdd4c6463deeb9b9f330b}{code}})
+\begin{DoxyCompactList}\small\item\em Constructor for the \doxylink{class_station}{Station} class. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_edge}{virtual}} \mbox{\hyperlink{class_station_a00434e79e8ee7f4ebd6d3b631dde5ac0}{\texorpdfstring{$\sim$}{\string~}\+Station}} ()
+\begin{DoxyCompactList}\small\item\em Destructor for the \doxylink{class_station}{Station} class. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_edge}{int}} \mbox{\hyperlink{class_station_afd0de4c1f7e51648bfe465c5b8b02c88}{get\+Id}} () \mbox{\hyperlink{class_edge}{const}}
+\begin{DoxyCompactList}\small\item\em Get the unique identifier of the station. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_station_acebe4b1627bbce79ace0e3e0b655c9a9}{get\+Code}} () \mbox{\hyperlink{class_edge}{const}}
+\begin{DoxyCompactList}\small\item\em Get the code identifying the station. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_edge}{void}} \mbox{\hyperlink{class_station_a262a2a1bd0b27c0a162e880b00b69a96}{set\+Active}} (\mbox{\hyperlink{class_edge}{bool}} \mbox{\hyperlink{class_station_aab9526520d0f03cb1da7b76c5d37e37e}{active}})
+\begin{DoxyCompactList}\small\item\em Set the activity status of the station. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_edge}{bool}} \mbox{\hyperlink{class_station_a395b0107c629fd77f921a9e352413789}{is\+Active}} () \mbox{\hyperlink{class_edge}{const}}
+\begin{DoxyCompactList}\small\item\em Check if the station is active. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_edge}{int}} \mbox{\hyperlink{class_station_a4144cd1a5a69d5900f473ea9d792b3fe}{id}}
+\begin{DoxyCompactList}\small\item\em The unique identifier of the station. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_station_a7f51ddd0c9efdd4c6463deeb9b9f330b}{code}}
+\begin{DoxyCompactList}\small\item\em The code identifying the station. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_edge}{bool}} \mbox{\hyperlink{class_station_aab9526520d0f03cb1da7b76c5d37e37e}{active}}
+\begin{DoxyCompactList}\small\item\em Indicates whether the station is active or not. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \doxylink{class_station}{Station} class represents a generic station in the network. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_station_aca5d1d7de6052a396c7a8fe9affd153c}\label{class_station_aca5d1d7de6052a396c7a8fe9affd153c} 
+\index{Station@{Station}!Station@{Station}}
+\index{Station@{Station}!Station@{Station}}
+\doxysubsubsection{\texorpdfstring{Station()}{Station()}}
+{\footnotesize\ttfamily Station\+::\+Station (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_edge}{int}}}]{id,  }\item[{std\+::string}]{code }\end{DoxyParamCaption})}
+
+
+
+Constructor for the \doxylink{class_station}{Station} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The unique identifier of the station. \\
+\hline
+{\em code} & The code identifying the station. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_station_a00434e79e8ee7f4ebd6d3b631dde5ac0}\label{class_station_a00434e79e8ee7f4ebd6d3b631dde5ac0} 
+\index{Station@{Station}!````~Station@{\texorpdfstring{$\sim$}{\string~}Station}}
+\index{````~Station@{\texorpdfstring{$\sim$}{\string~}Station}!Station@{Station}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Station()}{\string~Station()}}
+{\footnotesize\ttfamily Station\+::\texorpdfstring{$\sim$}{\string~}\+Station (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+Destructor for the \doxylink{class_station}{Station} class. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_station_acebe4b1627bbce79ace0e3e0b655c9a9}\label{class_station_acebe4b1627bbce79ace0e3e0b655c9a9} 
+\index{Station@{Station}!getCode@{getCode}}
+\index{getCode@{getCode}!Station@{Station}}
+\doxysubsubsection{\texorpdfstring{getCode()}{getCode()}}
+{\footnotesize\ttfamily std\+::string Station\+::get\+Code (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the code identifying the station. 
+
+\begin{DoxyReturn}{Returns}
+The code identifying the station. 
+\end{DoxyReturn}
+\Hypertarget{class_station_afd0de4c1f7e51648bfe465c5b8b02c88}\label{class_station_afd0de4c1f7e51648bfe465c5b8b02c88} 
+\index{Station@{Station}!getId@{getId}}
+\index{getId@{getId}!Station@{Station}}
+\doxysubsubsection{\texorpdfstring{getId()}{getId()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_edge}{int}} Station\+::get\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the unique identifier of the station. 
+
+\begin{DoxyReturn}{Returns}
+The unique identifier of the station. 
+\end{DoxyReturn}
+\Hypertarget{class_station_a395b0107c629fd77f921a9e352413789}\label{class_station_a395b0107c629fd77f921a9e352413789} 
+\index{Station@{Station}!isActive@{isActive}}
+\index{isActive@{isActive}!Station@{Station}}
+\doxysubsubsection{\texorpdfstring{isActive()}{isActive()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_edge}{bool}} Station\+::is\+Active (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Check if the station is active. 
+
+\begin{DoxyReturn}{Returns}
+True if the station is active, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{class_station_a262a2a1bd0b27c0a162e880b00b69a96}\label{class_station_a262a2a1bd0b27c0a162e880b00b69a96} 
+\index{Station@{Station}!setActive@{setActive}}
+\index{setActive@{setActive}!Station@{Station}}
+\doxysubsubsection{\texorpdfstring{setActive()}{setActive()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_edge}{void}} Station\+::set\+Active (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_edge}{bool}}}]{status }\end{DoxyParamCaption})}
+
+
+
+Set the activity status of the station. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em status} & True if the station is active, false otherwise. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_station_aab9526520d0f03cb1da7b76c5d37e37e}\label{class_station_aab9526520d0f03cb1da7b76c5d37e37e} 
+\index{Station@{Station}!active@{active}}
+\index{active@{active}!Station@{Station}}
+\doxysubsubsection{\texorpdfstring{active}{active}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_edge}{bool}} Station\+::active\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Indicates whether the station is active or not. 
+
+\Hypertarget{class_station_a7f51ddd0c9efdd4c6463deeb9b9f330b}\label{class_station_a7f51ddd0c9efdd4c6463deeb9b9f330b} 
+\index{Station@{Station}!code@{code}}
+\index{code@{code}!Station@{Station}}
+\doxysubsubsection{\texorpdfstring{code}{code}}
+{\footnotesize\ttfamily std\+::string Station\+::code\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The code identifying the station. 
+
+\Hypertarget{class_station_a4144cd1a5a69d5900f473ea9d792b3fe}\label{class_station_a4144cd1a5a69d5900f473ea9d792b3fe} 
+\index{Station@{Station}!id@{id}}
+\index{id@{id}!Station@{Station}}
+\doxysubsubsection{\texorpdfstring{id}{id}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_edge}{int}} Station\+::id\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The unique identifier of the station. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Classes/\mbox{\hyperlink{_station_8h}{Station.\+h}}\item 
+Classes/\mbox{\hyperlink{_station_8cpp}{Station.\+cpp}}\end{DoxyCompactItemize}

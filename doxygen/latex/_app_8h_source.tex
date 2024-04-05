@@ -1,0 +1,78 @@
+\doxysection{App.\+h}
+\hypertarget{_app_8h_source}{}\label{_app_8h_source}\mbox{\hyperlink{_app_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ AED2324\_PRJ2\_G105\_APP\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ AED2324\_PRJ2\_G105\_APP\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_app}{App}}\ \{}
+\DoxyCodeLine{00011\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_app_ae09dc71078b64c56c673b1ad1d25b5d1}{run}}();}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_app_a7ffec8ed8539d3d9648d2d201ca2e407}{display4\_1menu}}(\mbox{\hyperlink{class_graph}{Graph<Station*>}}\&\ graph,}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::unordered\_map<int,\ DeliveryStation*>\&\ IdMap,}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::unordered\_map<std::string,\ DeliveryStation*>\&\ CodeMap,}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::unordered\_map<std::string,\ DeliveryStation*>\&\ NameMap);}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_app_a857cc11aadd3b476b574ea6d7940d7a2}{display4\_2menu}}(\mbox{\hyperlink{class_graph}{Graph<Station*>}}\ graph,}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::unordered\_map<int,\ WaterReservoir*>\ \&wrIdMap,}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::unordered\_map<std::string,\ WaterReservoir*>\ \&wrCodeMap,}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::unordered\_map<std::string,\ WaterReservoir*>\ \&wrNameMap,}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::unordered\_map<std::string,\ double>\ initialWeights,std::unordered\_map<std::string,\ DeliveryStation*>\&\ CodeMap);}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_app_a9f6b89bd6fde5999b74d5941ae1ef266}{maxFlowSubMenu}}(\mbox{\hyperlink{class_graph}{Graph<Station*>}}\&\ graph,}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::unordered\_map<int,\ DeliveryStation*>\&\ IdMap,}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::unordered\_map<std::string,\ DeliveryStation*>\&\ CodeMap,}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::unordered\_map<std::string,\ DeliveryStation*>\&\ NameMap);}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_app_aff5e3a2f344d94bddf614526b1b2dccd}{loadBalancingMenu}}(\mbox{\hyperlink{class_graph}{Graph<Station*>}}\&\ graph,}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::unordered\_map<int,\ DeliveryStation*>\&\ IdMap,}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::unordered\_map<std::string,\ DeliveryStation*>\&\ CodeMap,}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::unordered\_map<std::string,\ DeliveryStation*>\&\ NameMap);}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_app_a5128ad7451a5b55a977615238d16ae41}{findSuperSourceAndSuperSink}}(\mbox{\hyperlink{class_graph}{Graph<Station*>}}\&\ graph,\ \mbox{\hyperlink{class_vertex}{Vertex<Station*>}}*\&\ superSource,\ \mbox{\hyperlink{class_vertex}{Vertex<Station*>}}*\&\ superSink);}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_app_afbb7425b28266905d3b458827ac235b2}{MaxFlowAlgo}}(\mbox{\hyperlink{class_graph}{Graph<Station*>}}\&\ g);}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_app_aa82e8ec56c28e5524773727d34742041}{getFlowToCity}}(\mbox{\hyperlink{class_graph}{Graph<Station*>}}\&\ g,\ \mbox{\hyperlink{class_vertex}{Vertex<Station*>}}*\ deliveryStation);}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_app_a1f6f95288f065a55bf73a75a31bbf3e1}{PrintMaxFlowForCities}}(\mbox{\hyperlink{class_graph}{Graph<Station*>}}\&\ graph,\ \textcolor{keywordtype}{double}\ totalFlow);}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_app_ab4e4bb60e2718691472b843fec6add7d}{checkWaterCity}}(\mbox{\hyperlink{class_graph}{Graph<Station*>}}\ g,\ \textcolor{keyword}{const}\ std::string\&\ cityIdentifier,}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::unordered\_map<int,\ DeliveryStation*>\&\ IdMap,}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::unordered\_map<std::string,\ DeliveryStation*>\&\ CodeMap,}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::unordered\_map<std::string,\ DeliveryStation*>\&\ NameMap);}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_app_a8ed005d81563043e96ea9c3e7b8f176a}{checkWaterSupply}}(\mbox{\hyperlink{class_graph}{Graph<Station*>}}\ g,\ \textcolor{keyword}{const}\ std::unordered\_map<std::string,\ DeliveryStation*>\&\ codeMap);}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00137\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_app_ae988fdd2d2a8edf7b7e15433a022367c}{computeInitialMetrics}}(\mbox{\hyperlink{class_graph}{Graph<Station*>}}\&\ graph);}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00148\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_app_a1fd39ebb13d50c125d1fefa9b6c6dfb2}{showImprovedMetrics}}(\mbox{\hyperlink{class_graph}{Graph<Station*>}}\&\ graph);}
+\DoxyCodeLine{00149\ }
+\DoxyCodeLine{00162\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_app_ab33e6543f251953d7165a61a24f4987d}{balanceLoad}}(\mbox{\hyperlink{class_graph}{Graph<Station*>}}\&\ graph);}
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00176\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_app_a976edbc9d3626ecf9b52937df60c4afd}{fillMap}}(\mbox{\hyperlink{class_graph}{Graph<Station*>}}\&\ g,\ std::unordered\_map<\mbox{\hyperlink{class_vertex}{Vertex<Station*>}}*,\ \textcolor{keywordtype}{double}>\&\ flowMap);}
+\DoxyCodeLine{00177\ }
+\DoxyCodeLine{00190\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_app_a3c01dc38a9b2d89f5a0e96f7a5c3889b}{removeWR}}(\mbox{\hyperlink{class_graph}{Graph<Station*>}}\&\ g,\ \mbox{\hyperlink{class_vertex}{Vertex<Station*>}}*\ wrVertex);}
+\DoxyCodeLine{00191\ }
+\DoxyCodeLine{00207\ \ \ \ \ \mbox{\hyperlink{class_vertex}{Vertex<Station*>}}*\ \mbox{\hyperlink{class_app_ae8a8d76bf433ec095e15f2a0b6e70b73}{findWrId}}\ (\mbox{\hyperlink{class_graph}{Graph<Station*>}}\ \&g,\ \textcolor{keyword}{const}\ std::string\ \&wrIdentifier,}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::unordered\_map<int,\ WaterReservoir*>\ \&wrIdMap,}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::unordered\_map<std::string,\ WaterReservoir*>\ \&wrCodeMap,}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::unordered\_map<std::string,\ WaterReservoir*>\ \&wrNameMap);}
+\DoxyCodeLine{00211\ }
+\DoxyCodeLine{00224\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_app_a5d22ff18798f4631df320c47464c463f}{showDifference}}(\mbox{\hyperlink{class_graph}{Graph<Station*>}}\ g,\ std::unordered\_map<\mbox{\hyperlink{class_vertex}{Vertex<Station*>}}*,\ \textcolor{keywordtype}{double}>\&\ flowMap,\ std::unordered\_map<std::string,\ DeliveryStation*>\&\ codeMap);}
+\DoxyCodeLine{00225\ }
+\DoxyCodeLine{00237\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_app_ae6c3770fb310a6ca4064a7feec513447}{restoreGraph}}(\mbox{\hyperlink{class_graph}{Graph<Station*>}}\ *g,\ std::unordered\_map<std::string,\ double>\ initialWeights);}
+\DoxyCodeLine{00238\ }
+\DoxyCodeLine{00251\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_app_acc76f4b883ac26d2d7983f34c29f760d}{pipelineFailure}}(\mbox{\hyperlink{class_graph}{Graph<Station*>}}\ \&g,\ std::unordered\_map<\mbox{\hyperlink{class_vertex}{Vertex<Station*>}}*,\ \textcolor{keywordtype}{double}>\&\ flowMap);}
+\DoxyCodeLine{00252\ }
+\DoxyCodeLine{00265\ \ \ \ \ vector<Edge<Station\ *>*>\ \mbox{\hyperlink{class_app_aa709e37d792c3a6d0fc7f9d0fb0af40a}{getAllEdges}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_graph}{Graph<Station*>}}\ \&g);}
+\DoxyCodeLine{00266\ }
+\DoxyCodeLine{00279\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_app_a8ccc8da606dec58780cb758970e17d4b}{examinePumpingStations}}(\mbox{\hyperlink{class_graph}{Graph<Station*>}}\&\ g);}
+\DoxyCodeLine{00280\ }
+\DoxyCodeLine{00291\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_app_a2e1a06da083b5bda97d11935a41c510a}{resetGraph}}(\mbox{\hyperlink{class_graph}{Graph<Station*>}}\&\ graph);}
+\DoxyCodeLine{00292\ \};}
+\DoxyCodeLine{00293\ }
+\DoxyCodeLine{00294\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}
