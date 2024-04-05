@@ -666,7 +666,6 @@ void balanceLoad(Graph<Station*>& graph) {
     int pipeCount = 0;
     double sumSquaredDifferences = 0.0;
 
-    // Step 1: Calculate initial metrics
     for (auto vertex : graph.getVertexSet()) {
         for (auto edge : vertex->getAdj()) {
             double capacity = edge->getWeight();
@@ -678,11 +677,9 @@ void balanceLoad(Graph<Station*>& graph) {
         }
     }
 
-    // Calculate average difference and variance
     double averageDifference = totalDifference / pipeCount;
     double variance = sumSquaredDifferences / pipeCount - (averageDifference * averageDifference);
 
-    // Step 2: Identify pipes with flow less than capacity
     std::vector<Edge<Station*>*> underflowPipes;
     for (auto vertex : graph.getVertexSet()) {
         for (auto edge : vertex->getAdj()) {
@@ -694,23 +691,19 @@ void balanceLoad(Graph<Station*>& graph) {
         }
     }
 
-    // Step 3: Sort underflow pipes by the difference between capacity and flow
     std::sort(underflowPipes.begin(), underflowPipes.end(), [](Edge<Station*>* a, Edge<Station*>* b) {
         return (a->getWeight() - a->getFlow()) > (b->getWeight() - b->getFlow());
     });
 
-    // Step 4: Redistribute flow
     for (auto edge : underflowPipes) {
         double currentDifference = edge->getWeight() - edge->getFlow();
         if (currentDifference > averageDifference) {
-            double adjustmentFactor = sqrt(variance / (2 * pipeCount)); // Adjust according to variance
+            double adjustmentFactor = sqrt(variance / (2 * pipeCount));
             double targetFlow = edge->getWeight() - (averageDifference + adjustmentFactor);
-            // Set flow to the target value
             edge->setFlow(targetFlow);
         }
     }
     
-    // Step 6: Calculate total flow incoming to delivery stations after balancing
     double totalFlowToDeliveryStations = 0.0;
     for (auto vertex : graph.getVertexSet()) {
         if (auto deliveryStation = dynamic_cast<DeliveryStation*>(vertex->getInfo())) {
@@ -718,7 +711,6 @@ void balanceLoad(Graph<Station*>& graph) {
         }
     }
 
-    // Output total flow incoming to delivery stations
     std::cout << "Total flow incoming to delivery stations after balancing: " << totalFlowToDeliveryStations << std::endl;
 }
 
