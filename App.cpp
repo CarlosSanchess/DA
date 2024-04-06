@@ -648,7 +648,7 @@ void showImprovedMetrics(Graph<Station*>& graph) {
  *
  * @param graph The graph representing the water network.
  * @tparam Station The type of data held by vertices in the graph.
- * @note Time Complexity: O(V + E * log(E)), where V is the number of vertices and E is the number of edges in the graph.
+ * @note Time Complexity: O(V + E * log(E)).
  */
 void balanceLoad(Graph<Station*>& graph) {
     double totalDifference = 0.0;
@@ -794,7 +794,7 @@ void removeWR(Graph<Station*>& g, Vertex<Station*>* wrVertex){
  * @param g The graph representing the water network.
  * @param flowMap The map to store the flow of water to each delivery station.
  * @tparam Station The type of data held by vertices in the graph.
- * @note Time Complexity: O(V + E * log(E)), where V is the number of vertices and E is the number of edges in the graph.
+ * @note Time Complexity: O(V + E * log(E)).
  */
 void fillMap(Graph<Station*>& g, std::unordered_map<Vertex<Station*>*, double>& flowMap) {
 
